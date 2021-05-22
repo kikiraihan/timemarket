@@ -7,10 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
-    {{-- kikiassets --}}
-    @include('layouts.kikiassets')
-    
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -20,30 +16,37 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
 
-    
-    {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script> --}}
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
+
+    {{-- kikiassets --}}
+    @include('layouts.kikiassets')
+
 
 </head>
 
 <body class="bg-gray-100 f-opensans font-sans antialiased">
 
-    
-    
-    {{-- nav atas --}}
-    {{ $header }}
-    
-    
-    {{ $slot }}
+    <div class="min-h-screen bg-gray-100">
+        @include('layouts.navigation')
 
-    
-    {{ $footer }}
-    {{-- nav bawah --}}
+        <!-- Page Heading -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
 
-    
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
+
 </body>
 
-<script>
+{{-- <script>
         {{$scripthalaman}}
-</script>
+</script> --}}
 
 </html>
