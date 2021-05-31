@@ -14,9 +14,14 @@ class CreateTugasanggotaunitsTable extends Migration
     public function up()
     {
         Schema::create('tugasanggotaunits', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
 
-            $table->foreignId('id_anggotaunit')->constrained('anggotaunits')->onDelete('cascade');//FK
+            // $table->foreignId('id_anggotaunit')->constrained('anggotaunits')->onDelete('cascade');//FK
+
+            $table->foreignId('id_pegawai')->constrained('pegawais')->onDelete('cascade');//FK
+            $table->foreignId('id_unit')->constrained('units')->onDelete('cascade');//FK
+            $table->primary(['id_unit','id_pegawai']);
+            
             $table->string('judul',80);
             $table->longText('deskripsi');
 

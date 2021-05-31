@@ -1,8 +1,18 @@
-<nav class="flex justify-between px-4 py-1 bg-green-200 shadow">
+<nav class="flex justify-between px-4 py-1 {{$warna}} shadow items-center">
     <div class="inline-flex items-center ">
-        <img src="{{ asset('assets_kiki/TIME_MARKET_logo.svg') }}" class="transform w-40">
+        @isset($kata)
+            <span class="f-robotocon capitalize text-lg">{{$kata}}</span>
+        @else
+        <img src="{{ asset('assets_kiki/TIME_MARKET_logo.svg') }}" class="transform w-32">
+        @endisset
     </div>
-    <div class="inline-flex items-center justify-center">
+    <div class="inline-flex items-center justify-center space-x-2">
+        <button class="shadow flex items-center rounded-full text-green-600 ">
+            <span class="material-icons-outlined p-1">
+                add
+            </span>
+        </button>
+
         <button type="button" class="
         ini-tombol-sidebar
         p-2 rounded-md
@@ -17,9 +27,7 @@
             <!-- x -->
             <span class="material-icons-outlined hidden text-3xl">
                 close
-            </span>
-            
-            
+            </span>            
         </button>
     </div>
 </nav>

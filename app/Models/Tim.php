@@ -29,6 +29,29 @@ class Tim extends Model
 
     public function anggotatims()
     {
-        return $this->hasMany(anggotatim::class, "id_tim");
+        return $this->belongsToMany(
+            Pegawai::class,
+            'anggotatims',
+            "id_tim",
+            "id_pegawai"
+        );
+        
+            // return $this->hasMany(anggotatim::class, "id_tim");
+    }
+
+
+
+    // 
+    public function timsa()
+    {
+
+    }
+
+
+
+
+    public function tims()
+    {
+        
     }
 }

@@ -57,4 +57,20 @@ class User extends Authenticatable
     }
 
     
+
+    public function getGravatarAttribute(){
+
+        // asset('assets_landing/img/avatar_2x.png')
+
+        // gravatar
+        $hash=md5( strtolower( trim( $this->email ) ) );
+
+        $gravatar="https://www.gravatar.com/avatar/".$hash.".png?d=robohash&s=200&r=pg";//&d=404,d=mp,d=retro,d=monsterid,d=wavatar,d=robohash
+
+        return $gravatar!=NULL?$gravatar:"https://www.gravatar.com/avatar/?d=robohash&s=200&r=pg";
+    }
+
+
+
+    
 }

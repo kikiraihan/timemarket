@@ -15,8 +15,12 @@ class CreateTugasanggotatimsTable extends Migration
     {
         Schema::create('tugasanggotatims', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('id_anggotatim')->constrained('anggotatims')->onDelete('cascade')->nullable();//FK
             
-            $table->foreignId('id_anggotatim')->constrained('anggotatims')->onDelete('cascade')->nullable();//FK
+            $table->foreignId('id_tim')->constrained('tims')->onDelete('cascade');//FK
+            $table->foreignId('id_pegawai')->constrained('pegawais')->onDelete('cascade');//FK
+            // $table->primary(['id_tim','id_pegawai']);//tidak boleh karena harus duplikasi dua kolom ini
+
             $table->string('judul',80);
             $table->timestamp('startdate')->nullable();
             $table->timestamp('duedate')->nullable();

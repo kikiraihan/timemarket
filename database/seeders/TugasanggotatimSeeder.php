@@ -16,7 +16,8 @@ class TugasanggotatimSeeder extends Seeder
     {
         // BBM
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 1;
+        $task->id_tim=1;
+        $task->id_pegawai=7;
         $task->judul = "Nanya boleh atau engga BBM ke Dkom";
         $task->startdate = "2021-1-17";
         $task->duedate = "2021-1-18";
@@ -26,7 +27,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 1;
+        $task->id_tim=1;
+        $task->id_pegawai=7;
         $task->judul = "Set Materi Re-Echoing RDG Jan 2021";
         $task->startdate = "2021-1-20";
         $task->duedate = "2021-1-22";
@@ -36,7 +38,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 1;
+        $task->id_tim=1;
+        $task->id_pegawai=7;
         $task->judul = "M.02 All BBM";
         $task->startdate = "2021-1-20";
         $task->duedate = "2021-1-22";
@@ -46,7 +49,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 3;
+        $task->id_tim=1;
+        $task->id_pegawai=8;
         $task->judul = "Set Lokasi BBM dan Perlengkapan";
         $task->startdate = "2021-1-20";
         $task->duedate = "2021-1-27";
@@ -60,7 +64,8 @@ class TugasanggotatimSeeder extends Seeder
 
         // -- PSBI-B
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 5;
+        $task->id_tim=2;
+        $task->id_pegawai=19;
         $task->judul = "Updating Data Penerima Beasiswa";
         $task->startdate = "2021-9-10";
         $task->duedate = "2021-9-20";
@@ -70,7 +75,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 5;
+        $task->id_tim=2;
+        $task->id_pegawai=19;
         $task->judul = "Jumlah Kebutuhan Penerima Beasiswa";
         $task->startdate = "2021-9-13";
         $task->duedate = "2021-9-23";
@@ -80,7 +86,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 4;
+        $task->id_tim=2;
+        $task->id_pegawai=8;
         $task->judul = "M.02 Wawancara dan Group Discussion Beasiswa";
         $task->startdate = "2021-9-23";
         $task->duedate = "2021-9-24";
@@ -90,7 +97,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 5;
+        $task->id_tim=2;
+        $task->id_pegawai=19;
         $task->judul = "Surat ke Universitas Beasiswa BI ";
         $task->startdate = "2021-9-23";
         $task->duedate = "2021-9-24";
@@ -101,7 +109,8 @@ class TugasanggotatimSeeder extends Seeder
 
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 4;
+        $task->id_tim=2;
+        $task->id_pegawai=8;
         $task->judul = "M.02 Wawancara dan Group Discussion Beasiswa";
         $task->startdate = "2021-9-28";
         $task->duedate = "2021-9-29";
@@ -111,7 +120,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 5;
+        $task->id_tim=2;
+        $task->id_pegawai=19;
         $task->judul = "M.02 Usulan Penerima Beasiswa";
         $task->startdate = "2021-10-10";
         $task->duedate = "2021-10-11";
@@ -121,7 +131,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 5;
+        $task->id_tim=2;
+        $task->id_pegawai=19;
         $task->judul = "Pembayaran Beasiswa Semester 1";
         $task->startdate = "2021-10-10";
         $task->duedate = "2021-10-15";
@@ -133,7 +144,8 @@ class TugasanggotatimSeeder extends Seeder
 
         // -- Konten Infografis
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 6;
+        $task->id_tim=3;
+        $task->id_pegawai=7;
         $task->judul = "Nanya informal Vendor";
         $task->startdate = "2021-1-12";
         $task->duedate = "2021-1-12";
@@ -143,7 +155,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 8;
+        $task->id_tim=3;
+        $task->id_pegawai=8;
         $task->judul = "M.02 Prinsip Infografis tahun 2021";
         $task->startdate = "2021-1-10";
         $task->duedate = "2021-1-15";
@@ -153,7 +166,8 @@ class TugasanggotatimSeeder extends Seeder
         $task->save();
 
         $task=new tugasanggotatim;
-        $task->id_anggotatim = 8;
+        $task->id_tim=3;
+        $task->id_pegawai=8;
         $task->judul = "SPK Infografis ";
         $task->startdate = "2021-1-22";
         $task->duedate = "2021-1-22";

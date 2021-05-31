@@ -121,6 +121,7 @@ class AnggotaunitSeeder extends Seeder
             $angg->role = "Kepala";
             else
             $angg->role="Anggota";
+            
             $angg->save();
         };
 

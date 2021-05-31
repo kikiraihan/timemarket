@@ -19,10 +19,40 @@ class tugasanggotatim extends Model
         'level',
     ];
 
+    protected $appends=[
+        'namatim'
+    ];
+
+        //cara ambil tanggal bahasa indonesia
+    // $undangan->tgl->formatLocalized("%A, %d %B %Y")
+
+    protected $dates = [
+        'startdate',
+        'duedate'
+    ];
+
+
     // relasi
-    public function anggotatim()
+    public function tim()
     {
-        return $this->belongsTo(anggotatim::class, "id_anggotatim");
-        
+        return $this->belongsTo(Tim::class, "id_tim");
     }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class, "id_pegawai");
+    }
+
+    // public function anggotatim()
+    // {
+    //     return $this->belongsTo(anggotatim::class, "id_anggotatim");
+        
+    // }
+
+
+    public function getNamatimAttribute()
+    {
+        return $this->tim->nama;
+    }
+
 }

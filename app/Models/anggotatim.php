@@ -9,6 +9,8 @@ class anggotatim extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = ['id_tim', 'id_pegawai'];
+
     protected $fillable=
     [
         'id_tim',
@@ -27,8 +29,8 @@ class anggotatim extends Model
         return $this->belongsTo(Pegawai::class, "id_pegawai");
     }
 
-    public function tugasanggotatim()
-    {
-        return $this->hasMany(tugasanggotatim::class, "id_anggotatim");
-    }
+    // public function tugasanggotatim()
+    // {
+    //     return $this->hasMany(tugasanggotatim::class, "id_anggotatim");
+    // }
 }

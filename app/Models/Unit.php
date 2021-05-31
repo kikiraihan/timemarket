@@ -25,6 +25,11 @@ class Unit extends Model
         return $this->hasMany(anggotaunit::class,'id_unit');
     }
 
+    public function tugasAnggotaUnit()
+    {
+        return $this->hasMany(tugasanggotaunit::class,'id_unit');
+    }
+
     public function kepala()
     {
         return $this->belongsTo(Pegawai::class, "id_kepala");
@@ -34,4 +39,7 @@ class Unit extends Model
     {
         return $this->belongsTo(Pegawai::class, "id_koordinator");
     }
+
+    
+    
 }

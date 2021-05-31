@@ -113,8 +113,8 @@ class PegawaiSeeder extends Seeder
         for ($i=0; $i < count($nama); $i++) 
         { 
             $user = new User;
-            $user->username="pegawai".$i;
-            $user->email="pegawai".$i."@gmail.com";
+            $user->username="pegawai".($i+1);
+            $user->email="pegawai".($i+1)."@gmail.com";
             $user->email_verified_at = now();
             $user->password = 'password';
             $user->remember_token = Str::random(10);

@@ -25,7 +25,7 @@ class CreateTimsTable extends Migration
             
             
             $table->foreignId('id_kepala')->constrained('pegawais')->onDelete('cascade');//FK
-            $table->enum('status',['persiapan','on going','selesai']);
+            $table->enum('status',['persiapan','on going','done']);
 
             $table->timestamps();
         });

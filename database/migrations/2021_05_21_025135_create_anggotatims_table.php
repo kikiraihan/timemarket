@@ -14,14 +14,14 @@ class CreateAnggotatimsTable extends Migration
     public function up()
     {
         Schema::create('anggotatims', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             
             $table->foreignId('id_tim')->constrained('tims')->onDelete('cascade');//FK
             $table->foreignId('id_pegawai')->constrained('pegawais')->onDelete('cascade');//FK
+            $table->primary(['id_tim','id_pegawai']);
+            
             // $table->string('role')->nullable();//FK//bleh hapus kayaknya
-
-            //unik hanya pada kombinasi ketiga nama dibawah
-            $table->unique(['id_tim','id_pegawai']);
+            
             $table->timestamps();
         });
     }

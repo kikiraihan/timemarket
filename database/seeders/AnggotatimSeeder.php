@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\anggotatim;
+// use App\Models\anggotatim;
+use App\Models\Tim;
 use Illuminate\Database\Seeder;
 
 class AnggotatimSeeder extends Seeder
@@ -14,49 +15,42 @@ class AnggotatimSeeder extends Seeder
      */
     public function run()
     {
-        $ag= new anggotatim;
-        $ag->id_tim = 1;//bbm
-        $ag->id_pegawai = 7;//mas arief
-        $ag->save();
+        
+        //bbm
+        //mas arief
+        $tim = Tim::find(1);
+        $tim->anggotatims()->attach(7);
 
-        $ag= new anggotatim;
-        $ag->id_tim = 1;//bbm
-        $ag->id_pegawai = 8;//mas abil
-        $ag->save();
+        //mas abil
+        $tim = Tim::find(1);
+        $tim->anggotatims()->attach(8);
 
-        $ag= new anggotatim;
-        $ag->id_tim = 1;//bbm
-        $ag->id_pegawai = 19;//mba desi
-        $ag->save();
+        //mba desi
+        $tim = Tim::find(1);
+        $tim->anggotatims()->attach(19);
 
-
-        // 2
-        $ag= new anggotatim;
-        $ag->id_tim = 2;//PSBI-B
-        $ag->id_pegawai = 8;//mas abil
-        $ag->save();
-
-        $ag= new anggotatim;
-        $ag->id_tim = 2;//PSBI-B
-        $ag->id_pegawai = 19;//mba desi
-        $ag->save();
+        
 
 
-        // 3
-        $ag= new anggotatim;
-        $ag->id_tim = 3;//INFO
-        $ag->id_pegawai = 7;//mas arief
-        $ag->save();
+        // PSBI B
+        //mas abil
+        $tim = Tim::find(2);
+        $tim->anggotatims()->attach(8);
+        //mba desi
+        $tim = Tim::find(2);
+        $tim->anggotatims()->attach(19);
+        
 
-        $ag= new anggotatim;
-        $ag->id_tim = 3;//INFO
-        $ag->id_pegawai = 14;//Citra
-        $ag->save();
 
-        $ag= new anggotatim;
-        $ag->id_tim = 3;//INFO
-        $ag->id_pegawai = 8;//Mas Abil
-        $ag->save();
+        // INFO
+        $tim = Tim::find(3);
+        $tim->anggotatims()->attach(7);
+
+        $tim = Tim::find(3);
+        $tim->anggotatims()->attach(14);//citra
+
+        $tim = Tim::find(3);
+        $tim->anggotatims()->attach(8);
 
         
     }

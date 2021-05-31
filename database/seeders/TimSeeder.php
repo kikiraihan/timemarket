@@ -22,7 +22,7 @@ class TimSeeder extends Seeder
         $tim->id_kepala = 3;
         $tim->judul_project = "Bahan Bakar minyak";
         $tim->target_pelaksanaan = "Minggu 1 setiap bulan";
-        $tim->target_pelaksanaan = "IKU";
+        $tim->iku = "IKU";
         $tim->status = "on going";
         $tim->save();
 
@@ -34,7 +34,7 @@ class TimSeeder extends Seeder
         $tim->id_kepala             = 3;
         $tim->judul_project         = "Beasiswa Semester II";
         $tim->target_pelaksanaan    = "15 Oktober 2021";
-        $tim->target_pelaksanaan    = "IKU";
+        $tim->iku    = "IKU";
         $tim->status                = "on going";
         $tim->save();
 
@@ -46,7 +46,7 @@ class TimSeeder extends Seeder
         $tim->id_kepala             = 3;
         $tim->judul_project         = "Konten Infografis";
         $tim->target_pelaksanaan    = "22 Januari 2021";
-        $tim->target_pelaksanaan    = "Non-IKU";
+        $tim->iku    = "Non-IKU";
         $tim->status                = "on going";
         $tim->save();
 

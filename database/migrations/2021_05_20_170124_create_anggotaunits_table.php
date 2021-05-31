@@ -19,6 +19,8 @@ class CreateAnggotaunitsTable extends Migration
             $table->foreignId('id_pegawai')->constrained('pegawais')->onDelete('cascade');//FK
             $table->foreignId('id_unit')->constrained('units')->onDelete('cascade');//FK
             $table->string('role');//FK
+            // $table->primary(['id_unit','id_pegawai']);
+
 
             $table->timestamps();
         });
