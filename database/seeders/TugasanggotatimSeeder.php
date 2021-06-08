@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\tugasanggotatim;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class TugasanggotatimSeeder extends Seeder
@@ -57,6 +58,17 @@ class TugasanggotatimSeeder extends Seeder
         $task->status = "on going";
         $task->catatan = "GoPost, RG, Hulondhalo.id,";
         $task->level = 3;
+        $task->save();
+
+        $task=new tugasanggotatim;
+        $task->id_tim=1;
+        $task->id_pegawai=8;
+        $task->judul = "Contoh untuk hari ini";
+        $task->startdate = Carbon::now()->format('Y-m-d');
+        $task->duedate = Carbon::now()->format('Y-m-d');
+        $task->status = "on going";
+        $task->catatan = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur fugit autem voluptate expedita dolor nisi neque nostrum quos minus consequuntur atque, eaque illum ex consectetur eos iste cumque rerum. Ullam.";
+        $task->level = 2;
         $task->save();
 
 
@@ -179,6 +191,7 @@ class TugasanggotatimSeeder extends Seeder
         
 
         
+        // $this->command->info('Berhasil Menambahkan Tugas Tim');
         
         
     }

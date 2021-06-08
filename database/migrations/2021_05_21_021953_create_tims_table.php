@@ -15,17 +15,17 @@ class CreateTimsTable extends Migration
     {
         Schema::create('tims', function (Blueprint $table) {
             $table->id();
-            $table->string('nama',10);//singkat
+            $table->string('nama',10); //singkat
             $table->longText('deskripsi');
             
             $table->string('judul_project',25);
-            $table->string('target_pelaksanaan');//1 minggu tiap bulan.// 15 oktober 2021
+            $table->string('target_pelaksanaan'); //1 minggu tiap bulan. //15 oktober 2021
             $table->enum('jangka',['panjang','pendek']);
             $table->enum('iku',['IKU','Non-IKU'])->nullable();
             
             
             $table->foreignId('id_kepala')->constrained('pegawais')->onDelete('cascade');//FK
-            $table->enum('status',['persiapan','on going','done']);
+            $table->enum('status',['not start','on going','done']);
 
             $table->timestamps();
         });

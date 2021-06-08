@@ -1,7 +1,6 @@
 <div>
 
-
-
+    {{-- KALENDER BULAN --}}
     <div class="container mx-auto py-5 px-3 antialiased sans-serif">
         <div class="font-bold text-gray-500 mb-4 uppercase f-robotomon text-sm">
             Kalender
@@ -27,8 +26,7 @@
                     </button>
                     <div class="border-r inline-flex h-6"></div>
                     <button type="button" wire:click="incrementMonth"
-                        class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
-                        :class="{'cursor-not-allowed opacity-25': month == 11 }">
+                        class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1">
                         <svg class="h-6 w-6 text-gray-500 inline-flex leading-none" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -71,9 +69,6 @@
     </div>
 
 
-    
-
-
     <!-- content bawah workload -->
     <div class="container mx-auto py-4" >{{-- id="beban" --}}
         <div class="font-bold text-gray-500 uppercase f-robotomon text-sm px-4">
@@ -92,16 +87,14 @@
 
             <div class="border rounded-lg px-1 bg-white" style="padding-top: 2px;">
                 <button type="button" wire:click="decrementDay" @if (1 == $posisiHarian->day) disabled @endif
-                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
-                    :class="{'cursor-not-allowed opacity-25': month == 0 }">
+                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center">
                     <span class="material-icons-outlined">
                         keyboard_arrow_left
                     </span>
                 </button>
                 <div class="border-r inline-flex h-6"></div>
                 <button type="button" wire:click="incrementDay" @if ($posisiHarian->daysInMonth == $posisiHarian->day) disabled @endif
-                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
-                    :class="{'cursor-not-allowed opacity-25': month == 11 }">
+                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1">
                     <span class="material-icons-outlined">
                         keyboard_arrow_right
                     </span>
@@ -111,43 +104,45 @@
 
 
         <div>
-
+            
             <div class="flex flex-col" >
 
-                @forelse($harian as $item)
-                        <x-tugas-list 
-                        :judul="$item->judul" 
-                        :startdate="$item->startdate->format('d M')" 
-                        :duedate="$item->duedate->format('d M')" 
-                        :workload="$item->level" 
-                        :prosingkat="$item->tim->singkatan" 
-                        :status="$item->status"/>
-                @empty
-                        <div class="bg-white border p-4 flex flex-col  items-center pt-3 pb-5">
-                            <img src="{{ asset('assets_kiki\vector\Spotlight _TwoColor.svg') }}" class="w-full md:w-72">
-                            <span class="px-4 f-robotomon capitalize text-sm">
-                                kosong..
-                            </span>
+                @forelse($harian['tugason'] as $item)
+                    <x-tugas-list 
+                    :idtugas="$item->id" 
+                    :judul="$item->judul" 
+                    :startdate="$item->startdate->format('d M')" 
+                    :duedate="$item->duedate->format('d M')" 
+                    :workload="$item->level" 
+                    :prosingkat="$item->tim->nama" 
+                    :status="$item->status"/>
+                @if ($loop->last)
+                        <!-- garis akhir -->
+                        <div>
+                            <div class="h-3 relative w-full  overflow-hidden">
+                                <div class="w-full h-full bg-gray-200 absolute"></div>
+                                <div id="bar" class="h-full 
+                                @if ($harian['tugason']->sum("level")<=4)
+                                bg-green-400
+                                @elseif ($harian['tugason']->sum("level")<=8)
+                                bg-yellow-400
+                                @else
+                                bg-red-400
+                                @endif
+                                absolute w-{{$harian['tugason']->sum("level")}}/12"></div>
+                                {{-- <div id="bar" class="h-full bg-yellow-300 relative w-4/12"></div> --}}
+                            </div>
                         </div>
+                @endif
+                @empty
+
+                    @empty($harian['done'])
+                    <x-kosong/>
+                    @endempty
+                    
                 @endforelse
 
-                <!-- garis akhir -->
-                <div>
-                    <div class="h-3 relative w-full  overflow-hidden">
-                        <div class="w-full h-full bg-gray-200 absolute"></div>
-                        <div id="bar" class="h-full 
-                        @if ($harian->sum("level")<=4)
-                        bg-green-400
-                        @elseif ($harian->sum("level")<=8)
-                        bg-yellow-400
-                        @else
-                        bg-red-400
-                        @endif
-                        absolute w-{{$harian->sum("level")}}/12"></div>
-                        {{-- <div id="bar" class="h-full bg-yellow-300 relative w-4/12"></div> --}}
-                    </div>
-                </div>
-
+                
             </div>
         </div>
 
@@ -155,19 +150,45 @@
 
 
 
+        {{-- TUGAS DONE --}}
+
+        @empty($harian['done'])
+        @else
+        <div class="flex items-center justify-between py-2 px-4 mt-4">
+            <span class="text-sm font-bold">
+                Done list
+            </span>
+        </div>
+
+        <div>
+            <div class="flex flex-col">
+                @forelse($harian['done'] as $item)
+                <x-tugas-list-done 
+                        :judul="$item->judul" 
+                        :status="$item->status"/>
+                @empty
+                @endforelse
+            </div>
+        </div>
+        @endempty
+
+
+
+
     </div>
 
+    
 
 
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 </div>

@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\myTaskController;
+use App\Http\Controllers\CrudTaskController;
+use App\Http\Controllers\KalenderUtamaController;
+use App\Http\Controllers\KepalaTimBoardController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\PegawaiController;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +19,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+Route::get('/coba', function () 
+{
+    // $tim=App\Models\Tim::find(1);     
+    // $tim->anggotatims()->detach(7);
+    // foreach($tim->getTugasByIdPegawai((7)) as $tugasHapus)
+    // $tugasHapus->delete();
+    
+});
+
+
+
 Route::get('/', function () {
     return redirect('login');
 });
@@ -24,28 +42,62 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-
 // PEGAWAI
 Route::get('/pegawai', [PegawaiController::class,'index'])
     ->middleware(['auth'])->name('pegawai');
 
 
 // mytask
-Route::get('/workload', [myTaskController::class,'workload'])
+Route::get('/workload', [TaskController::class,'workload'])
     ->middleware(['auth'])->name('mytask.workload');
 
-Route::get('/myteam', [myTaskController::class,'myteam'])
+Route::get('/myteam', [TaskController::class,'myteam'])
     ->middleware(['auth'])->name('mytask.myteam');
 
 // they task
-Route::get('/they/workload/{id}', [myTaskController::class,'theyworkload'])
+Route::get('/they/workload/{id}', [TaskController::class,'theyworkload'])
     ->middleware(['auth'])->name('theytask.workload');
-Route::get('/they/team/{id}', [myTaskController::class,'theyworkload'])
+Route::get('/they/team/{id}', [TaskController::class,'theyteam'])
     ->middleware(['auth'])->name('theytask.theyteam');
 
+
+Route::get('team/show/{id}/{id_pegawai}', [TaskController::class,'showTeam'])
+    ->middleware(['auth'])->name('showteam');
+
+
 // kalender utama
-Route::get('/kalender-utama', function () {
-    return view('kalenderutama');
-})->middleware(['auth'])->name('kalender-utama');
+Route::get('/kalender-utama',KalenderUtamaController::class)
+->middleware(['auth'])->name('kalender-utama');
+
+
+// crud TASK
+Route::get('/task/create', [CrudTaskController::class,'create'])
+->middleware(['role:Chief'])->name('task.create');
+
+Route::get('/task/create-byid/{id_proker}', [CrudTaskController::class,'createById'])
+->middleware(['role:Chief|Pegawai'])->name('task.create.byid');
+
+Route::get('/task/edit/{id}', [CrudTaskController::class,'edit'])
+->middleware(['role:Chief|Pegawai'])->name('task.edit');
+
+
+// kepala tim board
+Route::get('/katimboard', [KepalaTimBoardController::class,'myteam'])
+->middleware(['role:Chief'])->name('Katimboard.myteam');
+Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam'])
+->middleware(['role:Chief|Pegawai'])->name('Katimboard.showteam');
+
+
+
 
 require __DIR__.'/auth.php';
+
+
+
+
+// debug
+// Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
+//     var_dump($query->sql);
+//     var_dump($query->bindings);
+//     var_dump($query->time);
+// });

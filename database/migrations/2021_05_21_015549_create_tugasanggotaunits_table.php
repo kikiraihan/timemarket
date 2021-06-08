@@ -25,10 +25,10 @@ class CreateTugasanggotaunitsTable extends Migration
             $table->string('judul',80);
             $table->longText('deskripsi');
 
-            $table->enum('jenis',['pokok','tambahan']);
-            $table->timestamp('startdate')->nullable();//kalau pokok nullable;
-            $table->timestamp('duedate')->nullable();//kalau pokok nullable;
-            $table->enum('status',['on going','done'])->nullable();//kalau pokok nullable
+            // $table->enum('jenis',['pokok','tambahan']);
+            // $table->timestamp('startdate')->nullable();//kalau pokok nullable;
+            // $table->timestamp('duedate')->nullable();//kalau pokok nullable;
+            // $table->enum('status',['on going','done'])->nullable();//kalau pokok nullable
 
 
             $table->timestamps();

@@ -13,13 +13,14 @@
 
     <x-slot name="scripthalaman">
         @livewireScripts
+        @include('layouts.scriptsweetalert')
     </x-slot>
 
 
 
     {{-- ================================================================= --}}
 
-    @include('layouts.tabtask',[
+    @include('umum.tabtask',[
         'user'=>$user,
         "pegawai"=>$pegawai,
         // "ag"=>$ag,
@@ -31,7 +32,15 @@
     ])
 
 
+<div x-data="{ dropUpOpen: false }">
+    
     <livewire:mytask.myworkload :idpegawai="$pegawai->id"/>
+    
+    <livewire:mytask.dropupworkload :isMy="true"/>
+    
+</div>
+
+    
     
 
 </x-app-layout>

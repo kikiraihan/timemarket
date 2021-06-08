@@ -34,13 +34,19 @@
                 @csrf
 
                 <div class="flex mt-6 flex-col space-y-4">
-                    <input class="border-none shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                    <div>
+                        <input class="border-none shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
                         id="email" placeholder="Email" type="email" name="email" 
                         :value="old('email')" required autofocus>
+                        <x-error-input :kolom="'email'"/>
+                    </div>
     
-                    <input class="border-none shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
-                    type="password" name="password" required autocomplete="current-password" 
-                    placeholder="Password" id="password">
+                    <div>
+                        <input class="border-none shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                        type="password" name="password" required autocomplete="current-password" 
+                        placeholder="Password" id="password">
+                        <x-error-input :kolom="'password'"/>
+                    </div>
     
                     <input class="border-none shadow p-2 w-full rounded focus:outline-none focus:ring-2 
                     focus:ring-green-300 bg-green-500  text-white

@@ -15,29 +15,31 @@ class AnggotatimSeeder extends Seeder
      */
     public function run()
     {
+        //suwangkupon
+        $tim = Tim::find(1);
+        $tim->anggotatims()->attach(3);
+        $tim = Tim::find(2);
+        $tim->anggotatims()->attach(3);
+        $tim = Tim::find(3);
+        $tim->anggotatims()->attach(3);
         
         //bbm
+        $tim = Tim::find(1);
         //mas arief
-        $tim = Tim::find(1);
         $tim->anggotatims()->attach(7);
-
         //mas abil
-        $tim = Tim::find(1);
         $tim->anggotatims()->attach(8);
-
         //mba desi
-        $tim = Tim::find(1);
         $tim->anggotatims()->attach(19);
 
         
 
 
         // PSBI B
-        //mas abil
         $tim = Tim::find(2);
+        //mas abil
         $tim->anggotatims()->attach(8);
         //mba desi
-        $tim = Tim::find(2);
         $tim->anggotatims()->attach(19);
         
 
@@ -45,13 +47,12 @@ class AnggotatimSeeder extends Seeder
         // INFO
         $tim = Tim::find(3);
         $tim->anggotatims()->attach(7);
-
-        $tim = Tim::find(3);
         $tim->anggotatims()->attach(14);//citra
-
-        $tim = Tim::find(3);
         $tim->anggotatims()->attach(8);
 
+
+
+        // $this->command->info('Berhasil Menambahkan Anggota Tim');
         
     }
 }

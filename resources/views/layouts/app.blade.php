@@ -42,7 +42,7 @@
     {{-- nav bawah --}}
 
 
-    {{$scripthalaman}}
+    
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -55,6 +55,14 @@
         $('#tabTask a[href~="' + location.href + '"]').addClass('border-b-4 border-green-200'); //#E5E5E5
     });
 </script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+{{$scripthalaman}}
+
+
+
+
 
 
 

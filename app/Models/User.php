@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +19,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+    ];
+
+    protected $appends=[
+        'nama'
     ];
 
     /**
@@ -57,6 +62,9 @@ class User extends Authenticatable
     }
 
     
+    public function getNamaAttribute(){
+        return $this->pegawai->nama;
+    }
 
     public function getGravatarAttribute(){
 
@@ -69,6 +77,18 @@ class User extends Authenticatable
 
         return $gravatar!=NULL?$gravatar:"https://www.gravatar.com/avatar/?d=robohash&s=200&r=pg";
     }
+
+    public function getAvatarAttribute($value){
+        if($value!=NULL){
+            return '/storage/'.$value;
+
+            // $request->user()->getOriginal('avatar')      => "user-avatar/11-2020-04-07 15:05:06.png"
+            // $request->user()->avatar                     => "/storage/user-avatar/11-2020-04-07 15:05:06.png"//hasil dari accessor
+
+        }else
+        return $this->gravatar;//"https://ssl.gstatic.com/accounts/ui/avatar_2x.png";//default kalau null
+    }
+
 
 
 

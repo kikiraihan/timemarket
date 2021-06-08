@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class anggotatim extends Model
 {
+    // boleh hapus, tida terpakai kyknya
     use HasFactory;
 
     protected $primaryKey = ['id_tim', 'id_pegawai'];

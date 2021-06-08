@@ -20,7 +20,11 @@ class Pegawai extends Model
     ];
 
     protected $appends=[
-        'nama_singkat'
+        'nama_singkat',
+        'nama_semi_singkat',
+        'nama_singkat_dua',
+        'random_color',
+        // 'gravatar'
     ];
 
 
@@ -76,7 +80,8 @@ class Pegawai extends Model
             Tim::class,
             'anggotatims',
             "id_pegawai",
-            "id_tim");
+            "id_tim")
+            ->withTimestamps();
     }
 
     public function tugasanggotatims()
@@ -84,9 +89,9 @@ class Pegawai extends Model
         return $this->hasMany(tugasanggotatim::class,'id_pegawai',"id");
     }
 
-    public function mengepalaitim()//koordinir dan kepala sekaligus klo tim
+    public function mengepalaitims()//koordinir dan kepala sekaligus klo tim
     {
-        return $this->hasMany(Unit::class,'id_kepala');
+        return $this->hasMany(Tim::class,'id_kepala');
     }
     // ==== batas TIM =======
 
@@ -98,6 +103,24 @@ class Pegawai extends Model
     
     
     // ACCESSOR GETTER
+    // cek apakah saya anggota tim
+    public function isMeAnggotaTim($id_tim)
+    {
+        $hasil=$this->tims()->where('id_tim','=',$id_tim)->count();
+        if($hasil==1)
+        return TRUE; 
+        else
+        return false; 
+    }
+    
+    // jabatan unit
+    public function getIsKepalaUnitAttribute()
+    {
+        if($this->unit[0]->id_kepala==$this->id)
+        return true;
+        else return false;
+    }
+
     // cek
     public function getIsUserLoginAttribute()
     {
@@ -105,6 +128,49 @@ class Pegawai extends Model
         return true;
         else
         return false;
+    }
+
+    // random color
+    function random_color_part() {
+        return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+    }
+    public function getRandomColorAttribute()
+    {
+        // return ($this->id*2).($this->id*3)."3242";
+        // return $this->random_color_part().$this->random_color_part().$this->random_color_part();
+        return substr($this->id*272727, 0, 6);
+    }
+
+    // gravatar
+    public function getGravatarAttribute()
+    {
+        return $this->user->gravatar;
+    }
+
+    // nama semi singkat
+    public function getNamaSingkatDuaAttribute()
+    {
+        $singkat=explode(" ",$this->nama);
+        $return="";
+        foreach($singkat as $angka=>$s){
+            if($angka>0)
+            $return=$return.substr($s,0,1);
+        }
+
+        return substr($singkat[0],0,3).". ".$return;
+    }
+
+    // nama semi singkat
+    public function getNamaSemiSingkatAttribute()
+    {
+        $singkat=explode(" ",$this->nama);
+        $return="";
+        foreach($singkat as $angka=>$s){
+            if($angka>0)
+            $return=$return.substr($s,0,1);
+        }
+
+        return $singkat[0]." ".$return;
     }
 
     // nama
@@ -122,15 +188,32 @@ class Pegawai extends Model
     // tugas
     public function getTugasSelesaiAttribute()
     {
-        return $this->tugasanggotatims()->where('status','=','done')->get();
+        return $this->tugasanggotatims()
+        ->Yangselesai()
+        ->get();
     }
     public function getJumlahTugasSelesaiAttribute()
     {
-        return $this->tugasanggotatims()->where('status','=','done')->count();
+        return $this->tugasanggotatims()
+        ->Yangselesai()
+        ->count();
     }
     public function getJumlahTugasAttribute()
     {
         return $this->tugasanggotatims->count();
+    }
+    public function getJumlahTugasByIdTim($id_tim)
+    {
+        return $this->tugasanggotatims()
+        ->where('id_tim','=',$id_tim)
+        ->count();
+    }
+    public function getJumlahTugasSelesaiByIdTim($id_tim)
+    {
+        return $this->tugasanggotatims()
+        ->where('id_tim','=',$id_tim)
+        ->Yangselesai()
+        ->count();
     }
 
     // Proker
@@ -155,43 +238,30 @@ class Pegawai extends Model
     public function getTugasDalamBulan($bulan,$tahun)
     {
         
-        return $this->hasMany(tugasanggotatim::class,'id_pegawai',"id")
+        return $this->tugasanggotatims()
         
         ->where(function($query) use($tahun, $bulan)
         {
             $query->where(function($query) use($tahun, $bulan)
             {
-                return $query->whereYear('startdate', $tahun)
+                // return 
+                $query->whereYear('startdate', $tahun)
                         ->whereMonth('startdate', $bulan);
                 // return $query->where('startdate', "LIKE", $tahun."-".$bulan."-%");
             })
             ->orWhere(function($query) use($tahun, $bulan) 
             {
-                return $query->whereYear('duedate', $tahun)
+                // return 
+                $query->whereYear('duedate', $tahun)
                         ->whereMonth('duedate', $bulan);
             });
         })
+        ->Belumselesai()//turn of ini kalau ingin menampilkan yang done juga di kalender workload
         ->orderBy('startdate', 'asc')
         ->get()
         ;   
 
-        // return $this->tugasanggotatims->sortBy(['startdate', 'asc'])->filter( function($item) use($tahun, $bulan){
-            
-        //     if ($item->startdate->year==$tahun) 
-        //     {
-        //         if ($item->startdate->month==$bulan) 
-        //         {
-        //             return $item;
-        //         }
-        //     }
-        //     elseif ($item->duedate->year==$tahun) 
-        //     {
-        //         if ($item->duedate->month==$bulan) 
-        //         {
-        //             return $item;
-        //         }
-        //     }
-        // });
+        
     }
 
     public function getTugasDalamHari($tanggal)
@@ -223,12 +293,13 @@ class Pegawai extends Model
 
         // return [$awalMinggu, $akhirMinggu];
 
-        return $this->hasMany(tugasanggotatim::class,'id_pegawai',"id")
+        return $this->tugasanggotatims()
         ->where(function($query) use($awalMinggu, $akhirMinggu)
         {
             $query->where(function($query) use($awalMinggu, $akhirMinggu)
             {
-                return $query
+                // return 
+                $query
                         // ->whereYear('startdate', "<=", $akhirMinggu->year)
                         // ->whereMonth('startdate', "<=", $akhirMinggu->month)
                         // ->whereDay('startdate', "<=", $akhirMinggu->day);
@@ -236,13 +307,15 @@ class Pegawai extends Model
             })
             ->where(function($query) use($awalMinggu, $akhirMinggu)
             {
-                return $query
+                // return 
+                $query
                         // ->whereYear('duedate', ">=", $awalMinggu->year)
                         // ->whereMonth('duedate', ">=", $awalMinggu->month)
                         // ->whereDay('duedate', ">=", $awalMinggu->day);
                         ->whereDate('duedate', ">=", $awalMinggu->format('Y-m-d'));
             });
         })
+        ->Belumselesai()
         ->orderBy('startdate', 'asc')
         ->get()
         ;   
@@ -259,12 +332,13 @@ class Pegawai extends Model
 
         // return [$awalMinggu, $akhirMinggu];
 
-        return $this->hasMany(tugasanggotatim::class,'id_pegawai',"id")
+        return $this->tugasanggotatims()// hasMany(tugasanggotatim::class,'id_pegawai',"id")
         ->where(function($query) use($awalMinggu, $akhirMinggu)
         {
             $query->where(function($query) use($awalMinggu, $akhirMinggu)
             {
-                return $query
+                // return 
+                $query
                         // ->whereYear('startdate', "<=", $akhirMinggu->year)
                         // ->whereMonth('startdate', "<=", $akhirMinggu->month)
                         // ->whereDay('startdate', "<=", $akhirMinggu->day);
@@ -272,7 +346,8 @@ class Pegawai extends Model
             })
             ->where(function($query) use($awalMinggu, $akhirMinggu)
             {
-                return $query
+                // return 
+                $query
                         // ->whereYear('duedate', ">=", $awalMinggu->year)
                         // ->whereMonth('duedate', ">=", $awalMinggu->month)
                         // ->whereDay('duedate', ">=", $awalMinggu->day);
@@ -287,6 +362,13 @@ class Pegawai extends Model
 
 
 
+    // SCOPE
+    public function scopeAnggotadaritim($query,$id_tim)
+    {
+        return $query->whereHas('tims', function($q) use($id_tim){
+            $q->where('id','=',$id_tim);
+        });
+    }
 
 
 

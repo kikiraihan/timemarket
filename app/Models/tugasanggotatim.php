@@ -10,7 +10,8 @@ class tugasanggotatim extends Model
     use HasFactory;
 
     protected $fillable=[
-        'id_anggotatim',
+        'id_tim',
+        'id_pegawai',
         'judul',
         'startdate',
         'duedate',
@@ -53,6 +54,20 @@ class tugasanggotatim extends Model
     public function getNamatimAttribute()
     {
         return $this->tim->nama;
+    }
+
+
+
+
+    // SCOPE
+    public function scopeBelumselesai($query)
+    {
+        return $query->where('status','!=','done');
+    }
+
+    public function scopeYangselesai($query)
+    {
+        return $query->where('status','=','done');
     }
 
 }

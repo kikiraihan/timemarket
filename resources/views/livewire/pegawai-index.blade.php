@@ -16,7 +16,8 @@
     @if ($search==null)
         <span class="block text-xs mt-2 text-gray-400 pl-2"> Ditemukan {{$jumlah_pegawai}} pegawai </span>
 
-        @foreach ($unit as $u)
+        {{-- ada kse komen dlu soalnya ba loading --}}
+        {{-- @foreach ($unit as $u)
         <div class="p-2 f-opensans my-4">
             <span class="font-semibold uppercase text-sm block mb-3 f-robotocon text-gray-500">{{$u->singkatan}}</span>
 
@@ -26,7 +27,7 @@
                 @endforeach
             </div>
         </div>
-        @endforeach
+        @endforeach --}}
 
 
     @else

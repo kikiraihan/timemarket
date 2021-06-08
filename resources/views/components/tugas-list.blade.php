@@ -1,11 +1,13 @@
 @props([
-    'judul'=>"Update Materi Inflasi BBM",
-    'startdate' => "4 Feb",
-    'duedate' => "5 Feb",
-    "workload"=>"6",
-    "prosingkat"=>"BBM",
-    "status"=>"on going"
+    'idtugas'=>null,
+    'judul'=>"kosong",
+    'startdate' => "0",
+    'duedate' => "0",
+    "workload"=>"0",
+    "prosingkat"=>"kosong",
+    "status"=>"kosong"
     ])
+
 
 <div class="bg-white border pl-4 flex space-x-3">
 
@@ -36,10 +38,10 @@
         </p>
     </div>
 
-    <button class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center ">
+    <button @click="dropUpOpen = !dropUpOpen" wire:click="$emitTo('mytask.dropupworkload', 'dropUpTugas',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center ">
         <span class="material-icons-outlined" style="font-size: 18px">
-            arrow_forward_ios
+            more_vert
         </span>
-
     </button>
+    
 </div>

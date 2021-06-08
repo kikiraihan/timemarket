@@ -133,5 +133,7 @@ class AnggotaunitSeeder extends Seeder
         $unit->id_kepala=$pg->id;
         $unit->save();
 
+        // $this->command->info('Berhasil Menambahkan Anggota Unit');
+
     }
 }

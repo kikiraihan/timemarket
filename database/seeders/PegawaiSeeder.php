@@ -118,6 +118,16 @@ class PegawaiSeeder extends Seeder
             $user->email_verified_at = now();
             $user->password = 'password';
             $user->remember_token = Str::random(10);
+
+            // pimpinan 1-3
+            if($i<3){
+                $user->assignRole('Chief');
+            }
+            else
+            {
+                $user->assignRole('Pegawai');
+            }
+
             $user->save();
             
             $pegawai = new Pegawai;
@@ -130,6 +140,7 @@ class PegawaiSeeder extends Seeder
         }
 
 
+        // $this->command->info('Berhasil Menambahkan Pegawai');
 
         
 

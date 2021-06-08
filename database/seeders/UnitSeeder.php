@@ -67,7 +67,7 @@ class UnitSeeder extends Seeder
 
 
 
-        
+        // $this->command->info('Berhasil Menambahkan Unit');
 
     }
 }

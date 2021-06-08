@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Task'])
+        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Profil Penugasan','link_balik'=>'pegawai'])
     </x-slot>
 
     <x-slot name="footer">
@@ -19,7 +19,7 @@
 
     {{-- ================================================================= --}}
 
-    @include('layouts.tabtask',[
+    @include('umum.tabtask',[
         'user'=>$user,
         "pegawai"=>$pegawai,
         // "ag"=>$ag,
@@ -31,7 +31,11 @@
     ])
 
 
-    <livewire:mytask.myworkload :idpegawai="$pegawai->id"/>
+    <div x-data="{ dropUpOpen: false }">
+        <livewire:mytask.myworkload :idpegawai="$pegawai->id"/>
+        
+        <livewire:mytask.dropupworkload :isMy="false"/>
+    </div>
     
 
 </x-app-layout>

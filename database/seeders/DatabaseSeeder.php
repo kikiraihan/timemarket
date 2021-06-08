@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        $this->call(RolesTableSeeder::class);
         $this->call(PegawaiSeeder::class);
         $this->call(UnitSeeder::class);
         $this->call(AnggotaunitSeeder::class);

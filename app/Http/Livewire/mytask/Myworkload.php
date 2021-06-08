@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\mytask;
 
 use App\Models\Pegawai;
+use App\Models\tugasanggotatim;
 use Livewire\Component;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,10 @@ class Myworkload extends Component
     $today,
     $no_of_days= [],
     $blankdays= [];
+
+    protected $listeners=[
+        'tugasDiSetDone'=>'freshKalender',
+    ];
 
     public function mount($idpegawai)
     {
@@ -75,7 +80,10 @@ class Myworkload extends Component
 
             for ($i=$batasawal; $i <= $batasakhir; $i++) 
             { 
-                $daysArray[$i]=$daysArray[$i]+$task->level;
+                if($task->status!="done")
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
             }
         }
 
@@ -149,6 +157,12 @@ class Myworkload extends Component
         $this->posisiHarian->subDay();
     }
 
+    public function freshKalender()
+    {
+        $this->incrementMonth();
+        $this->decrementMonth();
+    }
+
 
 
 
@@ -167,8 +181,20 @@ class Myworkload extends Component
 
     public function getHarian($posisi)
     {
-        return $taskSeharian=$this->pegawai->getTugasDalamHari($posisi->format("Y-m-d"));
+        $return=['done'=>[],'tugason'=>[]];
+        $taskSeharian=$this->pegawai->getTugasDalamHari($posisi->format("Y-m-d"))->groupBy('status');
+        
+        if(isset($taskSeharian['done'])) $return['done']=$taskSeharian['done'];   
+        if( isset($taskSeharian['on going']) and isset($taskSeharian['not start']) )
+        {
+            $return['tugason']=array_merge($taskSeharian['on going'],$taskSeharian['not start']);
+        }
+        elseif(isset($taskSeharian['on going'])) $return['tugason']=$taskSeharian['on going'];
+        elseif(isset($taskSeharian['not start'])) $return['tugason']=$taskSeharian['not start'];
+
+        return $return;
     }
+
 
 
 }

@@ -24,7 +24,7 @@ class CreateTugasanggotatimsTable extends Migration
             $table->string('judul',80);
             $table->timestamp('startdate')->nullable();
             $table->timestamp('duedate')->nullable();
-            $table->enum('status',['on going','done']);
+            $table->enum('status',['not start','on going','done']);
             
             $table->longText('catatan')->nullable();
             $table->enum('level',[1,2,3]);//'ringan','sedang','berat'

@@ -17,6 +17,8 @@
             Pegawai
         </span>
     </a>
+    
+    @role('Pegawai')
     <a href="{{ route('mytask.workload') }}" class="w-full text-center block p-3 hover:bg-green-300">
         <span class="block material-icons-outlined text-3xl">
             perm_contact_calendar
@@ -25,6 +27,18 @@
             My Task
         </span>
     </a>
+    @endrole
+    @role('Chief')
+    <a href="{{ route('Katimboard.myteam') }}" class="w-full text-center block p-3 hover:bg-green-300">
+        <span class="block material-icons-outlined text-3xl">
+            psychology
+        </span>
+        <span class="block">
+            Teamboard
+        </span>
+    </a>
+    @endrole
+
     <a href="{{ route('dashboard') }}" class="w-full text-center block p-3 hover:bg-green-300">
         <span class="block material-icons-outlined text-3xl">
             home

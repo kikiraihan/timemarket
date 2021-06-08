@@ -17,7 +17,16 @@
 
 
 
+    
+
+    
+<div x-data="{ dropUpOpen: false }">
+    
     <livewire:kalenderutama/>
+
+    <livewire:dropupkalender :isEditAble="true" :pegawaiYangLogin="$pegawaiYangLogin"/>
+    
+</div>
 
 
     
