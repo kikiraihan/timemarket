@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// function redirectTohttps() {
+//     if($_SERVER[‘HTTPS’]!=”on”) 
+//     {
+//     $redirect= “https://”.$_SERVER[‘HTTP_HOST’].$_SERVER[‘REQUEST_URI’];
+//     header(“Location:$redirect”); 
+//     } 
+// }
+
 
 
 
@@ -93,7 +101,7 @@ Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam']
 // CRUD PROKER
 Route::get('/proker/create', [CrudProkerController::class,'create'])
 ->middleware(['role:Chief'])->name('proker.create');
-Route::get('/proker/edit/{id}', [CrudTaskController::class,'edit'])
+Route::get('/proker/edit/{id}', [CrudProkerController::class,'edit'])
 ->middleware(['role:Chief|Pegawai'])->name('proker.edit');
 
 

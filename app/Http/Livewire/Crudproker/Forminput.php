@@ -27,6 +27,14 @@ class Forminput extends Component
 
     public $search, $selectedKep;
 
+    protected $CustomMessages = [
+        'integer' => 'Kolom :attribute, harus berupa angka',
+        'string' => 'Kolom :attribute, harus berupa teks',
+        'date' => 'Kolom :attribute, harus berupa tanggal',
+        'required'=>'Kolom tidak boleh kosong',
+        'unique'=>'Data kolom :attribute sudah ada sebelumnya',
+    ];
+
     
     public function mount($idToUpdate=null)
     {
@@ -34,7 +42,7 @@ class Forminput extends Component
         if($idToUpdate==NULL)
         {
             $this->inputTambah();
-            // $this->id_kepala=null;
+            //$this->id_kepala=null;
         }
         //kalau dia update
         else
@@ -124,12 +132,62 @@ class Forminput extends Component
         $this->status               = $proker->status;
 
         
-        $this->selectedPeg=Pegawai::find($proker->id_kepala);
+        $this->selectedKep=Pegawai::find($proker->id_kepala);
 
         $this->metode="updateProker";      
         
     }
 
+
+    public function newProker()
+    {
+        $this->validate( [
+            'jangka'             =>"required|string",
+            'iku'                =>"required|string",
+            'nama'               =>"required|string",
+            'judul_project'      =>"required|date",
+            'target_pelaksanaan' =>"required|integer",
+            'deskripsi'            =>"nullable|string",
+        ],$this->CustomMessages);
+
+        $proker=new Tim;
+        $proker->jangka              =$this->jangka;
+        $proker->iku                 =$this->iku;
+        $proker->nama                =$this->nama;
+        $proker->judul_project       =$this->judul_project;
+        $proker->target_pelaksanaan  =$this->target_pelaksanaan;
+        $proker->deskripsi           =$this->deskripsi;
+        $proker->id_kepala           =$this->id_kepala;
+        $proker->save();
+
+        $this->reset();
+        $this->emit('swalAdded');
+        $this->inputTambah();
+    }
+
+
+    public function updateProker()
+    {
+
+        $idToUpdate=$this->idToUpdate;
+
+        $proker=Tim::find($idToUpdate);
+
+        $proker->jangka              =$this->jangka;
+        $proker->iku                 =$this->iku;
+        $proker->nama                =$this->nama;
+        $proker->judul_project       =$this->judul_project;
+        $proker->target_pelaksanaan  =$this->target_pelaksanaan;
+        $proker->deskripsi           =$this->deskripsi;
+        $proker->id_kepala           =$this->id_kepala;
+        $proker->status               =$this->status;
+        $proker->save();
+
+
+        $this->emit('swalUpdated');
+        return redirect()->route('Katimboard.showteam',['id'=>$idToUpdate]);
+
+    }
     
 
 

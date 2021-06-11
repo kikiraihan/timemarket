@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Edit Tugas'])
+        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Edit Proker'])
     </x-slot>
 
     <x-slot name="footer">
@@ -25,11 +25,5 @@
     <livewire:crudproker.forminput :idToUpdate="$idToUpdate"/>
 
 
-
-
-    <br><br><br>
-    <br><br>
-
-    
 
 </x-app-layout>
