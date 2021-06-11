@@ -9,7 +9,7 @@
     </div>
     <div class="inline-flex items-center justify-center space-x-2">
         @role('Chief')
-        <a href="{{ route('task.create') }}" class="shadow flex items-center rounded-full text-green-600 ">
+        <a href="{{ route('task.create') }}" class="shadow flex items-center rounded-full text-green-600 h-9 w-9 justify-center">
             <span class="material-icons-outlined p-1">
                 add
             </span>
@@ -43,15 +43,19 @@ absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ea
 ">
 <!-- md:relative md:translate-x-0  -->
     <div class="flex items-center space-x-2">
-        <span class="shadow w-16 h-16 bg-white my-2 rounded">
-            <img src="{{Auth::user()->gravatar}}" class="w-full">
+        <span class="bg-white my-2">
+            <img src="{{Auth::user()->avatar}}" class="object-cover w-16 h-16 shadow rounded-full">
         </span>
         <span class="py-2 text-sm f-roboto">
             {{Auth::user()->nama}} <br>
-            <span class="f-robotomon text-xs">{{Auth::user()->email}}</span>
+            <span class="f-robotomon text-xs">{{Auth::user()->email}}</span><br>
+            <span class="bg-blue-400 f-roboto text-xs text-gray-50 p-0.5 rounded">
+                {{Auth::user()->getRoleNames()[0]}}
+            </span>
         </span>
     </div>
     <hr>
+    <br>
     
     {{-- <a href="#" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
         <span class="material-icons-outlined ">notifications</span>
@@ -61,14 +65,22 @@ absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ea
         <span class="material-icons-outlined ">admin_panel_settings</span>
         Administrator
     </a> --}}
+
+    <a href="{{ route('setting') }}" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
+        <span class="material-icons-outlined ">manage_accounts</span>
+        Setting
+    </a>
+
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <a href="#" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded"
-            :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+        :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
             <span class="material-icons-outlined ">logout</span>
             {{ __('Log Out') }}
         </a>
     </form>
+
+    
 
 </div>
 

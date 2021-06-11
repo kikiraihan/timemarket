@@ -24,7 +24,7 @@
     <div class="p-4 bg-white rounded-b shadow">
         <div class="pr-3 max-w-sm mx-auto flex items-center space-x-4">
             <div class="flex-shrink-0">
-                <img class="h-14 w-h-14 bg-gray-200 rounded-full shadow-sm" src="{{$user->gravatar}}">
+                <img class="h-14 w-14 bg-gray-200 rounded-full shadow-sm object-cover" src="{{$user->avatar}}">
             </div>
             <div class="flex-1">
                 <div class="font-bold text-black">{{$pegawai->nama}}</div>
@@ -39,9 +39,13 @@
         'pegawai'=>$pegawai
     ])
 
-
-
-
+    <div class="flex justify-end">
+        <a href="{{ route('proker.create') }}" class="rounded-full h-12 w-12 text-green-500 mr-5 mt-2 bg-white shadow flex justify-center items-center">
+            <span class="material-icons-outlined p-1">
+                add
+            </span>
+        </a>
+    </div>
 
 
     <br>

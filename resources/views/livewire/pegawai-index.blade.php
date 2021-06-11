@@ -36,7 +36,7 @@
         <div class="p-2 f-opensans my-4">
             <div class="space-y-3">
                 @foreach ($pegawaisearch as $peg)
-                <x-pegawai-list :idpegawai="$peg->id" :gravatar="$peg->user->gravatar" :nama="$peg->nama" :unit="$peg->anggotaunit->unit->singkatan.' - '.$peg->nip" />{{-- $peg->anggotaunit->unit->singkatan.' - '. --}}
+                <x-pegawai-list :idpegawai="$peg->id" :gravatar="$peg->user->avatar" :nama="$peg->nama" :unit="$peg->anggotaunit->unit->singkatan.' - '.$peg->nip" />{{-- $peg->anggotaunit->unit->singkatan.' - '. --}}
                 @endforeach
             </div>
         </div>

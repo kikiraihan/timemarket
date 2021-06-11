@@ -14,7 +14,7 @@
         <div class="container mx-auto flex flex-col space-y-4 py-4">
             <div class="px-4">
                 <label class="f-roboto ml-1 text-gray-500 text-sm">Program Kerja / Tim</label>
-                <select
+                <select @if($metode=='updateTask') disabled @endif
                     wire:model.lazy="id_proker" id="proker"
                     class="block shadow bg-white text-sm p-2 w-full rounded focus:outline-none 
                     focus:ring-2 focus:ring-green-300" aria-label="Default select example">
@@ -30,7 +30,7 @@
             <div class="px-4">
                 <label class="f-roboto ml-1 text-gray-500 text-sm">Pilih PIC</label>
                 
-                @if ($selectpegawai->count()>=7)
+                @if ($isTampilSearch)
                 <div class="flex shadow">
                     <span class="material-icons-outlined flex items-center pl-2 pr-1 bg-white rounded-l text-gray-500">
                         search
@@ -136,10 +136,8 @@
             <div>
                 <label class="f-roboto ml-1 text-gray-500 text-sm">Catatan <span
                         class="text-xs">(optional)</span></label>
-                <textarea 
-                    wire:model.lazy="catatan" id="catatan"
-                    placeholder="Jangan lupa follow up.." class="block shadow text-sm  p-2 w-full h-36 rounded 
-                    focus:outline-none focus:ring-2 focus:ring-green-300"></textarea>
+                <x-textarea-standar-kiki wire:model.lazy="catatan" 
+                id="catatan" placeholder="Jangan lupa follow up.."></x-textarea-standar-kiki>
                 <x-error-input :kolom="'catatan'"/>
             </div>
 

@@ -52,23 +52,23 @@ class Forminput extends Component
     public function render()
     {
         $selectpegawai=null;
+        $isTampilSearch=true;
         if($this->id_pegawai==null)
         {
             if($this->search==null)
             {
-                $selectpegawai=Pegawai::query();
+                $selectpegawai=Pegawai::anggotadaritim($this->id_proker)->get()->load('user');
+                if($selectpegawai->count()<=7) $isTampilSearch=false;
             }
             else
             {
-                $selectpegawai=$this->cariPegawai();
+                $selectpegawai=$this->cariPegawai()->anggotadaritim($this->id_proker)->get()->load('user');
             }
-            $selectpegawai=$selectpegawai->anggotadaritim($this->id_proker);
-            $selectpegawai=$selectpegawai->get();
         }
         // else dd($this->selectedPeg);
         $selecttim=Tim::prokersaya(Auth::user()->pegawai->id)->get();
 
-        return view('livewire.crudtask.forminput',compact(['selectpegawai','selecttim']));
+        return view('livewire.crudtask.forminput',compact(['selectpegawai','selecttim','isTampilSearch']));
     }
 
     public function cariPegawai()
@@ -97,50 +97,7 @@ class Forminput extends Component
 
 
 
-    // FORM TO DATABASE FUNCTION
-    public function newTask()
-    {
-        $CustomMessages = [
-            'integer' => 'Kolom :attribute, harus berupa angka',
-            'string' => 'Kolom :attribute, harus berupa teks',
-            'date' => 'Kolom :attribute, harus berupa tanggal',
-            'required'=>'Kolom tidak boleh kosong',
-            'unique'=>'Data kolom :attribute sudah ada sebelumnya',
-        ];
-
-        $ini=$this->validate( [
-            'judul'         =>"required|string",
-            'level'         =>"required|integer",
-            'startdate'     =>"required|date",
-            'duedate'       =>"required|date",
-            'id_proker'     =>"required|integer",
-            'id_pegawai'    =>"required|integer",
-            'catatan'       =>"nullable|string",
-            // 'suratbuktianggota' =>"required|string",
-            // 'id_ormawa'         =>"required|unique:anggota_ormawa,id_ormawa,NULL,id,id_mahasiswa,". $mahasiswa->id,
-            // 'periode_dari'       =>"required|date_format:Y",
-            // 'periode_sampai'        =>"required|date_format:Y",
-        ],$CustomMessages);
-
-        // dd("ini");
-
-        $tugas=new tugasanggotatim;
-        $tugas->id_tim          =$this->id_proker;
-        $tugas->id_pegawai      =$this->id_pegawai;
-        $tugas->judul           =$this->judul;
-        $tugas->startdate       =$this->startdate;
-        $tugas->duedate         =$this->duedate;
-        $tugas->catatan         =$this->catatan;
-        $tugas->level           =$this->level;
-        $tugas->status          ="not start";
-        $tugas->save();
-
-        $this->reset();
-        
-        $this->emit('swalAdded');
-
-        // return redirect()->back();
-    }
+   
 
 
 
@@ -175,13 +132,58 @@ class Forminput extends Component
         $this->metode="updateTask";        
     }
 
+     // FORM TO DATABASE FUNCTION
+     public function newTask()
+     {
+         $CustomMessages = [
+             'integer' => 'Kolom :attribute, harus berupa angka',
+             'string' => 'Kolom :attribute, harus berupa teks',
+             'date' => 'Kolom :attribute, harus berupa tanggal',
+             'required'=>'Kolom tidak boleh kosong',
+             'unique'=>'Data kolom :attribute sudah ada sebelumnya',
+         ];
+ 
+         $ini=$this->validate( [
+             'judul'         =>"required|string",
+             'level'         =>"required|integer",
+             'startdate'     =>"required|date",
+             'duedate'       =>"required|date",
+             'id_proker'     =>"required|integer",
+             'id_pegawai'    =>"required|integer",
+             'catatan'       =>"nullable|string",
+             // 'suratbuktianggota' =>"required|string",
+             // 'id_ormawa'         =>"required|unique:anggota_ormawa,id_ormawa,NULL,id,id_mahasiswa,". $mahasiswa->id,
+             // 'periode_dari'       =>"required|date_format:Y",
+             // 'periode_sampai'        =>"required|date_format:Y",
+         ],$CustomMessages);
+ 
+         // dd("ini");
+ 
+         $tugas=new tugasanggotatim;
+         $tugas->id_tim          =$this->id_proker;
+         $tugas->id_pegawai      =$this->id_pegawai;
+         $tugas->judul           =$this->judul;
+         $tugas->startdate       =$this->startdate;
+         $tugas->duedate         =$this->duedate;
+         $tugas->catatan         =$this->catatan;
+         $tugas->level           =$this->level;
+         $tugas->status          ="not start";
+         $tugas->save();
+ 
+         $this->reset();
+         
+         $this->emit('swalAdded');
+ 
+         // return redirect()->back();
+     }
+
     public function updateTask()
     {
 
         $idToUpdate=$this->idToUpdate;
         $tugas=tugasanggotatim::find($idToUpdate);
 
-        $tugas->id_tim      =$this->id_proker;
+        //$tugas->id_tim      =$this->id_proker;
         $tugas->id_pegawai  =$this->id_pegawai;
         $tugas->judul       =$this->judul;
         $tugas->startdate   =$this->startdate;

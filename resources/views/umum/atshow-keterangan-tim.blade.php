@@ -8,7 +8,7 @@
             </div>
             
             @if (Auth::user()->pegawai->isMeAnggotaTim($tim->id))
-            <div class="text-right ">
+            <div class="flex items-center justify-end">
                 <span class="shadow-sm font-bold rounded @if ($isKepalaTim)bg-blue-400 @else bg-gray-400 @endif px-1.5 py-1 capitalize text-gray-50 "
                     style="font-size: 10px;">
                     @if ($isKepalaTim)
@@ -17,8 +17,21 @@
                     Anda anggota
                     @endif
                 </span>   
+
+                @if ($isKepalaTim)
+                <a href="{{ route('proker.edit', ['id'=>$tim->id]) }}" 
+                    class="ml-2 w-7 h-7 bg-yellow-500 rounded-full text-white shadow-sm 
+                    flex items-center justify-center">
+                    <span class="material-icons-outlined text-white" style="font-size: 14px">
+                        edit
+                    </span>
+                </a>
+                @endif
+
             </div>    
             @endif
+
+            
 
         </div>
 

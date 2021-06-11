@@ -44,7 +44,7 @@
         class="container mx-auto py-4">
         
         <div class="font-bold text-gray-500 uppercase f-robotomon text-sm px-4">
-            List Pekerjaan
+            List Pekerjaan : {{$pegawainya->nama_semi_singkat}}
         </div>
         @if(!$tim->getTugasByIdPegawai($id_pegawai)->isEmpty())
         

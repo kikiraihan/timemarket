@@ -45,12 +45,6 @@
     </div>
     
     
-    <div class="flex justify-end">
-        <button class="rounded-full h-8 w-8 text-green-500 mr-5 mt-2 bg-white shadow">
-            <span class="material-icons-outlined p-1">
-                add
-            </span>
-        </button>
-    </div>
+    
     
 </div>

@@ -17,6 +17,7 @@ class RolesTableSeeder extends Seeder
         Role::create(['name' => 'Admin']);
         Role::create(['name' => 'Pegawai']);
         Role::create(['name' => 'Chief']);
+        Role::create(['name' => 'KPw']);
 
         // $this->command->info('Berhasil Menambahkan Roles');
         // $user->assignRole('Mahasiswa');

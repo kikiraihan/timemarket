@@ -15,12 +15,16 @@ class CrudTaskController extends Controller
     
     public function create()
     {
-        return view('crudtask.create');
+        $link_balik=null;
+
+        return view('crudtask.create',compact(['link_balik']));
     }
 
     public function createById($id_proker)
     {
-        return view('crudtask.create',compact(['id_proker']));
+        $link_balik='Katimboard.showteam';
+        $link_balik=null;
+        return view('crudtask.create',compact(['id_proker','link_balik']));
     }
 
     

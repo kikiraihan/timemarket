@@ -147,6 +147,11 @@ class Pegawai extends Model
         return $this->user->gravatar;
     }
 
+    public function getAvatarAttribute()
+    {
+        return $this->user->avatar;
+    }
+
     // nama semi singkat
     public function getNamaSingkatDuaAttribute()
     {

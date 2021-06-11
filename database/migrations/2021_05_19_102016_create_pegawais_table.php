@@ -19,7 +19,7 @@ class CreatePegawaisTable extends Migration
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');//FK
             
             $table->string('nama',50);
-            $table->char('singkatan',3)->unique();
+            // $table->char('singkatan',3)->unique()->nullable();
             $table->char('nip',25)->unique();
             $table->char('nomorwa',25)->unique();
 

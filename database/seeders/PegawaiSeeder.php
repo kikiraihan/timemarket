@@ -120,7 +120,10 @@ class PegawaiSeeder extends Seeder
             $user->remember_token = Str::random(10);
 
             // pimpinan 1-3
-            if($i<3){
+            if($user->username=="pegawai1"){
+                $user->assignRole('KPw');
+            }
+            elseif($i<3){
                 $user->assignRole('Chief');
             }
             else
@@ -132,7 +135,7 @@ class PegawaiSeeder extends Seeder
             
             $pegawai = new Pegawai;
             $pegawai->nama = $nama[$i];
-            $pegawai->singkatan = "P".$i;
+            // $pegawai->singkatan = "P".$i;
             $pegawai->nip = $nip[$i];
             $pegawai->nomorwa = "08232132321".$i;
             $pegawai->id_user = $user->id;

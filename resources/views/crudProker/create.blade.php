@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Buat Tugas','link_balik'=>$link_balik])
+        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Buat Proker','link_balik'=>$link_balik])
     </x-slot>
 
     <x-slot name="footer">
@@ -23,19 +23,15 @@
 
 
 
-    @isset($id_proker)
-        <livewire:crudtask.forminput :idproker="$id_proker"/>
-    @else
-        <livewire:crudtask.forminput />
-    @endisset
 
 
 
 
+    <livewire:crudproker.forminput />
 
 
-    <br><br><br>
-    <br><br>
+
+
 
     
 

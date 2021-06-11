@@ -85,7 +85,7 @@
                 <span  class="ml-1  text-gray-600 font-normal">1</span> --}}
             </div>
 
-            <div class="border rounded-lg px-1 bg-white" style="padding-top: 2px;">
+            {{-- <div class="border rounded-lg px-1 bg-white" style="padding-top: 2px;">
                 <button type="button" wire:click="decrementDay" @if (1 == $posisiHarian->day) disabled @endif
                     class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center">
                     <span class="material-icons-outlined">
@@ -99,7 +99,7 @@
                         keyboard_arrow_right
                     </span>
                 </button>
-            </div>
+            </div> --}}
         </div>
 
 

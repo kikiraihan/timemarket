@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'avatar',
     ];
 
     protected $appends=[
@@ -80,13 +82,14 @@ class User extends Authenticatable
 
     public function getAvatarAttribute($value){
         if($value!=NULL){
-            return '/storage/'.$value;
+            return Storage::disk('avatars')->url($value);
+            //return '/storage/'.$value;//'/storage/'.$value;
 
             // $request->user()->getOriginal('avatar')      => "user-avatar/11-2020-04-07 15:05:06.png"
             // $request->user()->avatar                     => "/storage/user-avatar/11-2020-04-07 15:05:06.png"//hasil dari accessor
 
         }else
-        return $this->gravatar;//"https://ssl.gstatic.com/accounts/ui/avatar_2x.png";//default kalau null
+        return $this->gravatar;//"https://ssl.gstatic.com/accounts/ui/avatar_2x.png";//default kalau null;
     }
 
 

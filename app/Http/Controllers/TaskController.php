@@ -70,13 +70,15 @@ class TaskController extends Controller
         if($id_pegawai==NULL)
         $id_pegawai=auth::user()->pegawai->id;
 
+        $pegawainya=Pegawai::find($id_pegawai);
+
         if($id_pegawai==$id_pegawai_login)
         $isMilikLogin=TRUE;
         else
         $isMilikLogin=FALSE;
 
         
-        return view('umum.showteam',compact(['tim','id_pegawai','id_pegawai_login','isMilikLogin']));
+        return view('umum.showteam',compact(['tim','id_pegawai','id_pegawai_login','isMilikLogin','pegawainya']));
     }
 
     
