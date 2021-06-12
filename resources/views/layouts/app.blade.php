@@ -11,6 +11,18 @@
 
     {{-- PWA MANIFEST --}}
     <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="assets_kiki/icon_app/icon-192x192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="white"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Hello World">
+    <meta name="msapplication-TileImage" content="assets_kiki/icon_app/icon-192x192.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    {{-- PWA end --}}
+
+
+
 
     {{-- kikiassets --}}
     @include('layouts.kikiassets')

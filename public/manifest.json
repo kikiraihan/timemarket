@@ -1,7 +1,7 @@
 {
     "name": "Time Market BI-Inovasi",
     "short_name": "TimeMarket",
-    "start_url": "https://timemarket.masuk.id/",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#FFFFFF",

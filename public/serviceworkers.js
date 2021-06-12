@@ -1,6 +1,6 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-    '/',
+    '/dashboard',
     '/assets_kiki/css/loader.css',
     '/assets_kiki/TIME_MARKET_logo.svg',
     '/css/app.css',
