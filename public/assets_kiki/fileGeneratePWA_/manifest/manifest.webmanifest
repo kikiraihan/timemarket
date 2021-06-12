@@ -1,0 +1,32 @@
+{
+    "theme_color": "#35f677",
+    "background_color": "#87e3a9",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "Time Market BI Inovasi - KPw BI Gorontalo",
+    "short_name": "Timemarket",
+    "description": "sebuah aplikasi human resources management, yang digunakan di kantor perwakilan bank indonesia provinsi gorontalo",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

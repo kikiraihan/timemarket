@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    {{-- PWA MANIFEST --}}
+    <link rel="manifest" href="/manifest.json">
+
     {{-- kikiassets --}}
     @include('layouts.kikiassets')
 
@@ -19,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    
 
 
 
@@ -58,12 +63,15 @@
 </script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.all.min.js"></script>
+{{-- <script src="sweetalert2.all.min.js"></script> --}}
 {{$scripthalaman}}
 
 
 
-
+{{-- PWA SERVICES WORKERS --}}
+{{-- @include('layouts.scriptPWA') --}}
+{{-- PWA HOMESCREEN --}}
+{{-- @include('layouts.scriptAddToHomeScreen') --}}
 
 
 
