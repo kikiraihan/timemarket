@@ -18,7 +18,7 @@
 
             <tbody class="text-gray-600 text-sm font-light">
 
-                @foreach ($pegawai as $p)
+                @foreach ($pegawais as $p)
                 <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
                     
                     <td class="py-3 px-6 text-left ">
@@ -66,7 +66,7 @@
     {{-- Drop Up --}}
     @isset($isiDrop)
     
-        @include($isiDrop,['pegawai'=>$pegawaiToDropUp])
+        @include($isiDrop)
 
     @endisset
     

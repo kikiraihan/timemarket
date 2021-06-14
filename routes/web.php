@@ -115,7 +115,7 @@ Route::get('/kalender-utama',KalenderUtamaController::class)
 
 Route::get('/pegawai/create', function () {
     return view('admin.pegawai-create');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('pegawai.create');
 
 
 

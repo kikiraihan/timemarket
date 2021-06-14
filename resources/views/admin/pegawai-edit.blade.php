@@ -4,9 +4,8 @@
 
         <x-slot name="pilihanButton">
             <div class="flex space-x-1 px-1">
-                <button wire:clik="tampilEdit('admin.pegawai-edit',{{$pegawai->id}})" class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Edit</button>
-                <button class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Hapus</button>
-                <button class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Reset Password</button>
+                <button wire:click="tampilData('admin.pegawai-detail',{{$idToDropup}})" class="flex-auto p-2 rounded bg-gray-300 shadow-sm focus:outline-none focus:ring-1 ring-gray-500">Batal</button>
+                <button class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Simpan</button>
             </div>
         </x-slot>
 
@@ -20,30 +19,30 @@
                 
             </div>
 
-            @if ($pegawai)
+            @if ($pegawaiToDropUp)
     
             <h5 class="font-bold mb-3 ml-3 uppercase">Detail Pegawai</h5>
 
             <ul class="divide-y-2 divide-gray-100 border-b border-t border-green-100">
-                <li class="p-2">
-                    <span>nama: </span>
-                    <x-input-standar-kiki wire:model="pegawaiToUpdate.nama" />{{$pegawai->nama}}
+                <li class="p-2 flex">
+                    {{-- <span>nama: </span> --}}
+                    <x-input-standar-kiki wire:model="nama" placeholder="masukan nama.." />
                 </li>
-                <li class="p-2">
-                    <span>NIP: </span>
-                    <x-input-standar-kiki wire:model="pegawaiToUpdate.nip" />{{$pegawai->nip}}
+                <li class="p-2 flex">
+                    {{-- <span>NIP: </span> --}}
+                    <x-input-standar-kiki wire:model="nip" placeholder="masukan nip.." />
                 </li>
-                <li class="p-2">
-                    <span>nomor WA: </span>
-                    <x-input-standar-kiki wire:model="pegawaiToUpdate.nomorwa" />{{$pegawai->nomorwa}}
+                <li class="p-2 flex">
+                    {{-- <span>nomor WA: </span> --}}
+                    <x-input-standar-kiki wire:model="nomorwa" placeholder="masukan nomorwa.." />
                 </li>
-                <li class="p-2">
-                    <span>email: </span>
-                    <x-input-standar-kiki wire:model="pegawaiToUpdate.user.email" />{{$pegawai->user->email}}
+                <li class="p-2 flex">
+                    {{-- <span>email: </span> --}}
+                    <x-input-standar-kiki wire:model="email" placeholder="masukan email.." />
                 </li>
-                <li class="p-2">
-                    <span>username: </span>
-                    <x-input-standar-kiki wire:model="pegawaiToUpdate.user.email" />{{$pegawai->user->username}}
+                <li class="p-2 flex">
+                    {{-- <span>username: </span> --}}
+                    <x-input-standar-kiki wire:model="username" placeholder="masukan username.." />
                 </li>
             </ul>
             @endif
