@@ -1,4 +1,5 @@
 <div>
+    
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 
 
@@ -46,7 +47,7 @@
     
             
     
-            @role('Chief')
+            {{-- @role('Chief') --}}
             {{-- awal edit kepala tim --}}
             @if($id_kepala==null)
             <div class="px-4">
@@ -103,7 +104,7 @@
             @endif
             <x-error-input class="px-4" :kolom="'id_kepala'"/>
             {{-- akhir edit kepala tim --}}
-            @endrole
+            {{-- @endrole --}}
     
     
     

@@ -26,8 +26,16 @@
             <span>{{$duedate}}</span>
         </p>
         <p class="text-right flex-1 text-gray-500 text-xs">
-            <span class="font-bold rounded-full bg-blue-100  px-1.5 capitalize"
-                style="font-size: 9px;">{{$status}}</span>
+            <span class="font-bold rounded-full 
+            @if ($status=="done")
+            bg-green-200  
+            @else
+            bg-blue-100  
+            @endif
+            px-1.5 capitalize"
+                style="font-size: 9px;">
+                {{$status}}
+            </span>
             
         </p>
     </div>

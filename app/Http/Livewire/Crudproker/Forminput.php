@@ -147,7 +147,7 @@ class Forminput extends Component
             'nama'               =>"required|string",
             'judul_project'      =>"required|date",
             'target_pelaksanaan' =>"required|integer",
-            'deskripsi'            =>"nullable|string",
+            'deskripsi'          =>"nullable|string",
         ],$this->CustomMessages);
 
         $proker=new Tim;
@@ -168,10 +168,15 @@ class Forminput extends Component
 
     public function updateProker()
     {
-
+        
         $idToUpdate=$this->idToUpdate;
-
         $proker=Tim::find($idToUpdate);
+
+        if($proker->id_kepala!=$this->id_kepala)
+        $redirect='Katimboard.myteam';
+        else
+        $redirect='Katimboard.showteam';
+
 
         $proker->jangka              =$this->jangka;
         $proker->iku                 =$this->iku;
@@ -185,7 +190,7 @@ class Forminput extends Component
 
 
         $this->emit('swalUpdated');
-        return redirect()->route('Katimboard.showteam',['id'=>$idToUpdate]);
+        // return redirect()->route($redirect,['id'=>$idToUpdate]);
 
     }
     

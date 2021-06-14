@@ -9,20 +9,13 @@
             
             @if (Auth::user()->pegawai->isMeAnggotaTim($tim->id))
             <div class="flex items-center justify-end">
-                <span class="shadow-sm font-bold rounded @if ($isKepalaTim)bg-blue-400 @else bg-gray-400 @endif px-1.5 py-1 capitalize text-gray-50 "
-                    style="font-size: 10px;">
-                    @if ($isKepalaTim)
-                    Anda kepala tim
-                    @else
-                    Anda anggota
-                    @endif
-                </span>   
+                
 
                 @if ($isKepalaTim)
                 <a href="{{ route('proker.edit', ['id'=>$tim->id]) }}" 
-                    class="ml-2 w-7 h-7 bg-yellow-500 rounded-full text-white shadow-sm 
+                    class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
                     flex items-center justify-center">
-                    <span class="material-icons-outlined text-white" style="font-size: 14px">
+                    <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
                         edit
                     </span>
                 </a>
@@ -68,12 +61,20 @@
                 </span>
             </div>
             <div class="w-full text-sm block text-right space-x-2">
-                <span class="shadow-sm bg-yellow-100 text-center rounded-sm font-bold text-gray-500 px-1 py-0.5 align-middle" style="font-size: 11px;">
+                <span class="shadow-sm bg-yellow-100 text-center rounded font-bold text-gray-500 px-1 py-0.5 align-middle" style="font-size: 11px;">
                     {{$tim->iku}}
                 </span>
-                <span class="shadow-sm bg-indigo-400 text-center rounded-sm font-bold text-gray-50 px-1 py-0.5 capitalize" style="font-size: 11px;">
+                <span class="shadow-sm bg-indigo-400 text-center rounded font-bold text-gray-50 px-1 py-0.5 capitalize" style="font-size: 11px;">
                     Jangka {{$tim->jangka}}
                 </span>
+                <span class="shadow-sm font-bold rounded @if ($isKepalaTim)bg-blue-400 @else bg-gray-400 @endif px-1 py-0.5 capitalize text-gray-50 "
+                    style="font-size: 10px;">
+                    @if ($isKepalaTim)
+                    Anda kepala tim
+                    @else
+                    Anda anggota
+                    @endif
+                </span>   
             </div>
             
         </div>
