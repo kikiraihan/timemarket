@@ -64,8 +64,9 @@ Route::get('/setting', function () {
 
 
 // PEGAWAI
-Route::get('/pegawai', [PegawaiController::class,'index'])
-    ->middleware(['auth'])->name('pegawai');
+Route::get('/pegawai', function () {
+    return view('pegawai');
+})->middleware(['auth'])->name('pegawai');
 
 
 // HALAMAN TASK
@@ -113,9 +114,13 @@ Route::get('/kalender-utama',KalenderUtamaController::class)
 
 // ADMIN
 
-Route::get('/pegawai/create', function () {
-    return view('admin.pegawai-create');
-})->middleware(['auth'])->name('pegawai.create');
+Route::get('/pegawai/crud', function () {
+    return view('admin.pegawai-main');
+})->middleware(['auth','role:Admin'])->name('pegawai.crud');
+
+Route::get('/unit/crud', function () {
+    return view('admin.unit-main');
+})->middleware(['auth','role:Admin'])->name('unit.crud');
 
 
 

@@ -5,7 +5,7 @@
         <x-slot name="pilihanButton">
             <div class="flex space-x-1 px-1">
                 <button wire:click="tampilData('admin.pegawai-detail',{{$idToDropup}})" class="flex-auto p-2 rounded bg-gray-300 shadow-sm focus:outline-none focus:ring-1 ring-gray-500">Batal</button>
-                <button class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Simpan</button>
+                <button wire:click="updatePegawai()" class="flex-auto p-2 rounded bg-green-300 shadow-sm focus:outline-none focus:ring-1 ring-green-500">Simpan</button>
             </div>
         </x-slot>
 
@@ -21,28 +21,43 @@
 
             @if ($pegawaiToDropUp)
     
-            <h5 class="font-bold mb-3 ml-3 uppercase">Detail Pegawai</h5>
+            <h5 class="font-bold mb-3 ml-3 uppercase">Edit Pegawai</h5>
 
             <ul class="divide-y-2 divide-gray-100 border-b border-t border-green-100">
-                <li class="p-2 flex">
-                    {{-- <span>nama: </span> --}}
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">Nama</label>
                     <x-input-standar-kiki wire:model="nama" placeholder="masukan nama.." />
+                    <x-error-input :kolom="'nama'"/>
                 </li>
-                <li class="p-2 flex">
-                    {{-- <span>NIP: </span> --}}
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">nip</label>
                     <x-input-standar-kiki wire:model="nip" placeholder="masukan nip.." />
+                    <x-error-input :kolom="'nip'"/>
                 </li>
-                <li class="p-2 flex">
-                    {{-- <span>nomor WA: </span> --}}
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">nomorwa</label>
                     <x-input-standar-kiki wire:model="nomorwa" placeholder="masukan nomorwa.." />
+                    <x-error-input :kolom="'nomorwa'"/>
                 </li>
-                <li class="p-2 flex">
-                    {{-- <span>email: </span> --}}
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">email</label>
                     <x-input-standar-kiki wire:model="email" placeholder="masukan email.." />
+                    <x-error-input :kolom="'email'"/>
                 </li>
-                <li class="p-2 flex">
-                    {{-- <span>username: </span> --}}
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">username</label>
                     <x-input-standar-kiki wire:model="username" placeholder="masukan username.." />
+                    <x-error-input :kolom="'username'"/>
+                </li>
+                <li class="p-2">
+                    <label class="f-roboto ml-1 text-gray-500 text-sm">Role</label>
+                    <x-select-standar-kiki wire:model="role">
+                        <option value="" hidden selected>Pilih</option>
+                        <option class="w-full" value="Pegawai">Pegawai</option>
+                        <option class="w-full" value="Chief">Kepala Tim</option>
+                        <option class="w-full" value="KPw">Kepala Perwakilan</option>
+                    </x-select-standar-kiki>
+                    <x-error-input :kolom="'role'"/>
                 </li>
             </ul>
             @endif

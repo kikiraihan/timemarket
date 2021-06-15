@@ -47,7 +47,7 @@ absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ea
             <img src="{{Auth::user()->avatar}}" class="object-cover w-16 h-16 shadow rounded-full">
         </span>
         <span class="py-2 text-sm f-roboto">
-            {{Auth::user()->nama}} <br>
+            {{Auth::user()->username}} <br>
             <span class="f-robotomon text-xs">{{Auth::user()->email}}</span><br>
             <span class="bg-blue-400 f-roboto text-xs text-gray-50 p-0.5 rounded">
                 {{Auth::user()->getRoleNames()[0]}}
@@ -66,21 +66,10 @@ absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ea
         Administrator
     </a> --}}
 
-    @hasanyrole('Admin')
+    @hasanyrole('Admin|Pegawai')
     <a href="{{ route('pegawai.crud') }}" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
         <span class="material-icons-outlined ">table_rows</span>
         Data Pegawai
-    </a>
-    <a href="{{ route('unit.crud') }}" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
-        <span class="material-icons-outlined ">table_rows</span>
-        Data Unit
-    </a>
-
-    <hr>
-
-    <a href="{{ route('dashboard') }}" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
-        <span class="material-icons-outlined ">home</span>
-        Dashboard
     </a>
     @endhasanyrole
 

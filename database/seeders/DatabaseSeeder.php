@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RolesTableSeeder::class);
         $this->call(PegawaiSeeder::class);
+        $this->call(AdminSeeder::class);
         $this->call(UnitSeeder::class);
         $this->call(AnggotaunitSeeder::class);
         $this->call(TimSeeder::class);

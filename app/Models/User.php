@@ -65,6 +65,9 @@ class User extends Authenticatable
 
     
     public function getNamaAttribute(){
+        if($this->role('Admin'))
+        return $this->username;
+        else
         return $this->pegawai->nama;
     }
 

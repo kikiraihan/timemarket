@@ -4,7 +4,9 @@
     </x-slot>
 
     <x-slot name="footer">
+        @unlessrole('Admin')
         @include('layouts.navigationbawah')
+        @endunlessrole
     </x-slot>
 
     
@@ -17,6 +19,6 @@
     </x-slot>
 
 
-    <livewire:dashboard/>
+    <livewire:dashboard />
 
 </x-app-layout>

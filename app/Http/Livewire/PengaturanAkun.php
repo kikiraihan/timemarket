@@ -29,15 +29,19 @@ class PengaturanAkun extends Component
     $passwordLama,
     $passwordBaru;
 
+    public $isAdmin;
+
     public function mount()
     {
         $user=User::find(Auth::user()->id);
-        $pegawai=$user->pegawai;
-
         
-        $this->nama=$pegawai->nama;
-        $this->nip=$pegawai->nip;
-        $this->nomorwa=$pegawai->nomorwa;
+        if(!$user->hasRole('Admin'))
+        {
+            $pegawai=$user->pegawai;        
+            $this->nama=$pegawai->nama;
+            $this->nip=$pegawai->nip;
+            $this->nomorwa=$pegawai->nomorwa;
+        }
         
         $this->idUser=$user->id;
         // $this->avatar=$user->getRawOriginal('avatar');
@@ -46,6 +50,7 @@ class PengaturanAkun extends Component
         $this->username=$user->username;
         $this->password=null;
 
+        $this->isAdmin=$user->hasRole('Admin');
     }
 
     public function render()
@@ -90,6 +95,39 @@ class PengaturanAkun extends Component
 
         $this->emit('swalUpdated');
     }
+
+
+    public function updateAdmin()
+    {
+        $userToUpdate=User::find($this->idUser);
+
+        $this->validate([
+            'avatar' => 'image|nullable', // |max:1024, 1MB Max
+            // 'nama' => "required|string",
+            // 'nip' => "required|string",
+            // 'nomorwa' => "required|string",
+            // 'username' => "required|string",
+            // 'email' => "required|string",
+        ]);        
+
+        if($this->avatar)//jika tidak null
+        {
+            if($userToUpdate->getRawOriginal('avatar')) //jika tidak null
+            Storage::disk('avatars')->delete($userToUpdate->getRawOriginal('avatar'));
+
+            $avatar=$this->avatar->store($this->idUser, 'avatars');
+            $userToUpdate->avatar = $avatar;
+        }
+        
+        $userToUpdate->username=$this->username;
+        $userToUpdate->email=$this->email;
+        // $userToUpdate->password=$this->password;
+        $userToUpdate->save();
+
+        $this->emit('swalUpdated');
+    }
+
+
 
 
     public function gantiPassword()

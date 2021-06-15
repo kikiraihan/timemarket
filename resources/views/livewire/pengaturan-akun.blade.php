@@ -1,7 +1,13 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
 
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="
+    @if($isAdmin)
+        updateAdmin
+    @else
+        update
+    @endif
+    ">
 
 
 
@@ -13,6 +19,7 @@
                 <x-upload-avatar wire:model.lazy="avatar" :fotoLama="asset($avatarNoRaw)"/>
             </div>
 
+            @if (!$isAdmin)
             <div>
                 <label class="f-roboto ml-1 text-gray-500 text-sm">Nama</label>
                 <x-input-plain-kiki wire:model.lazy='nama' id="nama" placeholder="..."/>
@@ -30,6 +37,7 @@
                 <x-input-plain-kiki wire:model.lazy="nomorwa" id="nomorwa" placeholder="..."/>
                 <x-error-input :kolom="'nomorwa'"/>
             </div>
+            @endif
 
 
             <div>

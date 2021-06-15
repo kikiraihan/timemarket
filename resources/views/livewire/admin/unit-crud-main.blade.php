@@ -9,7 +9,7 @@
 
     <div class="rounded shadow bg-white py-1">
         <div class="flex justify-between m-2 items-center">
-            <h3 class="f-roboto font-bold uppercase text-green-500">Tabel Pegawai</h3>
+            <h3 class="f-roboto font-bold uppercase text-green-500">Tabel unit</h3>
             <button 
                 @click="dropUpOpen = 1"
                 wire:click="tampilInput()"
@@ -19,7 +19,7 @@
                 <span class="material-icons-outlined">
                     add
                 </span>
-                <span class="pr-1">tambah pegawai</span>
+                <span class="pr-1">tambah unit</span>
             </button>
         </div>
         
@@ -38,25 +38,22 @@
     
                 <tbody class="text-gray-600 text-sm font-light">
     
-                    @foreach ($pegawais as $p)
+                    @foreach ($units as $u)
                     <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100">
                         
                         <td class="py-3 px-6 text-left ">
-                            <span class="font-medium">{{$p->id}}</span>
+                            <span class="font-medium">{{$u->id}}</span>
                         </td>
     
                         <td class="py-3 px-6 text-left ">
                             <div class="flex items-center">
-                                <div class="mr-2">
-                                    <img class="w-6 h-6 rounded-full object-cover" src="{{$p->user->avatar}}" />
-                                </div>
-                                <span>{{$p->nama_semi_singkat}}</span>
+                                <span>{{$u->nama}}</span>
                             </div>
                         </td>
                         <td class="py-3 px-6 ">
                             <div class="flex items-center justify-end">
                                 <button @click="dropUpOpen = 1"
-                                 wire:click="tampilData('admin.pegawai-detail',{{$p->id}})" 
+                                 wire:click="tampilData({{$u->id}})" 
                                  class="bg-green-500 p-2 rounded text-gray-100" type="button">
                                     Open
                                 </button>
@@ -77,7 +74,7 @@
         </div>
     
         <div class="px-1">
-            {{ $pegawais->links() }}
+            {{ $units->links() }}
         </div>
 
 

@@ -56,15 +56,15 @@ class Forminput extends Component
     public function render()
     {
         $selectkepala=null;
-        $isTampilSearch=true;
+        // $isTampilSearch=true;
         if($this->id_kepala==null)
         {
             if($this->search!=null)
             {
-                $selectkepala=$this->cariPegawai()->get()->load('user');
+                $selectkepala=$this->cariPegawai()->get();
             }
         }
-        return view('livewire.crudproker.forminput',compact(['selectkepala','isTampilSearch']));
+        return view('livewire.crudproker.forminput',compact(['selectkepala']));//,'isTampilSearch'
     }
 
 
@@ -90,19 +90,6 @@ class Forminput extends Component
         $this->id_kepala=null;
         $this->selectedKep=null;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
