@@ -20,13 +20,13 @@
                     </span>
                 </a>
 
-                <a href="{{ route('proker.hapus', ['id'=>$tim->id]) }}" 
+                {{-- <a href="{{ route('proker.hapus', ['id'=>$tim->id]) }}" 
                     class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
                     flex items-center justify-center">
                     <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
                         hapus
                     </span>
-                </a>
+                </a> --}}
                 @endif
 
             </div>    

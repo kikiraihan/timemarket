@@ -21,7 +21,7 @@
 
 
 
-            <h5 class="font-bold mb-3 ml-3 uppercase">Tambah Edit</h5>
+            <h5 class="font-bold mb-3 ml-3 uppercase">Tambah Unit</h5>
 
             <ul class="divide-y-2 divide-gray-100 border-b border-t border-green-100">
                 <li class="p-2">

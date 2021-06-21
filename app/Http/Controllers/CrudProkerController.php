@@ -25,4 +25,9 @@ class CrudProkerController extends Controller
 
         return view('crudProker.edit',compact(['idToUpdate']));
     }
+
+    public function delete($id)
+    {
+        dd('hapus id '.$id);
+    }
 }

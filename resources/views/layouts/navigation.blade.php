@@ -75,6 +75,10 @@ absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ea
         <span class="material-icons-outlined ">table_rows</span>
         Data Unit
     </a>
+    <a href="{{ route('proker.crud') }}" class="block py-2.5 px-4 hover:bg-green-300 transition duration-200 rounded">
+        <span class="material-icons-outlined ">table_rows</span>
+        Data Proker
+    </a>
 
     <hr>
 

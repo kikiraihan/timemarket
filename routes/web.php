@@ -104,6 +104,8 @@ Route::get('/proker/create', [CrudProkerController::class,'create'])
 ->middleware(['role:Chief'])->name('proker.create');
 Route::get('/proker/edit/{id}', [CrudProkerController::class,'edit'])
 ->middleware(['role:Chief|Pegawai'])->name('proker.edit');
+Route::get('/proker/delete/{id}', [CrudProkerController::class,'delete'])
+->middleware(['role:Chief|Pegawai'])->name('proker.hapus');
 
 
 // HALAMAN KALENDER UTAMA
@@ -121,6 +123,12 @@ Route::get('/pegawai/crud', function () {
 Route::get('/unit/crud', function () {
     return view('admin.unit-main');
 })->middleware(['auth','role:Admin'])->name('unit.crud');
+
+Route::get('/proker/crud', function () {
+    return view('admin.proker-main');
+})->middleware(['auth','role:Admin'])->name('proker.crud');
+
+
 
 
 
