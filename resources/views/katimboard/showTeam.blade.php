@@ -40,24 +40,8 @@
 
 
     {{-- list pekerjaan anggota --}}
-    <div 
-        x-data="{ dropUpOpen: false }" 
-        class="container mx-auto py-4">
-
-        <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
-
-        {{-- <livewire:katimboard.drop-up-pekerjaan /> --}}
-        <div :class="{ 'translate-y-full' : !dropUpOpen , }" class="fixed inset-x-0 bottom-0 z-10
-        transform transition translate-y-full duration-200 ease-in-out
-        min-w-screen bg-white pb-10 rounded-t-2xl shadow border border-gray-200 opacity-95
-        flex flex-col space-y-2  justify-between"{{-- h-3/4 --}}
-        >
-
-        coba
-        
-        </div>
-
-    </div>
+    <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
+    
 
 
 
