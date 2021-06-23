@@ -86,26 +86,26 @@ Route::get('team/show/{id}/{id_pegawai}', [TaskController::class,'showTeam'])
 
 // CRUD TASK
 Route::get('/task/create', [CrudTaskController::class,'create'])
-->middleware(['role:Chief'])->name('task.create');
+->middleware(['auth','role:Chief'])->name('task.create');
 Route::get('/task/create-byid/{id_proker}', [CrudTaskController::class,'createById'])
-->middleware(['role:Chief|Pegawai'])->name('task.create.byid');
+->middleware(['auth','role:Chief|Pegawai'])->name('task.create.byid');
 Route::get('/task/edit/{id}', [CrudTaskController::class,'edit'])
-->middleware(['role:Chief|Pegawai'])->name('task.edit');
+->middleware(['auth','role:Chief|Pegawai'])->name('task.edit');
 
 
 // HALAMAN KEPALA TIM BOARD
 Route::get('/katimboard', [KepalaTimBoardController::class,'myteam'])
-->middleware(['role:Chief'])->name('Katimboard.myteam');
+->middleware(['auth','role:Chief'])->name('Katimboard.myteam');
 Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam'])
-->middleware(['role:Chief|Pegawai'])->name('Katimboard.showteam');
+->middleware(['auth','role:Chief|Pegawai'])->name('Katimboard.showteam');
 
 // CRUD PROKER
 Route::get('/proker/create', [CrudProkerController::class,'create'])
-->middleware(['role:Chief'])->name('proker.create');
+->middleware(['auth','role:Chief'])->name('proker.create');
 Route::get('/proker/edit/{id}', [CrudProkerController::class,'edit'])
-->middleware(['role:Chief|Pegawai'])->name('proker.edit');
+->middleware(['auth','role:Chief|Pegawai'])->name('proker.edit');
 Route::get('/proker/delete/{id}', [CrudProkerController::class,'delete'])
-->middleware(['role:Chief|Pegawai'])->name('proker.hapus');
+->middleware(['auth','role:Chief|Pegawai'])->name('proker.hapus');
 
 
 // HALAMAN KALENDER UTAMA

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Tim;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,13 +14,31 @@ class ProkerCrudMain extends Component
     public $idToDropup;
 
     protected $listeners=[
-        'terkonfirmasiHapusPegawai'=>'hapusPegawai',
-        'terkonfirmasiResetPasswordPegawai'=>'resetPassword',
+        'terkonfirmasiHapusProker'=>'hapusProker',
     ];
+    
+    protected $paginationTheme = 'tailwind';
 
 
     public function render()
     {
-        return view('livewire.admin.proker-crud-main');
+        $tims=Tim::with('kepala')->paginate(10);
+        
+        $timToDropUp=null;
+        if(isset($this->idToDropup))
+        $timToDropUp=Tim::find($this->idToDropup);
+
+        return view('livewire.admin.proker-crud-main',compact(['tims','timToDropUp']));
+    }
+
+    public function tampilData($idToDropup)
+    {
+        $this->isiDrop="admin.proker-detail";
+        $this->idToDropup=$idToDropup;
+    }
+
+    public function hapusProker($id)
+    {
+        Tim::find($id)->delete();
     }
 }

@@ -77,8 +77,9 @@ class TaskController extends Controller
         else
         $isMilikLogin=FALSE;
 
+        $isPegawainyaChief=$pegawainya->user->hasRole('Chief');
         
-        return view('umum.showteam',compact(['tim','id_pegawai','id_pegawai_login','isMilikLogin','pegawainya']));
+        return view('umum.showteam',compact(['tim','id_pegawai','id_pegawai_login','isMilikLogin','pegawainya','isPegawainyaChief']));
     }
 
     

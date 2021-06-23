@@ -14,7 +14,7 @@
         
         <div class="flex flex-col">
             <div class="text-right pr-3 pt-3">
-                <span @click="dropUpOpen = false" class="w-fulltext-gray-300 rounded-2xl cursor-pointer">
+                <span @click="dropUpOpen = false" class="w-full text-gray-300 rounded-2xl cursor-pointer">
                     <span class="material-icons-outlined">
                         close
                     </span>

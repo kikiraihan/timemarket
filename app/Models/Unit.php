@@ -22,7 +22,13 @@ class Unit extends Model
 
     public function anggotaunits()
     {
-        return $this->hasMany(anggotaunit::class,'id_unit');
+        return $this->belongsToMany(
+            Pegawai::class,
+            'anggotaunits',
+            "id_unit",
+            "id_pegawai"
+        );
+        // return $this->hasMany(anggotaunit::class,'id_unit');
     }
 
     public function tugasAnggotaUnit()

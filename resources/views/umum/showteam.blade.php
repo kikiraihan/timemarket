@@ -32,13 +32,15 @@
 
     {{-- list anggota --}}
     {{-- @include('umum.atshow-list-anggota',['anggotatims'=>$tim->anggotatims,'isKepalaTim'=>FALSE]) --}}
-    <livewire:umum.list-anggota :idTim="$tim->id" :isKepalaTim="FALSE" />
+    <livewire:umum.list-anggota :idTim="$tim->id" :isKepalaTim="FALSE"/>
 
     <br>
 
     <hr>
 
 
+    @if (!$isPegawainyaChief)
+    
     <div 
         x-data="{ dropUpOpen: false }" 
         class="container mx-auto py-4">
@@ -46,31 +48,33 @@
         <div class="font-bold text-gray-500 uppercase f-robotomon text-sm px-4">
             List Pekerjaan : {{$pegawainya->nama_semi_singkat}}
         </div>
-        @if(!$tim->getTugasByIdPegawai($id_pegawai)->isEmpty())
-        
-            <div class="flex flex-col my-3" >
-                @foreach ($tim->getTugasByIdPegawai($id_pegawai) as $tgs)
-                    <x-tugas-list-atshow
-                    :idtugas="$tgs->id" 
-                    :judul="$tgs->judul" 
-                    :startdate="$tgs->startdate->format('d M')" 
-                    :duedate="$tgs->duedate->format('d M')" 
-                    :status="$tgs->status"
-                    :isKepalaTim="false"
-                    :isMilikLogin="$isMilikLogin"
-                    />
-                @endforeach
-            </div>
+            @if(!$tim->getTugasByIdPegawai($id_pegawai)->isEmpty())
+            
+                <div class="flex flex-col my-3" >
+                    @foreach ($tim->getTugasByIdPegawai($id_pegawai) as $tgs)
+                        <x-tugas-list-atshow
+                        :idtugas="$tgs->id" 
+                        :judul="$tgs->judul" 
+                        :startdate="$tgs->startdate->format('d M')" 
+                        :duedate="$tgs->duedate->format('d M')" 
+                        :status="$tgs->status"
+                        :isKepalaTim="false"
+                        :isMilikLogin="$isMilikLogin"
+                        />
+                    @endforeach
+                </div>
 
-            @else
+                @else
 
-            <x-kosong class="mt-4"/>
+                <x-kosong class="mt-4"/>
 
-        @endif
+            @endif
 
         <livewire:mytask.dropupworkload :isMy="$isMilikLogin"/>
         
     </div>
+        
+    @endif
 
 
 

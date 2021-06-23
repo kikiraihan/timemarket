@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Tentang Tim','link_balik'=>"Katimboard.myteam"])
+        
+        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Tentang Tim','link_balik'=>$link])
     </x-slot>
 
     <x-slot name="footer">
@@ -38,9 +39,15 @@
 
     <hr>
 
-    <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />
 
+    {{-- list pekerjaan anggota --}}
+    <div x-data="{ dropUpOpen: false }" class="container mx-auto py-4">
 
+        <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
+
+        <livewire:katimboard.drop-up-pekerjaan />
+
+    </div>
 
 
 

@@ -1,6 +1,6 @@
 <nav id="navbarMobile" class="fixed bottom-0 inset-x-0 bg-white 
         flex justify-between text-xs text-gray-700 
-        f-scp  ">
+        f-scp z-10 ">
     <a href="{{ route('kalender-utama') }}" class="w-full text-center block p-3 hover:bg-green-300">
         <span class="block material-icons-outlined text-3xl">
             edit_calendar

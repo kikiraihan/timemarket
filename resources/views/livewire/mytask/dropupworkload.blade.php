@@ -20,11 +20,11 @@
                 </span>
             </span>
 
-            <div class="w-full grid grid-cols-2 px-3 f-robotomon mb-4">
-                <div class="font-bold text-xl">
+            <div class="w-full grid grid-cols-2 px-3 f-robotomon mb-4 text-xs">
+                <div class="font-bold">
                     Detail
                 </div>
-                <div class="text-right text-xs">
+                <div class="text-right">
                     Id : {{$tugasDetail->id}}
                 </div>
             </div>

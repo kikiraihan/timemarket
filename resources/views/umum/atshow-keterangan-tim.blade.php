@@ -2,34 +2,54 @@
     <div class="flex flex-col space-y-2">
         
 
+        
+
         <div class="w-full grid grid-cols-2 px-3">
-            <div class="font-bold text-xl">
+            <div class="font-bold text-xl flex items-center">
                 {{$tim->nama}}
             </div>
             
+            {{-- cek user login apakah anggotatim  --}}
             @if (Auth::user()->pegawai->isMeAnggotaTim($tim->id))
-            <div class="flex items-center justify-end">
-                
 
-                @if ($isKepalaTim)
-                <a href="{{ route('proker.edit', ['id'=>$tim->id]) }}" 
-                    class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
-                    flex items-center justify-center">
-                    <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
-                        edit
-                    </span>
-                </a>
+                <div class="flex items-center justify-end">
+                    
 
-                {{-- <a href="{{ route('proker.hapus', ['id'=>$tim->id]) }}" 
-                    class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
-                    flex items-center justify-center">
-                    <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
-                        hapus
-                    </span>
-                </a> --}}
-                @endif
+                    @if ($isKepalaTim)
 
-            </div>    
+                    <a href="{{ route('proker.edit', ['id'=>$tim->id]) }}" 
+                        class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
+                        flex items-center justify-center">
+                        <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
+                            edit
+                        </span>
+                    </a>
+
+                    {{-- <a href="{{ route('proker.hapus', ['id'=>$tim->id]) }}" 
+                        class="ml-2 w-9 h-9 bg-white rounded-full shadow-md
+                        flex items-center justify-center">
+                        <span class="material-icons-outlined text-gray-500" style="font-size: 14px">
+                            hapus
+                        </span>
+                    </a> --}}
+
+                    @else
+                    <span class="shadow-sm font-bold rounded bg-gray-400 px-1 py-0.5 capitalize text-gray-50 "
+                    style="font-size: 10px;">
+                        Anggota
+                    </span> 
+                    
+                    @endif  
+
+                </div> 
+            @else
+            
+                <div class="block text-right">
+                    <span class="shadow-sm font-bold rounded bg-gray-400 px-1 py-0.5 capitalize text-gray-50 "
+                    style="font-size: 10px;">
+                        Read only
+                    </span> 
+                </div>
             @endif
 
             
@@ -75,14 +95,7 @@
                 <span class="shadow-sm bg-indigo-400 text-center rounded font-bold text-gray-50 px-1 py-0.5 capitalize" style="font-size: 11px;">
                     Jangka {{$tim->jangka}}
                 </span>
-                <span class="shadow-sm font-bold rounded @if ($isKepalaTim)bg-blue-400 @else bg-gray-400 @endif px-1 py-0.5 capitalize text-gray-50 "
-                    style="font-size: 10px;">
-                    @if ($isKepalaTim)
-                    Anda kepala tim
-                    @else
-                    Anda anggota
-                    @endif
-                </span>   
+                
             </div>
             
         </div>

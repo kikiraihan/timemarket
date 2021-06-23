@@ -93,6 +93,11 @@ class Pegawai extends Model
     {
         return $this->hasMany(Tim::class,'id_kepala');
     }
+
+    public function mengkoordinirtims()//koordinir dan kepala sekaligus klo tim
+    {
+        return $this->hasMany(Tim::class,'id_koordinator');
+    }
     // ==== batas TIM =======
 
 

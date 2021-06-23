@@ -39,7 +39,7 @@
 
 <!-- sidebar -->
 <div class="ini-sidebar min-h-screen w-64 px-2 py-7 bg-gradient-to-br from-white to-green-100 mb-24
-absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out z-10
+absolute inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out z-20
 ">
 <!-- md:relative md:translate-x-0  -->
     <div class="flex items-center space-x-2">

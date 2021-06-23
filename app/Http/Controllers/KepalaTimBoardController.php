@@ -14,7 +14,9 @@ class KepalaTimBoardController extends Controller
         $pegawai=$user->pegawai;
         $ag=$pegawai->anggotaunit;
         $unit=$ag->unit;
-        $proker=$pegawai->mengepalaitims;
+        $proker=$pegawai->mengkoordinirtims;
+        
+        //dd($pegawai->mengkoordinirunit[1]->anggotaunits->id);
 
         return view('katimboard.myteam',compact(['user','pegawai','ag','unit','proker']));
     }
@@ -24,13 +26,23 @@ class KepalaTimBoardController extends Controller
         $tim=Tim::with('tugasanggotatims.pegawai')
         ->where('id','=',$id)
         ->first();
+        if(!$tim) return abort(404);
+
 
         if($tim->id_kepala != Auth::user()->pegawai->id)
         // return redirect()->route('showteam',['id'=>$id,'id_pegawai'=>null]);
         return abort('403');
-
         
-        return view('katimboard.showteam',compact(['tim']));
+        
+        //link balik
+        if(Auth::user()->hasRole('Chief'))
+        $link="Katimboard.myteam";
+        else
+        //jika bukan chief tapi kepala tim
+        $link="mytask.myteam";
+        
+        
+        return view('katimboard.showteam',compact(['tim','link']));
     }
 
 }

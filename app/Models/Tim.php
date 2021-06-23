@@ -15,6 +15,7 @@ class Tim extends Model
         'deskripsi',
         'jangka',
         'id_kepala',
+        'id_koordinator',
         'judul_project',
         'target_pelaksanaan',
         'iku',
@@ -25,6 +26,11 @@ class Tim extends Model
     public function kepala()
     {
         return $this->belongsTo(Pegawai::class, "id_kepala");
+    }
+
+    public function koordinator()
+    {
+        return $this->belongsTo(Pegawai::class, "id_koordinator");
     }
 
     public function anggotatims()
@@ -61,6 +67,12 @@ class Tim extends Model
     public function isThisUserKepalaTim($id)
     {
         if($this->id_kepala==$id) return true;
+        else return false;
+    }
+
+    public function isThisUserKoordinatorTim($id)
+    {
+        if($this->id_koordinator==$id) return true;
         else return false;
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Crudproker;
 use App\Models\Pegawai;
 use App\Models\Tim;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Forminput extends Component
@@ -145,6 +146,7 @@ class Forminput extends Component
         $proker->target_pelaksanaan  =$this->target_pelaksanaan;
         $proker->deskripsi           =$this->deskripsi;
         $proker->id_kepala           =$this->id_kepala;
+        $proker->id_koordinator      =Auth::user()->pegawai->id;//katim id
         $proker->save();
 
         $this->reset();
@@ -171,7 +173,8 @@ class Forminput extends Component
         $proker->judul_project       =$this->judul_project;
         $proker->target_pelaksanaan  =$this->target_pelaksanaan;
         $proker->deskripsi           =$this->deskripsi;
-        $proker->id_kepala           =$this->id_kepala;
+        if($this->id_kepala!=$proker->id_kepala and $this->id_kepala!=null)
+            $proker->id_kepala           =$this->id_kepala;
         $proker->status               =$this->status;
         $proker->save();
 

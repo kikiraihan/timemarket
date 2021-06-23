@@ -41,11 +41,13 @@
     </div>
 
     @if ($isKepalaTim)
-    <a href="{{ route('task.edit', ['id'=>$idtugas]) }}" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center bg-yellow-50">
+
+    <button @click="dropUpOpen = !dropUpOpen" onclick="Livewire.emit('dropUpPekerjaanSetID',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center">
         <span class="material-icons-outlined" style="font-size: 18px">
-            edit
+            more_vert
         </span>
-    </a>
+    </button>
+
     @else
     <button @click="dropUpOpen = !dropUpOpen" onclick="Livewire.emit('dropUpTugas',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center">
         <span class="material-icons-outlined" style="font-size: 18px">

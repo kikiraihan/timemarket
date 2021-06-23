@@ -9,6 +9,10 @@ class ShowPekerjaan extends Component
 {
     public $idTim;
 
+    protected $listeners=[
+        'pekerjaanTerhapusShowReset'=>'resetpekerjaanterhapus',
+    ];
+
     public function mount($idtim)
     {
         $this->idTim=$idtim;
@@ -19,6 +23,11 @@ class ShowPekerjaan extends Component
         $tim=Tim::find($this->idTim);
 
         return view('livewire.katimboard.show-pekerjaan',compact(['tim']));
+    }
+
+    public function resetpekerjaanterhapus()
+    {
+        $this->mount($this->idTim);
     }
 
 }
