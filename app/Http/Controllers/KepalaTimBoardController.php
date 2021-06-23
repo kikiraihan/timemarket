@@ -29,7 +29,8 @@ class KepalaTimBoardController extends Controller
         if(!$tim) return abort(404);
 
 
-        if($tim->id_kepala != Auth::user()->pegawai->id)
+        if($tim->id_kepala != Auth::user()->pegawai->id )
+        // and $tim->id_koordinator != Auth::user()->pegawai->id 
         // return redirect()->route('showteam',['id'=>$id,'id_pegawai'=>null]);
         return abort('403');
         

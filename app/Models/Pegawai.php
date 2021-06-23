@@ -117,6 +117,15 @@ class Pegawai extends Model
         else
         return false; 
     }
+
+    public function isMeKepalaTim($id_tim)
+    {
+        $hasil=$this->tims()->where('id_tim','=',$id_tim)->first();
+        if($hasil->id_kepala==$this->id)
+            return TRUE; 
+        else
+            return false; 
+    }
     
     // jabatan unit
     public function getIsKepalaUnitAttribute()

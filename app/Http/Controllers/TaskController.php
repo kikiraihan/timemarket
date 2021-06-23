@@ -67,6 +67,11 @@ class TaskController extends Controller
 
         $id_pegawai_login=auth::user()->pegawai->id;
 
+        // kalau yg login kepala tim redirect ke show team katim.
+        if($id_pegawai_login==$tim->id_kepala)
+        return redirect()->route('Katimboard.showteam',$id);
+
+
         if($id_pegawai==NULL)
         $id_pegawai=auth::user()->pegawai->id;
 

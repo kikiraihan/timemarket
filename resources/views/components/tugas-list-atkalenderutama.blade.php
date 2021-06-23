@@ -54,7 +54,7 @@
 
 
 
-    @role('Chief')
+    @if(Auth::user()->pegawai->isMeKepalaTim($data['id_tim']))
         <a href="{{ route('task.edit', ['id'=>$data['id']]) }}" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center bg-yellow-50">
             <span class="material-icons-outlined" style="font-size: 18px">
                 edit
@@ -69,7 +69,7 @@
             </span>
         </a>
         {{-- @endif --}}
-    @endrole
+    @endif
             
     
 </li>
