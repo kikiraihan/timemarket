@@ -46,9 +46,7 @@
 
         <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
 
-        {{-- <livewire:katimboard.drop-up-pekerjaan /> --}}
-
-        <livewire:mytask.dropupworkload :isMy="TRUE"/>
+        <livewire:katimboard.drop-up-pekerjaan />
 
     </div>
 

@@ -42,13 +42,13 @@
 
     @if ($isKepalaTim)
 
-    {{-- <button @click="dropUpOpen = !dropUpOpen" onclick="Livewire.emit('dropUppekerjaansetid',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center">
+    <button @click="dropUpOpen = !dropUpOpen" onclick="Livewire.emit('dropUppekerjaansetid',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center">
         <span class="material-icons-outlined" style="font-size: 18px">
             more_vert
         </span>
     </button>
 
-    @else --}}
+    @else
     <button @click="dropUpOpen = !dropUpOpen" onclick="Livewire.emit('dropUpTugas',{{$idtugas}})" class="flex-initial  text-gray-500 p-1 flex flex-wrap content-center">
         <span class="material-icons-outlined" style="font-size: 18px">
             more_vert
