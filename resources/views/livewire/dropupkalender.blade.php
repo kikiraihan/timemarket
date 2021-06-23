@@ -14,7 +14,7 @@
 
 
         <div class="flex flex-col">
-            <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer ">
+            <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer select-none ">
                 <span class="material-icons-outlined">
                     {{-- drag_handle --}}
                     expand_more

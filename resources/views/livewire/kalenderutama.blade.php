@@ -38,7 +38,7 @@
                 <span class="bg-green-50 border rounded-lg px-1" style="padding-top: 2px;">
                     <button type="button" wire:click="decrementWeek"
                         class="leading-none rounded-lg transition ease-in-out duration-100 
-                        inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center">
+                        inline-flex cursor-pointer select-none	 hover:bg-gray-200 p-1 items-center">
                         <svg class="h-6 w-6 text-gray-500 inline-flex leading-none" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,7 +48,7 @@
                     <div class="border-r inline-flex h-6"></div>
                     <button type="button" wire:click="incrementWeek"
                         class="leading-none rounded-lg transition ease-in-out duration-100 
-                        inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center">
+                        inline-flex cursor-pointer select-none	 hover:bg-gray-200 p-1 items-center">
                         <svg class="h-6 w-6 text-gray-500 inline-flex leading-none" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -94,12 +94,12 @@
                     @foreach ($seminggu as $minggu)
                     
                         {{-- kotak tanggal --}}
-                        <div class=" bg-white text-center text-gray-500 border border-gray-200 f-roboto @isset($item['tugas'][$minggu->format('Y-m-d')]) cursor-pointer" @else " @endisset>
+                        <div class=" bg-white text-center text-gray-500 border border-gray-200 f-roboto @isset($item['tugas'][$minggu->format('Y-m-d')]) cursor-pointer select-none	" @else " @endisset>
 
                             
                             
                                 @isset($item['tugas'][$minggu->format('Y-m-d')])
-                                <div class="flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}})">
+                                <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}})">
 
                                     @php
                                         $workload=0;

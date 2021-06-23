@@ -1,7 +1,6 @@
 <div>
 
 
-
     {{-- DROPUP MENU --}}
     <div wire:ignore.self :class="{ 'translate-y-full' : !dropUpOpen , }" class="fixed inset-x-0 bottom-0 z-10
         transform transition translate-y-full duration-200 ease-in-out
@@ -9,7 +8,7 @@
         flex flex-col  justify-between"{{-- h-3/4 --}}
         >
 
-        <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer ">
+        <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer select-none ">
             <span class="material-icons-outlined">
                 expand_more
             </span>
