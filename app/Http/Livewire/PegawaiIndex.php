@@ -31,14 +31,18 @@ class PegawaiIndex extends Component
 
     public function render()
     {
+        
         if($this->search==null)
         {
-            $this->unit=Unit::with('anggotaunits.pegawai.user')->orderBy('singkatan','asc')->get();
+            // dd('jalan');
+            $this->unit=Unit::with('anggotaunits.user')->orderBy('singkatan','asc')->get();
             $this->jumlah_pegawai=Pegawai::count();
+            
         }
         else{
            $this->pegawaisearch=$this->cariPegawai(); 
         }
+        
 
         return view('livewire.pegawai-index');
     }
