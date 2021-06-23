@@ -17,9 +17,9 @@ class CrudProkerController extends Controller
 
     public function edit($idToUpdate)
     {
-        //kalau bukan kepalatim abort
+        //kalau bukan kepalatim atau koordinator abort 
         $tim=Tim::find($idToUpdate);
-        if($tim->id_kepala != Auth::user()->pegawai->id)
+        if($tim->id_kepala != Auth::user()->pegawai->id and $tim->id_koordinator != Auth::user()->pegawai->id)
         return abort('403');
         
 

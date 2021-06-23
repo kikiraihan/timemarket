@@ -111,6 +111,15 @@
 
         @endif
 
+        
+        
+        @if ($brAdd)
+            <br>
+            <br>
+        @endif
+        
+
+
 
     </div>
 

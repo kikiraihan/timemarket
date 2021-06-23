@@ -180,7 +180,7 @@ class Forminput extends Component
 
 
         $this->emit('swalUpdated');
-        // return redirect()->route($redirect,['id'=>$idToUpdate]);
+        return redirect()->route($redirect,['id'=>$idToUpdate]);
 
     }
     

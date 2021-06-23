@@ -30,6 +30,9 @@
                 Silahkan login untuk melanjutkan
             </span>
 
+            
+            
+
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -60,6 +63,13 @@
                     " type="submit" name="login" id="login" value="Login">
                 </div>
             </form>
+            
+            <div class="text-center flex w-full justify-center mt-5">
+                <a class="text-xs flex items-center space-x-1" href="https://drive.google.com/drive/folders/1MdxLjxOHvwnMG5uRf31Hbd0t5gSVmRbj?usp=sharing">
+                    <span class="material-icons-outlined" style="font-size:16px">book</span>
+                    <span>Panduan Aplikasi</span>
+                </a>
+            </div>
 
             <div class="fixed bottom-0 inset-x-0 bg-white 
             flex justify-center text-xs text-gray-400

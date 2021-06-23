@@ -10,7 +10,8 @@ class Dropupworkload extends Component
     public 
     $tugasDetail, 
     // $showDropUp,
-    $isMy
+    $isMy,
+    $brAdd
     ;
 
     protected $listeners=[
@@ -19,9 +20,10 @@ class Dropupworkload extends Component
         'setOnGoingCeklis'=>'setOnGoing',
     ];
 
-    public function mount($isMy)
+    public function mount($isMy,$brAdd=false)
     {
         $this->isMy=$isMy;
+        $this->brAdd=$brAdd;
         // $this->showDropUp= false;
     }
 

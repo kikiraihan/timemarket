@@ -36,7 +36,7 @@
     
     <livewire:mytask.myworkload :idpegawai="$pegawai->id"/>
     
-    <livewire:mytask.dropupworkload :isMy="true"/>
+    <livewire:mytask.dropupworkload :isMy="true" :brAdd="true"/>
     
 </div>
 
