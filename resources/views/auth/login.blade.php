@@ -36,8 +36,8 @@
                 <div class="flex mt-6 flex-col space-y-4">
                     <div>
                         <input class="border-none shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
-                        id="username" placeholder="Username" type="text" name="username" 
-                        :value="old('username')" required autofocus>
+                        id="username" placeholder="Username" type="text" name="username"
+                        :value="old('username')" required autofocus autocomplete="off">
                         <x-error-input :kolom="'username'"/>
                     </div>
 

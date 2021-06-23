@@ -21,7 +21,7 @@
                 
             </div>
             
-            <h5 class="font-bold mb-3 ml-3 uppercase">Detail Unit</h5>
+            <h5 class="font-bold mb-3 ml-3 uppercase">Detail Proker</h5>
             
             <ul class="divide-y-2 divide-gray-100 border-b border-t border-green-100">
                 <li class="px-2 py-4">

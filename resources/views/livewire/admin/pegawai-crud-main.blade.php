@@ -9,7 +9,7 @@
 
     <div class="rounded shadow bg-white py-1">
         <div class="flex justify-between m-2 items-center">
-            <h3 class="f-roboto font-bold uppercase text-green-500">Tabel Pegawai</h3>
+            <h3 class="f-roboto font-bold uppercase text-green-500">Pegawai</h3>
             <button 
                 @click="dropUpOpen = 1"
                 wire:click="tampilInput()"
