@@ -10,7 +10,7 @@ class DropUpPekerjaan extends Component
     public $idToDropup;
 
     protected $listeners=[
-        'dropUpPekerjaanSetID'=>'setIdToDropup',
+        'dropUppekerjaansetid'=>'setIdToDropup',
         'terkonfirmasiHapusPekerjaan'=>'hapusPekerjaan'
     ];
 

@@ -41,7 +41,9 @@
 
 
     {{-- list pekerjaan anggota --}}
-    <div x-data="{ dropUpOpen: false }" class="container mx-auto py-4">
+    <div 
+        x-data="{ dropUpOpen: false }" 
+        class="container mx-auto py-4">
 
         <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
 
