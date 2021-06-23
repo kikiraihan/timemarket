@@ -1,6 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-        
         @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Tentang Tim','link_balik'=>$link])
     </x-slot>
 
@@ -47,7 +46,9 @@
 
         <livewire:katimboard.show-pekerjaan :idtim="$tim->id" />    
 
-        <livewire:katimboard.drop-up-pekerjaan />
+        {{-- <livewire:katimboard.drop-up-pekerjaan /> --}}
+
+        <livewire:mytask.dropupworkload :isMy="TRUE"/>
 
     </div>
 
