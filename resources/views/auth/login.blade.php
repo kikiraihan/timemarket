@@ -64,10 +64,14 @@
                 </div>
             </form>
             
-            <div class="text-center flex w-full justify-center mt-5">
-                <a class="text-xs flex items-center space-x-1" href="https://drive.google.com/drive/folders/1MdxLjxOHvwnMG5uRf31Hbd0t5gSVmRbj?usp=sharing">
+            <div class="text-center flex w-full justify-center mt-8 space-x-3 text-gray-500">
+                <a class="text-xs flex items-center space-x-1" href="https://drive.google.com/file/d/1sPdcq4sQ4sZIA9OfB4OKqkNl5z57zpR_/view?usp=sharing">
                     <span class="material-icons-outlined" style="font-size:16px">book</span>
                     <span>Panduan Aplikasi</span>
+                </a>
+                <a class="text-xs flex items-center space-x-1" href="https://drive.google.com/drive/folders/1o35PIqsq3D1-lr9gL4F8oZHc_Re1bkjM?usp=sharing">
+                    <span class="material-icons-outlined" style="font-size:16px">smart_display</span>
+                    <span>Screencast</span>
                 </a>
             </div>
 
