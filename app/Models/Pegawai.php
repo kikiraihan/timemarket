@@ -121,7 +121,9 @@ class Pegawai extends Model
     public function isMeKepalaTim($id_tim)
     {
         $hasil=$this->tims()->where('id_tim','=',$id_tim)->first();
-        if($hasil->id_kepala==$this->id)
+        if($hasil==null)
+        return false;
+        elseif($hasil->id_kepala==$this->id)
             return TRUE; 
         else
             return false; 
