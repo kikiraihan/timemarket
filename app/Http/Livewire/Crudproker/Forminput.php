@@ -157,14 +157,22 @@ class Forminput extends Component
 
     public function updateProker()
     {
+        // dd('cek');
         
         $idToUpdate=$this->idToUpdate;
         $proker=Tim::find($idToUpdate);
 
         if($proker->id_kepala!=$this->id_kepala)
-        $redirect='Katimboard.myteam';
+        {
+            if(Auth::user()->hasRole('Pegawai'))
+            $redirect='mytask.myteam';
+            else
+            $redirect='Katimboard.myteam';
+        }
         else
-        $redirect='Katimboard.showteam';
+        {
+            $redirect='Katimboard.showteam';
+        }
 
 
         $proker->jangka              =$this->jangka;
