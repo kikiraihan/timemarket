@@ -161,7 +161,7 @@
     
             <br><br>
             <div class="px-4">
-                <input class="shadow p-2 w-full rounded focus:outline-none focus:ring-2 
+                <input class="shadow p-2 w-full rounded focus:outline-none focus:ring-2 cursor-pointer
                 @if($metode=="updateTask")
                 focus:ring-yellow-300  text-white bg-yellow-500
                 @else

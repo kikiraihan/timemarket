@@ -19,8 +19,12 @@ class CrudProkerController extends Controller
     {
         //kalau bukan kepalatim atau koordinator abort 
         $tim=Tim::find($idToUpdate);
-        if($tim->id_kepala != Auth::user()->pegawai->id and $tim->id_koordinator != Auth::user()->pegawai->id)
-        return abort('403');
+        $user=Auth::user();
+        if(!$user->hasRole('Admin'))
+        {
+            if($tim->id_kepala != $user->pegawai->id and $tim->id_koordinator != $user->pegawai->id)
+                return abort('403');
+        }
         
 
         return view('crudProker.edit',compact(['idToUpdate']));

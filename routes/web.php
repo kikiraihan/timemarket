@@ -72,17 +72,17 @@ Route::get('/pegawai', function () {
 // HALAMAN TASK
 // mytask
 Route::get('/workload', [TaskController::class,'workload'])
-    ->middleware(['auth'])->name('mytask.workload');
+    ->middleware(['auth','role:Pegawai'])->name('mytask.workload');
 Route::get('/myteam', [TaskController::class,'myteam'])
-    ->middleware(['auth'])->name('mytask.myteam');
+    ->middleware(['auth','role:Pegawai'])->name('mytask.myteam');
 // they task
 Route::get('/they/workload/{id}', [TaskController::class,'theyworkload'])
-    ->middleware(['auth'])->name('theytask.workload');
+    ->middleware(['auth','role:KPw|Chief|Pegawai'])->name('theytask.workload');
 Route::get('/they/team/{id}', [TaskController::class,'theyteam'])
-    ->middleware(['auth'])->name('theytask.theyteam');
+    ->middleware(['auth','role:KPw|Chief|Pegawai'])->name('theytask.theyteam');
 // show team
 Route::get('team/show/{id}/{id_pegawai}', [TaskController::class,'showTeam'])
-    ->middleware(['auth'])->name('showteam');
+    ->middleware(['auth','role:KPw|Chief|Pegawai'])->name('showteam');
 
 // CRUD TASK
 Route::get('/task/create', [CrudTaskController::class,'create'])
@@ -103,9 +103,9 @@ Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam']
 Route::get('/proker/create', [CrudProkerController::class,'create'])
 ->middleware(['auth','role:Chief'])->name('proker.create');
 Route::get('/proker/edit/{id}', [CrudProkerController::class,'edit'])
-->middleware(['auth','role:Chief|Pegawai'])->name('proker.edit');
-Route::get('/proker/delete/{id}', [CrudProkerController::class,'delete'])
-->middleware(['auth','role:Chief|Pegawai'])->name('proker.hapus');
+->middleware(['auth','role:Chief|Pegawai|Admin'])->name('proker.edit');
+// Route::get('/proker/delete/{id}', [CrudProkerController::class,'delete'])
+// ->middleware(['auth','role:Chief|Pegawai'])->name('proker.hapus');
 
 
 // HALAMAN KALENDER UTAMA

@@ -6,7 +6,8 @@
         
         <x-slot name="pilihanButton">
             <div class="flex space-x-1 px-1">
-                <button @click="dropUpOpen = false" class="flex-auto p-2 rounded bg-gray-300 shadow-sm focus:outline-none focus:ring-1 ring-gray-500">Kembali</button>
+                {{-- <button @click="dropUpOpen = false" class="flex-auto p-2 rounded bg-gray-300 shadow-sm focus:outline-none focus:ring-1 ring-gray-500">Kembali</button> --}}
+                <a href="{{ route('proker.edit', ['id'=>$timToDropUp->id]) }}" class="flex-auto p-2 rounded bg-yellow-300 shadow-sm focus:outline-none focus:ring-1 ring-yellow-500 text-center">Edit</a>
                 <button wire:click="$emit('swalToDeleted','terkonfirmasiHapusProker',{{$timToDropUp->id}})" class="flex-auto p-2 rounded bg-red-500 shadow-sm focus:outline-none focus:ring-1 ring-red-500 text-white">Hapus</button>
             </div>
         </x-slot>

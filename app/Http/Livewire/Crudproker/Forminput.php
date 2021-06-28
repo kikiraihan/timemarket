@@ -162,13 +162,20 @@ class Forminput extends Component
         $idToUpdate=$this->idToUpdate;
         $proker=Tim::find($idToUpdate);
 
+        //kalau kepala tim berubah
         if($proker->id_kepala!=$this->id_kepala)
         {
             if(Auth::user()->hasRole('Pegawai'))
             $redirect='mytask.myteam';
+            elseif(Auth::user()->hasRole('Admin'))
+            $redirect='proker.crud';
             else
             $redirect='Katimboard.myteam';
         }
+        // kalau tidak berubah tapi admin
+        elseif(Auth::user()->hasRole('Admin'))
+            $redirect='proker.crud';
+        // kalau tidak berubah balik ke showteam admin
         else
         {
             $redirect='Katimboard.showteam';
