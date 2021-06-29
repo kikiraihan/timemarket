@@ -33,6 +33,7 @@
     @include('umum.isiteam',[
         'pegawai'=>$pegawai,
         'proker'=>$proker,
+        'parent'=>"they-team"
     ])
 
 

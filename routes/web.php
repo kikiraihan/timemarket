@@ -81,7 +81,7 @@ Route::get('/they/workload/{id}', [TaskController::class,'theyworkload'])
 Route::get('/they/team/{id}', [TaskController::class,'theyteam'])
     ->middleware(['auth','role:KPw|Chief|Pegawai'])->name('theytask.theyteam');
 // show team
-Route::get('team/show/{id}/{id_pegawai}', [TaskController::class,'showTeam'])
+Route::get('team/show/{id}/forpegawai/{id_pegawai}', [TaskController::class,'showTeam'])
     ->middleware(['auth','role:KPw|Chief|Pegawai'])->name('showteam');
 
 // CRUD TASK

@@ -1,6 +1,7 @@
 @props([
     'item'=>NULL,
     'idpegawai'=>NULL,
+    'parent'=>null,
 ])
 
 
@@ -58,7 +59,7 @@
     </div>
 
     <a 
-    @if($item->isThisUserKepalaTim($idpegawai))
+    @if($item->isThisUserKepalaTim($idpegawai) and $parent!='they-team')
     href="{{ route('Katimboard.showteam', ['id'=>$item->id]) }}"
     @else
     href="{{ route('showteam', ['id'=>$item->id,'id_pegawai'=>$idpegawai]) }}"

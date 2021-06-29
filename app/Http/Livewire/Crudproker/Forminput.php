@@ -133,8 +133,8 @@ class Forminput extends Component
             'jangka'             =>"required|string",
             'iku'                =>"required|string",
             'nama'               =>"required|string",
-            'judul_project'      =>"required|date",
-            'target_pelaksanaan' =>"required|integer",
+            'judul_project'      =>"required|string",
+            'target_pelaksanaan' =>"required|string",
             'deskripsi'          =>"nullable|string",
         ],$this->CustomMessages);
 
@@ -158,6 +158,16 @@ class Forminput extends Component
     public function updateProker()
     {
         // dd('cek');
+
+        $this->validate( [
+            'jangka'             =>"required|string",
+            'iku'                =>"required|string",
+            'nama'               =>"required|string",
+            'judul_project'      =>"required|string",
+            'target_pelaksanaan' =>"required|string",
+            'deskripsi'          =>"nullable|string",
+        ],$this->CustomMessages);
+        
         
         $idToUpdate=$this->idToUpdate;
         $proker=Tim::find($idToUpdate);

@@ -37,7 +37,7 @@
     <div>
         <div class="flex flex-col">        
             @foreach ($proker as $item)
-                <x-proker-list :item="$item" :idpegawai="$pegawai->id"/>
+                <x-proker-list :item="$item" :idpegawai="$pegawai->id" :parent="$parent"/>
             @endforeach
         </div>
     </div>
