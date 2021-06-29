@@ -166,7 +166,7 @@ class Forminput extends Component
         $tugas->duedate         =$this->duedate;
         $tugas->catatan         =$this->catatan;
         $tugas->level           =$this->level;
-        $tugas->status          ="not start";
+        $tugas->status          ="on going";
         $tugas->save();
 
         $this->reset();
