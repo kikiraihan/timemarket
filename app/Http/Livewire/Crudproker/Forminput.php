@@ -149,6 +149,9 @@ class Forminput extends Component
         $proker->id_koordinator      =Auth::user()->pegawai->id;//katim id
         $proker->save();
 
+        // tambahkan kepala sebagai anggota
+        $proker->anggotatims()->attach($this->id_kepala);
+
         $this->reset();
         $this->emit('swalAdded');
         $this->inputTambah();
@@ -167,7 +170,7 @@ class Forminput extends Component
             'target_pelaksanaan' =>"required|string",
             'deskripsi'          =>"nullable|string",
         ],$this->CustomMessages);
-        
+
         
         $idToUpdate=$this->idToUpdate;
         $proker=Tim::find($idToUpdate);

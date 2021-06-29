@@ -34,6 +34,7 @@
     @include('umum.isiteam',[
         'pegawai'=>$pegawai,
         'proker'=>$proker,
+        'parent'=>null,
     ])
 
     
