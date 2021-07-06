@@ -37,8 +37,9 @@
                 <span>{{$data['namatim']}}</span>
             </span>
             <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
-                {{$data['level']}} bobot
-                {{-- <sub>/12</sub> --}}
+                {{$data['level']}} <sub>Bobot</sub>
+                
+                
             </span>
             <span class="font-bold rounded-full bg-blue-100  px-1.5 capitalize" style="font-size: 9px;">{{$data['status']}}</span>
         </p>

@@ -53,6 +53,11 @@ class tugasanggotatim extends Model
 
     public function getNamatimAttribute()
     {
+        if($this->tim==null)
+        {
+            return $this->id;
+        }
+
         return $this->tim->nama;
     }
 

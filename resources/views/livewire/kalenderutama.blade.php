@@ -102,7 +102,7 @@
                                 <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}})">
 
                                     @php
-                                        $workload=3;
+                                        $workload=4;
                                         foreach ($item['tugas'][$minggu->format('Y-m-d')] as $tm)
                                         {
                                             $workload=$workload+$tm->level;

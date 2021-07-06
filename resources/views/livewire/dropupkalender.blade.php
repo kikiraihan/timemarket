@@ -28,8 +28,7 @@
             <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 mt-10">
                 Rutinitas 
                 <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
-                    3 bobot
-                    {{-- <sub>/12</sub> --}}
+                    4 <sub>bobot</sub>
                     
                 </span>
             </div>
