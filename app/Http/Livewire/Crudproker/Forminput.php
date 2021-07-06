@@ -151,6 +151,8 @@ class Forminput extends Component
 
         // tambahkan kepala sebagai anggota
         $proker->anggotatims()->attach($this->id_kepala);
+        if($proker->id_koordinator!=$proker->id_kepala)
+        $proker->anggotatims()->attach($proker->id_koordinator);
 
         $this->reset();
         $this->emit('swalAdded');

@@ -14,13 +14,7 @@
 
 
         <div class="flex flex-col">
-            <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer select-none ">
-                <span class="material-icons-outlined">
-                    {{-- drag_handle --}}
-                    expand_more
-                    {{-- close --}}
-                </span>
-            </span>
+            <x-tutup-slide-dropup @click="dropUpOpen = false" />
 
             @isset($listTugas)
             <ul class="flex flex-col">
@@ -29,6 +23,19 @@
                 @endforeach
             </ul>
             @endisset
+
+            
+            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 mt-10">
+                Rutinitas 
+                <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
+                    3 bobot
+                    {{-- <sub>/12</sub> --}}
+                    
+                </span>
+            </div>
+            {{-- <ul class="flex flex-col">
+                <li class="bg-white border-t border-b pl-4 flex space-x-3">1. Misalkan</li>
+            </ul> --}}
 
 
         </div>

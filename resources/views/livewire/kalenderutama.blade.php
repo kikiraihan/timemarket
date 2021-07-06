@@ -102,7 +102,7 @@
                                 <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}})">
 
                                     @php
-                                        $workload=0;
+                                        $workload=3;
                                         foreach ($item['tugas'][$minggu->format('Y-m-d')] as $tm)
                                         {
                                             $workload=$workload+$tm->level;
@@ -115,9 +115,9 @@
                                             text-gray-100 flex items-center justify-center font-bold
                                                 @if ($workload==0)
                                                 bg-gray-300
-                                                @elseif ($workload<=4)
+                                                @elseif ($workload<=6)
                                                 bg-green-400
-                                                @elseif ($workload<=8)
+                                                @elseif ($workload<=9)
                                                 bg-yellow-400
                                                 @else
                                                 bg-red-400
@@ -138,11 +138,11 @@
                                             style="font-size: 12px">
                                                 circle
                                             </span> --}}
-                                            @if ($workload<=8 && $workload>4)
+                                            {{-- @if ($workload<=12 && $workload>8)
                                             <span class="material-icons text-yellow-300 absolute animate-ping" style="font-size: 16px">
                                                 circle
                                             </span>
-                                            @endif
+                                            @endif --}}
                                             
                                         </div>
                                     </div>

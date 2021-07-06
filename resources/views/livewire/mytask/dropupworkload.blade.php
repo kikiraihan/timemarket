@@ -12,13 +12,7 @@
 
         @isset($tugasDetail)
         <div class="flex flex-col">
-            <span @click="dropUpOpen = false" class="w-full text-center rounded-2xl cursor-pointer select-none ">
-                <span class="material-icons-outlined">
-                    {{-- drag_handle --}}
-                    expand_more
-                    {{-- close --}}
-                </span>
-            </span>
+            <x-tutup-close-dropup @click="dropUpOpen = false" />
 
             <div class="w-full grid grid-cols-2 px-3 f-robotomon mb-4 text-xs">
                 <div class="font-bold">

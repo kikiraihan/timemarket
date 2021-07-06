@@ -10,12 +10,12 @@
             </div>
             
             {{-- cek user login apakah anggotatim  --}}
-            @if (Auth::user()->pegawai->isMeAnggotaTim($tim->id))
+            @if (Auth::user()->pegawai->isMeAnggotaTim($tim->id) or ($tim->id_koordinator == Auth::user()->pegawai->id))
 
                 <div class="flex items-center justify-end">
                     
 
-                    @if ($isKepalaTim or ($tim->id_koordinator== Auth::user()->pegawai->id))
+                    @if ($isKepalaTim or ($tim->id_koordinator == Auth::user()->pegawai->id))
 
                     <a href="{{ route('proker.edit', ['id'=>$tim->id]) }}" 
                         class="ml-2 w-9 h-9 bg-white rounded-full shadow-md

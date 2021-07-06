@@ -57,11 +57,24 @@ class TimSeeder extends Seeder
 
         // 
         $tim = new Tim;
-        $tim->nama               = "#ISD";//kodeproker
-        $tim->judul_project      = "Kegiatan insidental";
+        $tim->nama               = "#KEKDA";//kodeproker
+        $tim->judul_project      = "Kegiatan insidental KEKDA";
         $tim->deskripsi          = "Kegiatan non proker, kegiatan yang tidak direncanakan, seperti undangan dsb.";
         $tim->id_kepala          = 3;
-        $tim->id_koordinator = 3;
+        $tim->id_koordinator     = 3;
+        $tim->jangka             = "pendek";
+        $tim->target_pelaksanaan = "anytime";
+        $tim->iku                = "Non-IKU";
+        $tim->status             = "on going";
+        $tim->save();
+
+        // 
+        $tim = new Tim;
+        $tim->nama               = "#SPPUR";//kodeproker
+        $tim->judul_project      = "Kegiatan insidental SPPUR-MUI";
+        $tim->deskripsi          = "Kegiatan non proker, kegiatan yang tidak direncanakan, seperti undangan dsb.";
+        $tim->id_kepala          = 2;
+        $tim->id_koordinator     = 2;
         $tim->jangka             = "pendek";
         $tim->target_pelaksanaan = "anytime";
         $tim->iku                = "Non-IKU";
