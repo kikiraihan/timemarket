@@ -26,14 +26,17 @@
 
             
             <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 mt-10">
-                Rutinitas 
+                Pekerjaan Rutin 
                 <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                     4 <sub>bobot</sub>
-                    
                 </span>
             </div>
-            {{-- <ul class="flex flex-col">
+            <div class="text-sm pl-4">
+                Pekerjaan rutin sesuai dengan tupoksi pegawai di masing-masing unit/fungsi.
+            </div>
+            {{-- <ul class="flex flex-col text-sm">
                 <li class="bg-white border-t border-b pl-4 flex space-x-3">1. Misalkan</li>
+                <li class="bg-white border-t border-b pl-4 flex space-x-3">2. Misalkan</li>
             </ul> --}}
 
 
