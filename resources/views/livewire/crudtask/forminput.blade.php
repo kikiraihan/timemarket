@@ -92,7 +92,7 @@
             </div>
 
             <div>
-                <label class="f-roboto ml-1 text-gray-500 text-sm">Bobot</label>
+                <label class="f-roboto ml-1 text-gray-500 text-sm">Load</label>
                 <select wire:model.lazy="level" id="level"
                     class="block shadow bg-white text-sm p-2 w-full rounded focus:outline-none 
                     focus:ring-2 focus:ring-green-300" aria-label="Default select example">
@@ -105,7 +105,7 @@
             </div>
 
             <div>
-                <label class="f-roboto ml-1 text-gray-500 text-sm">Start Date</label>
+                <label class="f-roboto ml-1 text-gray-500 text-sm">Tanggal mulai</label>
                 <input
                     wire:model.lazy="startdate" id="startdate"
                     class="bg-white shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"
@@ -114,7 +114,7 @@
             </div>
 
             <div>
-                <label class="f-roboto ml-1 text-gray-500 text-sm">Due Date</label>
+                <label class="f-roboto ml-1 text-gray-500 text-sm">Tanggal batas akhir</label>
                 <input
                     wire:model.lazy="duedate" id="duedate"
                     class="bg-white shadow text-sm  p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-green-300"

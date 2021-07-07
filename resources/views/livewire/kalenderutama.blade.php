@@ -138,7 +138,7 @@
                                         }
                                     @endphp
                                 
-                                <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}}, {{json_encode($minggu->format('Y-m-d'))}}, {{json_encode($tampilRutin)}} )">
+                                <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}}, {{json_encode($minggu->format('Y-m-d'))}}, {{json_encode($tampilRutin)}}, {{json_encode($item['pegawai']->nama)}} )">
 
 
                                     <div class="flex-1">
@@ -212,7 +212,7 @@
 
                                 
                                     @if(!($minggu->dayOfWeek==0 or $minggu->dayOfWeek==6))
-                                    <div class="flex items-center justify-end space-x-1 h-full" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih', null, {{json_encode($minggu->format('Y-m-d'))}}, true )">
+                                    <div class="flex items-center justify-end space-x-1 h-full" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih', null, {{json_encode($minggu->format('Y-m-d'))}}, true, {{json_encode($item['pegawai']->nama)}} )">
                                         <span style="font-size: 10px" class="rounded-full w-4 h-4 text-gray-100 flex items-center justify-center font-bold bg-green-200">
                                             4
                                         </span>

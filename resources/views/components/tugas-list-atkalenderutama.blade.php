@@ -37,7 +37,7 @@
                 <span class="select-none">{{$data['namatim']}}</span>
             </span>
             <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
-                {{$data['level']}} <sub>Bobot</sub>
+                {{$data['level']}} <sub>Load</sub>
                 
                 
             </span>
