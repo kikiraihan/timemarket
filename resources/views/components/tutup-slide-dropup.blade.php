@@ -3,7 +3,7 @@
     'isi2'=>null,
     ])
 
-<span {{ $attributes->merge(['class' => 'w-full text-center rounded-2xl cursor-pointer select-none py-1']) }}>
+<span {{ $attributes->merge(['class' => 'w-full text-center rounded-2xl cursor-pointer select-none py-2']) }}>
     
     <span>
     @isset($isi1)    
