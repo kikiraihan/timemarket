@@ -16,16 +16,28 @@
         <div class="flex flex-col">
             <x-tutup-slide-dropup @click="dropUpOpen = false" />
 
+            {{-- {{$tanggal}} --}}
+            
             @isset($listTugas)
+            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4">
+                Pekerjaan khusus
+            </div>
             <ul class="flex flex-col">
                 @foreach ($listTugas as $item)
                     <x-tugas-list-atkalenderutama :data="$item" :pegawaiYangLogin="$pegawaiYangLogin"/>
+                    @if($loop->last)
+                        <br>
+                    @endif
                 @endforeach
             </ul>
+            @else
+            <hr>
             @endisset
 
             
-            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 mt-10">
+            
+            @if($tampilRutin)
+            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 pt-2">
                 Pekerjaan Rutin 
                 <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                     4 <sub>bobot</sub>
@@ -34,10 +46,12 @@
             <div class="text-sm pl-4">
                 Pekerjaan rutin sesuai dengan tupoksi pegawai di masing-masing unit/fungsi.
             </div>
+
             {{-- <ul class="flex flex-col text-sm">
                 <li class="bg-white border-t border-b pl-4 flex space-x-3">1. Misalkan</li>
                 <li class="bg-white border-t border-b pl-4 flex space-x-3">2. Misalkan</li>
             </ul> --}}
+            @endisset
 
 
         </div>

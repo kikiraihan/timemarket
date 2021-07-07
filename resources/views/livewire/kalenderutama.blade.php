@@ -67,13 +67,27 @@
                 <div class="grid grid-cols-8 w-full text-xs font-bold text-gray-400">
                     <span class=" bg-white" ></span>
                     @foreach ($seminggu as $m)
-                    <span class="pt-1 text-center border-l border-r border-gray-200 bg-white">{{substr($m->dayName,0,3)}}</span>
+                    <span class="
+                        @if ($m->dayName=='Minggu' or $m->dayName=="Sabtu")
+                            text-red-300
+                        @endif
+                        pt-1 text-center border-l border-r border-gray-200 bg-white
+                    ">
+                        {{substr($m->dayName,0,3)}}
+                    </span>
                     @endforeach
                 </div>
                 <div class="grid grid-cols-8 w-full text-lg font-bold text-gray-400">
                     <span class=" bg-white" ></span>
                     @foreach ($seminggu as $m)
-                    <span class="text-center border-l border-r border-gray-200 bg-white">{{$m->day}}</span>
+                    <span class="
+                        @if ($m->dayName=='Minggu' or $m->dayName=="Sabtu")
+                            text-red-300
+                        @endif
+                        text-center border-l border-r border-gray-200 bg-white
+                    ">
+                        {{$m->day}}
+                    </span>
                     @endforeach
                 </div>
             </div>
@@ -94,20 +108,34 @@
                     @foreach ($seminggu as $minggu)
                     
                         {{-- kotak tanggal --}}
-                        <div class=" bg-white text-center text-gray-500 border border-gray-200 f-roboto @isset($item['tugas'][$minggu->format('Y-m-d')]) cursor-pointer select-none	" @else " @endisset>
+                        <div class=" bg-white text-center text-gray-500 border border-gray-200 f-roboto cursor-pointer select-none"> 
+                            {{-- @isset($item['tugas'][$minggu->format('Y-m-d')]) cursor-pointer select-none	" @else " @endisset> --}}
 
                             
-                            
+
+
                                 @isset($item['tugas'][$minggu->format('Y-m-d')])
-                                <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}})">
-
+                                    
                                     @php
-                                        $workload=4;
+                                        if($minggu->dayOfWeek==0 or $minggu->dayOfWeek==6)
+                                        {
+                                            $workload=0;
+                                            $tampilRutin=false;
+                                        }
+                                        else
+                                        {
+                                            $workload=4;
+                                            $tampilRutin=true;
+                                        }
+
                                         foreach ($item['tugas'][$minggu->format('Y-m-d')] as $tm)
                                         {
                                             $workload=$workload+$tm->level;
                                         }
                                     @endphp
+                                
+                                <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}}, {{json_encode($minggu->format('Y-m-d'))}}, {{json_encode($tampilRutin)}} )">
+
 
                                     <div class="flex-1">
                                         <div class="flex items-center justify-end space-x-1">
@@ -124,6 +152,7 @@
                                                 @endif
                                                 ">{{$workload}}
                                             </span>
+
                                             {{-- <span class="material-icons
                                                 @if ($workload==0)
                                                 text-gray-200
@@ -153,20 +182,8 @@
                                             <div class="flex flex-col flex-wrap">
                                                 <span class="
                                                 text-center font-bold ml-1 
-                                                
-                                                {{-- @if ($workload==0) --}}
                                                 bg-gray-100
                                                 text-gray-400
-                                                {{-- @elseif ($workload<=4)
-                                                bg-green-300
-                                                text-white
-                                                @elseif ($workload<=8)
-                                                bg-yellow-300
-                                                text-gray-700
-                                                @else
-                                                bg-red-300
-                                                text-gray-700
-                                                @endif --}}
                                                 "
                                                 style="font-size: 10px;">
                                                     {{-- {{$tugashariini->judul}}
@@ -183,7 +200,22 @@
                                     
 
 
-                                </div>                                
+                                </div>     
+                                
+                                
+                                
+                                @else
+
+                                
+                                    @if(!($minggu->dayOfWeek==0 or $minggu->dayOfWeek==6))
+                                    <div class="flex items-center justify-end space-x-1 h-full" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih', null, {{json_encode($minggu->format('Y-m-d'))}}, true )">
+                                        <span style="font-size: 10px" class="rounded-full w-4 h-4 text-gray-100 flex items-center justify-center font-bold bg-green-200">
+                                            4
+                                        </span>
+                                    </div>
+                                    @endif
+                                            
+
                                 @endisset
 
                             

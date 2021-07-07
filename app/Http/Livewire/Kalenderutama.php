@@ -32,6 +32,7 @@ class Kalenderutama extends Component
 
         
         $daysArray = $this->daysArray($index);
+
         $this->seminggu = $daysArray;
 
         $list=[];
@@ -51,6 +52,9 @@ class Kalenderutama extends Component
                     }
                 }
 
+                //tambahkan pekerjaan rutin
+                // if(!($tgl->dayOfWeek==0 or $tgl->dayOfWeek==6))
+                // $list[$p->id]['tugas'][$tgl->format('Y-m-d')][]='rutin';
                 
             }
         }

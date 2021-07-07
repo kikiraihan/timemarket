@@ -12,7 +12,7 @@
 
         @isset($tugasDetail)
         <div class="flex flex-col">
-            <x-tutup-close-dropup @click="dropUpOpen = false" />
+            <x-tutup-slide-dropup @click="dropUpOpen = false" />
 
             <div class="w-full grid grid-cols-2 px-3 f-robotomon mb-4 text-xs">
                 <div class="font-bold">

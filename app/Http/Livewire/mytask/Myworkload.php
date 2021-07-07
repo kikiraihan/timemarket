@@ -44,6 +44,7 @@ class Myworkload extends Component
     {
         $kalender=$this->getKalenderSebulan($this->posisi);
         $harian=$this->getHarian($this->posisiHarian);
+        // dd($kalender);
         
         return 
         view('livewire.mytask.myworkload',compact(['kalender','harian']));

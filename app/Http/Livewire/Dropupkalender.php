@@ -19,6 +19,7 @@ class Dropupkalender extends Component
     $isEditAble,
     $listTugas,
     $tanggal,
+    $tampilRutin,
     $pegawaiYangLogin;
 
 
@@ -34,8 +35,10 @@ class Dropupkalender extends Component
         return view('livewire.dropupkalender');
     }
 
-    public function tampilData($data,$tanggal=null)
+    public function tampilData($data=null,$tanggal=null,$tampilRutin=false)
     {
+        // dd($tampilRutin);
+        $this->tampilRutin=$tampilRutin;
         $this->tanggal=$tanggal;
         $this->listTugas=$data;
     }

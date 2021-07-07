@@ -8,11 +8,11 @@
         <span class="flex-1 text-center">
             {{$tgl}}
             <span class="material-icons 
-            @if ($ini==0)
+            @if ($ini<=4)
             text-gray-200
-            @elseif ($ini<=4)
+            @elseif ($ini<=6)
             text-green-300
-            @elseif ($ini<=8)
+            @elseif ($ini<=9)
             text-yellow-300
             @else
             text-red-300
@@ -25,13 +25,13 @@
 
             <div class="flex flex-col flex-wrap">
                 <span class="
-                @if ($ini==0)
+                @if ($ini<=4)
                 bg-gray-100
                 text-gray-400
-                @elseif ($ini<=4)
+                @elseif ($ini<=6)
                 bg-green-300
                 text-white
-                @elseif ($ini<=8)
+                @elseif ($ini<=9)
                 bg-yellow-300
                 text-gray-700
                 @else
