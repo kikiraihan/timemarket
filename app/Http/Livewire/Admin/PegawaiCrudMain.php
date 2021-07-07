@@ -148,7 +148,7 @@ class PegawaiCrudMain extends Component
         $p = User::whereHas('Pegawai', function ($q) use ($id){
             $q->where('id', $id);
         })->first();
-        $p->password = 'Password';
+        $p->password = 'password';
         $p->save();
     }
 
