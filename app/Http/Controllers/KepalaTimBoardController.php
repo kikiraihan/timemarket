@@ -47,6 +47,7 @@ class KepalaTimBoardController extends Controller
             //jika bukan chief tapi kepala tim
             $link="mytask.myteam";
         }
+        dd($link);
         
         
         return view('katimboard.showteam',compact(['tim','link']));
