@@ -19,7 +19,7 @@
             {{-- {{$tanggal}} --}}
             
             @isset($listTugas)
-            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4">
+            <div class="select-none font-bold text-gray-500 capitalize f-robotomon text-sm px-4">
                 Pekerjaan khusus
             </div>
             <ul class="flex flex-col">
@@ -37,7 +37,7 @@
             
             
             @if($tampilRutin)
-            <div class="font-bold text-gray-500 capitalize f-robotomon text-sm px-4 pt-2">
+            <div class="select-none font-bold text-gray-500 capitalize f-robotomon text-sm px-4 pt-2">
                 Pekerjaan Rutin 
                 <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                     4 <sub>bobot</sub>
