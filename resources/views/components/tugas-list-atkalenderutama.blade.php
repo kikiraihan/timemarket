@@ -25,7 +25,7 @@
     </div> --}}
 
     <div class="flex-auto grid grid-cols-4 mx-auto py-3 items-center gap-2">
-        <div class="text-sm col-span-4">
+        <div class="text-sm col-span-4 select-none">
             {{$data['judul']}}
         </div>
         
@@ -34,7 +34,7 @@
                 <span class="material-icons text-sm">
                     groups
                 </span>
-                <span>{{$data['namatim']}}</span>
+                <span class="select-none">{{$data['namatim']}}</span>
             </span>
             <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                 {{$data['level']}} <sub>Bobot</sub>

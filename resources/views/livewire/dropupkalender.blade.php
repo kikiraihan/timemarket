@@ -43,7 +43,7 @@
                     4 <sub>bobot</sub>
                 </span>
             </div>
-            <div class="text-sm pl-4">
+            <div class="text-sm pl-4 select-none">
                 Pekerjaan rutin sesuai dengan tupoksi pegawai di masing-masing unit/fungsi.
             </div>
 
