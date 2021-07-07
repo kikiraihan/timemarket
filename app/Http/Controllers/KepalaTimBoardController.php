@@ -30,17 +30,23 @@ class KepalaTimBoardController extends Controller
 
 
         if($tim->id_kepala != Auth::user()->pegawai->id )
-        // and $tim->id_koordinator != Auth::user()->pegawai->id 
-        // return redirect()->route('showteam',['id'=>$id,'id_pegawai'=>null]);
-        return abort('403');
+        {
+            // and $tim->id_koordinator != Auth::user()->pegawai->id 
+            // return redirect()->route('showteam',['id'=>$id,'id_pegawai'=>null]);
+            return abort('403');
+        }
         
         
         //link balik
         if(Auth::user()->hasRole('Chief'))
-        $link="Katimboard.myteam";
+        {
+            $link="Katimboard.myteam";
+        }
         else
-        //jika bukan chief tapi kepala tim
-        $link="mytask.myteam";
+        {
+            //jika bukan chief tapi kepala tim
+            $link="mytask.myteam";
+        }
         
         
         return view('katimboard.showteam',compact(['tim','link']));
