@@ -11,7 +11,7 @@
         </span>
     @endisset
 
-    <span {{ $attributes->merge(['class' => 'text-gray-300 rounded-2xl cursor-pointer']) }}>
+    <span {{ $attributes->merge(['class' => 'text-gray-300 rounded-2xl cursor-pointer select-none']) }}>
         <span class="material-icons-outlined">
             close
         </span>
