@@ -10,10 +10,11 @@
         transform transition translate-y-full duration-200 ease-in-out
         min-w-screen bg-white pb-10 rounded-t-2xl shadow border-t-2 border-gray-200 opacity-95
         flex flex-col space-y-2  justify-between overflow-auto"{{-- h-3/4 --}}
+        style="min-height: 55%"
         >
 
 
-        <div class="flex flex-col">
+        <div class="flex flex-col" wire:loading.remove>
             <x-tutup-slide-dropup @click="dropUpOpen = false" :isi1="$namaPegawai" :isi2="$tanggal"/>
             
             
@@ -56,8 +57,12 @@
 
         </div>
 
-        <br><br><br>
-        <br><br>
+        <div wire:loading class="text-center h-full flex items-center animate-pulse">
+            loading..
+        </div>
+
+        {{-- <br><br><br> --}}
+        {{-- <br><br> --}}
 
 
     </div>

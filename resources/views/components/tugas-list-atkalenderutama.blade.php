@@ -29,7 +29,7 @@
             {{$data['judul']}}
         </div>
         
-        <p class="text-left flex-1 flex space-x-2 text-gray-500 text-xs col-span-2">
+        <p class="text-left flex-1 flex space-x-2 text-gray-500 text-xs col-span-4">
             <span class="flex flex-wrap space-x-1">
                 <span class="material-icons text-sm">
                     groups
@@ -38,12 +38,10 @@
             </span>
             <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                 {{$data['level']}} <sub>Load</sub>
-                
-                
             </span>
             <span class="font-bold rounded-full bg-blue-100  px-1.5 capitalize" style="font-size: 9px;">{{$data['status']}}</span>
         </p>
-        <p class="text-right flex-1 text-gray-500 text-xs col-span-2">
+        <p class="text-right flex-1 text-gray-500 text-xs col-span-4">
             <span>{{Carbon\Carbon::parse($data['startdate'])->format('d M')}}</span>
             <span>-</span>
             <span>{{Carbon\Carbon::parse($data['duedate'])->format('d M')}}</span>
