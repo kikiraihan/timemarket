@@ -99,7 +99,7 @@
                 <div class="grid grid-cols-8 w-full text-sm">
                     <div class="p-1 text-center text-gray-300">
                         {{-- <img class="rounded bg-white w-10 h-10 flex justify-center items-center" src="{{$item['pegawai']->user->gravatar}}"> --}}
-                        <div class="rounded bg-white p-1 w-10 h-10 flex justify-center items-center" style="color: #{{$item['pegawai']->random_color}}">
+                        <div class="rounded bg-white p-1 w-10 h-10 flex justify-center items-center select-none" style="color: #{{$item['pegawai']->random_color}}">
                             {{$item['pegawai']->nama_singkat_dua}}
                         </div>
                     </div>

@@ -44,8 +44,8 @@ class Myworkload extends Component
     {
         $kalender=$this->getKalenderSebulan($this->posisi);
         $harian=$this->getHarian($this->posisiHarian);
-        // dd($kalender);
-        
+        // dd($harian);
+
         return 
         view('livewire.mytask.myworkload',compact(['kalender','harian']));
     }
@@ -63,6 +63,7 @@ class Myworkload extends Component
 
 
         $daysArray=$this->daysArray($totalhari);
+        $dayCarbon=$this->daysArrayToCarbonize($posisi->year,$posisi->month,$daysArray);
         
         // PERHITUNGAN WORKLOAD DALAM KALENDER
         // perulangan foreach task selama sebulan
@@ -91,6 +92,7 @@ class Myworkload extends Component
 
         $return['blankdays'] = $blankdaysArray;
         $return['no_of_days'] = $daysArray;
+        $return['carbon'] = $dayCarbon;
 
         return $return;
     }
@@ -105,6 +107,17 @@ class Myworkload extends Component
         }
 
         return $daysArray;
+    }
+
+    public function daysArrayToCarbonize($tahun,$bulan,$daysArray)
+    {
+        $days = [];
+        foreach ($daysArray as $key => $value) {
+            $days[$key]=Carbon::
+            createFromDate($tahun, $bulan,$key)->dayName;
+        }
+
+        return $days;
     }
 
 

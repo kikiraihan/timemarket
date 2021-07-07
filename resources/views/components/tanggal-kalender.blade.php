@@ -25,11 +25,14 @@
 
             <div class="flex flex-col flex-wrap">
                 <span class="
-                @if ($ini<=4)
+                @if ($ini==0)
                 bg-gray-100
                 text-gray-400
+                @elseif ($ini<=4)
+                bg-green-200
+                text-white
                 @elseif ($ini<=6)
-                bg-green-300
+                bg-green-400
                 text-white
                 @elseif ($ini<=9)
                 bg-yellow-300

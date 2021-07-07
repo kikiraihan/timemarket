@@ -58,7 +58,11 @@
                     
                     {{-- href="#beban" --}}
                     <button  wire:click="pindah({{$tgl}})" class="cursor-pointer focus:outline-none focus:bg-yellow-100 ">
-                        <x-tanggal-kalender :tgl="$tgl" :ini="($ini+4)"/>
+                        @if ($kalender['carbon'][$tgl]=="Minggu" or $kalender['carbon'][$tgl]=="Sabtu")
+                            <x-tanggal-kalender :tgl="$tgl" :ini="($ini)"/>
+                        @else
+                            <x-tanggal-kalender :tgl="$tgl" :ini="($ini+4)"/>
+                        @endif
                         {{-- {{$tgl}} --}}
                     </button>
 
@@ -118,19 +122,29 @@
                     :prosingkat="$item->tim->nama" 
                     :status="$item->status"/>
                 @if ($loop->last)
+
+                        @php
+                            if (
+                                $posisiHarian->dayName=="Minggu" or 
+                                $posisiHarian->dayName=="Sabtu"
+                                )
+                                $penambah=0;
+                            else
+                                $penambah=4;
+                        @endphp
                         <!-- garis akhir -->
                         <div>
                             <div class="h-3 relative w-full  overflow-hidden">
                                 <div class="w-full h-full bg-gray-200 absolute"></div>
                                 <div id="bar" class="h-full 
-                                    @if (($harian['tugason']->sum("level")+4) <= 6)
+                                    @if (($harian['tugason']->sum("level")+$penambah) <= 6)
                                         bg-green-400
-                                    @elseif (($harian['tugason']->sum("level")+4) <= 9)
+                                    @elseif (($harian['tugason']->sum("level")+$penambah) <= 9)
                                         bg-yellow-400
                                     @else
                                         bg-red-400
                                     @endif
-                                absolute w-{{$harian['tugason']->sum("level")+4}}/12"></div>
+                                absolute w-{{$harian['tugason']->sum("level")+$penambah}}/12"></div>
                                 {{-- <div id="bar" class="h-full bg-yellow-300 relative w-4/12"></div> --}}
                             </div>
                         </div>
