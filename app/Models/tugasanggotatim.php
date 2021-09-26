@@ -51,6 +51,8 @@ class tugasanggotatim extends Model
     // }
 
 
+
+    // GETTER
     public function getNamatimAttribute()
     {
         if($this->tim==null)
@@ -59,6 +61,11 @@ class tugasanggotatim extends Model
         }
 
         return $this->tim->nama;
+    }
+
+    public function getRangeHariAttribute()
+    {
+        return $this->duedate->diffInDays($this->startdate);
     }
 
 
@@ -73,6 +80,27 @@ class tugasanggotatim extends Model
     public function scopeYangselesai($query)
     {
         return $query->where('status','=','done');
+    }
+
+    public function scopeYangStartAtauDuePada($query,$tahun,$bulan)
+    {
+        return $query
+        ->where(function($query) use($tahun, $bulan)
+        {
+            $query->where(function($query) use($tahun, $bulan)
+            {
+                // return 
+                $query->whereYear('startdate', $tahun)
+                        ->whereMonth('startdate', $bulan);
+                // return $query->where('startdate', "LIKE", $tahun."-".$bulan."-%");
+            })
+            ->orWhere(function($query) use($tahun, $bulan) 
+            {
+                // return 
+                $query->whereYear('duedate', $tahun)
+                        ->whereMonth('duedate', $bulan);
+            });
+        });
     }
 
 }

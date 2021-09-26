@@ -11,10 +11,18 @@
     </a>
     <a href="{{ route('pegawai') }}" class="w-full text-center block p-3 hover:bg-green-300">
         <span class="block material-icons-outlined text-3xl">
-            people_alt
+            person_search
         </span>
         <span class="block">
             Pegawai
+        </span>
+    </a>
+    <a href="{{ route('dashboard') }}" class="w-full text-center block p-3 hover:bg-green-300">
+        <span class="block material-icons-outlined text-3xl">
+            dashboard
+        </span>
+        <span class="block">
+            Dashboard
         </span>
     </a>
     
@@ -39,7 +47,7 @@
     </a>
     @endrole
 
-    <a href="{{ route('dashboard') }}" class="w-full text-center block p-3 hover:bg-green-300">
+    <a href="{{ route('beranda') }}" class="w-full text-center block p-3 hover:bg-green-300">
         <span class="block material-icons-outlined text-3xl">
             home
         </span>

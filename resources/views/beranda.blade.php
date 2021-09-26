@@ -19,6 +19,6 @@
     </x-slot>
 
 
-    <livewire:dashboard />
+    <livewire:beranda />
 
 </x-app-layout>

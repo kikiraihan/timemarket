@@ -115,8 +115,8 @@ class PegawaiCrudMain extends Component
         $pegawaiToUpdate=Pegawai::find($this->idToDropup)->load('user');
 
         $this->validate( [
-            'email'              =>"nullable|email",
-            'username'           =>"required|string|unique:App\Models\User,username,".$pegawaiToUpdate->id.",",
+            'email'              =>"nullable|email|unique:App\Models\User,email,".$pegawaiToUpdate->user->id.",",
+            'username'           =>"required|string|unique:App\Models\User,username,".$pegawaiToUpdate->user->id.",",
             'nama'               =>"required|string",
             'nip'                =>"required|string",
             'nomorwa'            =>"required|string",

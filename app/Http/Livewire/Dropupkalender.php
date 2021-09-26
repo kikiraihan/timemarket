@@ -38,6 +38,9 @@ class Dropupkalender extends Component
 
     public function tampilData($data=null,$tanggal=null,$tampilRutin=false,$namaPegawai=null)
     {
+        //saat $data di json_encode tanggalnya error makanya tidak bisa digunakan data->tanggal
+        // dd($data->tanggal);
+
         $this->namaPegawai=$namaPegawai;
         $this->tampilRutin=$tampilRutin;
         $this->tanggal=$tanggal;

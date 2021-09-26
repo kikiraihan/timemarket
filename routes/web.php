@@ -5,8 +5,7 @@ use App\Http\Controllers\CrudTaskController;
 use App\Http\Controllers\KalenderUtamaController;
 use App\Http\Controllers\KepalaTimBoardController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\PegawaiController;
-use Illuminate\Support\Facades\Event;
+use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,19 +45,14 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/beranda', function () {
+    return view('beranda');
+})->middleware(['auth'])->name('beranda');
 
 
 Route::get('/setting', function () {
     return view('pengaturanAkun');
 })->middleware(['auth'])->name('setting');
-
-
-// Route::get('/setting', function () {
-//     return view('pengaturanAkun');
-// })->middleware(['auth'])->name('setting');
 
 
 
@@ -114,8 +108,16 @@ Route::get('/kalender-utama',KalenderUtamaController::class)
 
 
 
-// ADMIN
+// HALAMAN DASHBOARD
 
+Route::get('/dashboard', Dashboard::class)
+->middleware(['auth'])->name('dashboard');
+
+
+
+
+
+// ADMIN
 Route::get('/pegawai/crud', function () {
     return view('admin.pegawai-main');
 })->middleware(['auth','role:Admin'])->name('pegawai.crud');

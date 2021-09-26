@@ -261,23 +261,8 @@ class Pegawai extends Model
         
         return $this->tugasanggotatims()
         
-        ->where(function($query) use($tahun, $bulan)
-        {
-            $query->where(function($query) use($tahun, $bulan)
-            {
-                // return 
-                $query->whereYear('startdate', $tahun)
-                        ->whereMonth('startdate', $bulan);
-                // return $query->where('startdate', "LIKE", $tahun."-".$bulan."-%");
-            })
-            ->orWhere(function($query) use($tahun, $bulan) 
-            {
-                // return 
-                $query->whereYear('duedate', $tahun)
-                        ->whereMonth('duedate', $bulan);
-            });
-        })
-        ->Belumselesai()//turn of ini kalau ingin menampilkan yang done juga di kalender workload
+        ->YangStartAtauDuePada($tahun,$bulan)
+        // ->Belumselesai()//turn off ini kalau ingin menampilkan yang done juga di kalender workload
         ->orderBy('startdate', 'asc')
         ->get()
         ;   
@@ -388,6 +373,13 @@ class Pegawai extends Model
     {
         return $query->whereHas('tims', function($q) use($id_tim){
             $q->where('id','=',$id_tim);
+        });
+    }
+
+    public function scopeHanyaYangPunyaTugasKhususDibulanIni($query,$tahun,$bulan)
+    {
+        return $query->whereHas('tugasanggotatims', function($q) use($tahun,$bulan){
+            $q->YangStartAtauDuePada($tahun,$bulan);
         });
     }
 

@@ -137,7 +137,7 @@
                                             $workload=$workload+$tm->level;
                                         }
                                     @endphp
-                                
+
                                 <div class=" flex flex-col space-y-0" @click="dropUpOpen = 1" wire:click="$emitTo('dropupkalender', 'dropupDipilih',{{json_encode($item['tugas'][$minggu->format('Y-m-d')])}}, {{json_encode($minggu->format('Y-m-d'))}}, {{json_encode($tampilRutin)}}, {{json_encode($item['pegawai']->nama)}} )">
 
 

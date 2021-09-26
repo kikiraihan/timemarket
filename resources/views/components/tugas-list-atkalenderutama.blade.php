@@ -41,11 +41,11 @@
             </span>
             <span class="font-bold rounded-full bg-blue-100  px-1.5 capitalize" style="font-size: 9px;">{{$data['status']}}</span>
         </p>
-        <p class="text-right flex-1 text-gray-500 text-xs col-span-4">
+        {{-- <p class="text-right flex-1 text-gray-500 text-xs col-span-4">
             <span>{{Carbon\Carbon::parse($data['startdate'])->format('d M')}}</span>
             <span>-</span>
             <span>{{Carbon\Carbon::parse($data['duedate'])->format('d M')}}</span>
-        </p>
+        </p> --}}
     </div>
     
 

@@ -3,20 +3,24 @@
 namespace App\Http\Livewire\mytask;
 
 use App\Models\Pegawai;
-use App\Models\tugasanggotatim;
+// use App\Models\tugasanggotatim;
 use Livewire\Component;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\workloadTrait;
 
 class Myworkload extends Component
 {
+    use workloadTrait;
+
     public 
     $pegawai,
     $posisi,
     $posisiHarian,
-    $today,
-    $no_of_days= [],
-    $blankdays= [];
+    $today
+    // $no_of_days= [],
+    // $blankdays= []
+    ;
 
     protected $listeners=[
         'tugasDiSetDone'=>'freshKalender',
@@ -44,100 +48,15 @@ class Myworkload extends Component
     {
         $kalender=$this->getKalenderSebulan($this->posisi);
         $harian=$this->getHarian($this->posisiHarian);
-        // dd($harian);
+        // dd($kalender);
 
         return 
         view('livewire.mytask.myworkload',compact(['kalender','harian']));
     }
     
 
-    public function getKalenderSebulan($posisi) 
-    {
-        
-        $posisi;//tgl satu
-        $totalhari=$posisi->daysInMonth;
-
-        // hitung blank day, mulai dari tlg 1 ke minggu sebelumnya
-        $haribelakang=$posisi->dayOfWeek;
-        $blankdaysArray=$this->blankday($posisi->year,$posisi->month,$haribelakang);
-
-
-        $daysArray=$this->daysArray($totalhari);
-        $dayCarbon=$this->daysArrayToCarbonize($posisi->year,$posisi->month,$daysArray);
-        
-        // PERHITUNGAN WORKLOAD DALAM KALENDER
-        // perulangan foreach task selama sebulan
-        // in : jika start->bulan  != posisi->bulan, maka $batasawal==1 else $batasawal=start->date
-        // in : jika due->bulan  != posisi->bulan, maka $batasakhir==$totalhari else $batasakhir=due->date        
-        // in : perulangan for dari daysarray, berdasarkan $batasawal dan $batasakhir
-        $tasksebulan=$this->pegawai->getTugasDalamBulan($posisi->month,$posisi->year);
-        foreach ($tasksebulan as $key => $task) 
-        {
-            $batasawal=0;
-            $batasakhir=0;
-            if($task->startdate->month!=$posisi->month) $batasawal=1; 
-            else $batasawal=$task->startdate->day;
-            if($task->duedate->month!=$posisi->month) $batasakhir=$totalhari; 
-            else $batasakhir=$task->duedate->day;
-
-            for ($i=$batasawal; $i <= $batasakhir; $i++) 
-            { 
-                if($task->status!="done")
-                {
-                    $daysArray[$i]=$daysArray[$i]+$task->level;
-                }
-            }
-        }
-
-
-        $return['blankdays'] = $blankdaysArray;
-        $return['no_of_days'] = $daysArray;
-        $return['carbon'] = $dayCarbon;
-
-        return $return;
-    }
-
-    public function daysArray($totalhari)
-    {
-        $daysArray = [];
-        for ($i = 1; $i <= $totalhari; $i++)
-        {
-            $daysArray[$i]=0;
-            // array_push($daysArray, $i);
-        }
-
-        return $daysArray;
-    }
-
-    public function daysArrayToCarbonize($tahun,$bulan,$daysArray)
-    {
-        $days = [];
-        foreach ($daysArray as $key => $value) {
-            $days[$key]=Carbon::
-            createFromDate($tahun, $bulan,$key)->dayName;
-        }
-
-        return $days;
-    }
-
-
-    public function blankday($year,$month,$haribelakang)
-    {
-        
-        $isiblank= Carbon::createFromDate(
-            $year, 
-            $month,
-            1
-            )->locale('in')->day(-1);
-        
-
-        $blankdaysArray = [];
-        for ($i = 0; $i < $haribelakang; $i++) {
-            array_push($blankdaysArray, $isiblank->daysInMonth - $i);
-        }
-        
-        return array_reverse($blankdaysArray);
-    }
+    
+    
 
     public function incrementMonth()
     {
