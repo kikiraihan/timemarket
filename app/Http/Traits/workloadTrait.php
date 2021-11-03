@@ -4,6 +4,7 @@ namespace App\Http\Traits;
 
 use App\Models\Pegawai;
 use App\Models\tugasanggotatim;
+use App\Models\Unit;
 use Carbon\Carbon;
 
 trait workloadTrait 
@@ -242,7 +243,7 @@ trait workloadTrait
     }
 
 
-    public function getWorkloadAllPegawaiInMonth($posisi) 
+    public function getWorkloadAllPegawaiInMonth($posisi, $filterDone=TRUE) 
     {
         $totalhari=$posisi->daysInMonth;
         $daysArray=$this->daysArray($totalhari);
@@ -267,7 +268,11 @@ trait workloadTrait
 
             for ($i=$batasawal; $i <= $batasakhir; $i++) 
             { 
-                if($task->status!="done")
+                if($filterDone==FALSE)
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
+                elseif($task->status!="done")
                 {
                     $daysArray[$i]=$daysArray[$i]+$task->level;
                 }
@@ -287,11 +292,14 @@ trait workloadTrait
                 $this->posisi->month
             )->count();
 
-        $kalender=$this->getWorkloadAllPegawaiInMonth($this->posisi);
+        $kalender=$this->getWorkloadAllPegawaiInMonth($this->posisi, FALSE);//filter done itu jika ingin di get juga yang done
         $jumlahHari=$this->getJumlahWeekdayDalamBulan(
             $this->posisi->year,
             $this->posisi->month
         );
+        //maxworkload
+        // if($pegawaiBertugas==0)$maxworkload=$jumlahHari*12;
+        // else 
         $maxworkload=$jumlahHari*$pegawaiBertugas*12;//ganti 8, spya rutin tida pake
         
         $total=0;
@@ -299,6 +307,9 @@ trait workloadTrait
         {
             $total=$total+$item;
         }
+        //total
+        // if($pegawaiBertugas==0)$total=$total+($jumlahHari*4);
+        // else 
         $total=$total+($jumlahHari*$pegawaiBertugas*4);//kalau off, maka tidak pake pekerjaan rutin
         
         return [
@@ -308,6 +319,62 @@ trait workloadTrait
             'bulan'=>$this->posisi->monthName,
         ];
 
+    }
+
+    public function getForDashboard()
+    {
+        return Unit::with('anggotaunits.tugasanggotatims')
+            ->where('nama','!=','KEPALA')
+            ->get();
+        // $a->getTugasDalamBulan(7,2021)->sum('level');
+    }
+
+    public function coba()
+    {
+        // $jumlahHari=$this->getJumlahWeekdayDalamBulan(
+        //     $this->posisi->year,
+        //     $this->posisi->month
+        // );
+        // $maxworkload=$jumlahHari*$pegawaiBertugas*12;//ganti 8, spya rutin tida pake
+        
+        // $total=0;
+        // foreach($kalender as $item)
+        // {
+        //     $total=$total+$item;
+        // }
+        // $total=$total+($jumlahHari*$pegawaiBertugas*4);//kalau off, maka tidak pake pekerjaan rutin
+    }
+
+    public function pecahHariBulan($tasksebulan,$filterDone=false,$bulan,$tahun)
+    {
+        $posisi=Carbon::create($tahun, $bulan, 1);
+        $totalhari=$posisi->daysInMonth;
+        $daysArray=$this->daysArray($totalhari);
+
+        foreach ($tasksebulan as $key => $task) 
+        {
+
+            $batasawal=0;
+            $batasakhir=0;
+            if($task->startdate->month!=$posisi->month) $batasawal=1; 
+            else $batasawal=$task->startdate->day;
+            if($task->duedate->month!=$posisi->month) $batasakhir=$totalhari; 
+            else $batasakhir=$task->duedate->day;
+
+            for ($i=$batasawal; $i <= $batasakhir; $i++) 
+            { 
+                if($filterDone==FALSE)
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
+                elseif($task->status!="done")
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
+            }
+        }
+        
+        return $daysArray;
     }
 
 }

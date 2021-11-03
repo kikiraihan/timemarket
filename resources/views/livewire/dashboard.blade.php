@@ -33,22 +33,152 @@
 
         <div class="mt-6 flex justify-between items-center">
             <div class="font-bold text-gray-500 f-robotocon text-xl">
-                Workload
+                Pegawai
             </div>
             <span class="mr-2 text-xs">
-                (Pekerjaan Khusus {{$posisi->year}})
+                Workload {{$posisi->year}}
             </span>
         </div>
-        
+
         {{-- ================================================================ --}}
 
         <div class="bg-white shadow-md rounded overflow-x-auto">
             <div
                 class="min-w-max w-full flex justify-around align-items-center space-x-2 py-2 text-sm bg-gray-100 font-bold text-gray-500">
+                <div>Nama</div>
+                <div>Bulan</div>
+            </div>
+
+            @foreach ($untukDashboard as $item)
+            <div class="flex space-x-1 pl-3 py-1 w-full">
+                <span class="material-icons 
+                text-gray-400 
+                text-base">
+                    fiber_manual_record
+                </span>
+                <span class="f-robotomon text-gray-400">
+                    {{$item->nama}}
+                </span>
+            </div>
+            
+            @foreach ($item->anggotaunits as $ag)
+                <div class="min-w-max w-full flex justify-around align-items-center space-x-2 my-2">
+                    <span>{{$ag->nama_singkat_dua}}</span>
+                    <div class="flex align-items-center space-x-0">
+                        @for ($i = 1; $i <= 12; $i++)
+
+                            @php
+                                $jumlahHari=$this->getJumlahWeekdayDalamBulan(
+                                    $posisi->year,
+                                    $i
+                                );
+                            
+                                $iniTot=$ag->getTugasDalamBulan($i,$posisi->year);
+                                $tot=0;
+                                if($iniTot->isNotEmpty())
+                                {
+                                    $iniTot=$this->pecahHariBulan($iniTot,FALSE,$i,$posisi->year);
+                                    foreach ($iniTot as $t) 
+                                    {
+                                        $tot=$tot+$t;
+                                    }
+                                }
+                                $tot=$tot+($jumlahHari*4);
+                                $max=$jumlahHari*12;
+                            @endphp
+
+                            {{-- <div>
+                                <span style="font-size: 10px" class="
+                                    rounded-full w-4 h-4 flex items-center justify-center font-bold 
+                                    @if ($tot==0)
+                                    text-gray-400 
+                                    @elseif($tot <= ($max*0.5))
+                                    text-gray-500 bg-green-200 
+                                    @elseif($tot <= ($max*0.75))
+                                    text-gray-200 bg-yellow-400
+                                    @else
+                                    text-gray-200 bg-red-400 
+                                    @endif
+                                    ">
+                                    {{$i}}
+                                </span>
+                                <sub class="diagonal-fractions">
+                                    {{$tot}}
+                                    /{{$max}}
+                                </sub> 
+                            </div> --}}
+
+                            <div class="px-0.5">
+                                <div class="flex flex-col">
+                                    <span class="text-center text-xs">
+                                        {{$i}}
+                                        <span class="material-icons 
+                                                    text-gray-200
+                                                    " style="font-size: 9px">
+                                            circle
+                                        </span>
+                                    </span>
+                                    <div class="flex-1">
+                            
+                                        <div class="flex flex-col flex-wrap">
+                                            <span class="
+                                                @if ($tot==0)
+                                                text-gray-400 
+                                                @elseif($tot <= ($max*0.5))
+                                                text-gray-500 bg-green-200 
+                                                @elseif($tot <= ($max*0.75))
+                                                text-gray-600 bg-yellow-200
+                                                @else
+                                                text-gray-400 bg-red-200 
+                                                @endif
+                                                    px-0.5 text-center rounded-sm font-bold"
+                                                style="font-size: 11px;">
+                                                {{$tot}} <br>
+                                                <sub>{{$max}}</sub>
+                                                
+                                            </span>
+                                        </div>
+                            
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        @endfor
+                        {{-- <span class="material-icons text-base">
+                            people
+                        </span> --}}
+                    </div>
+                </div>
+            @endforeach
+            
+            @endforeach
+        </div>
+
+
+
+
+
+
+        
+        <br>
+        {{-- ================================================================ --}}
+
+        <div class="mt-6 flex justify-between items-center">
+            <div class="font-bold text-gray-500 f-robotocon text-xl">
+                Statistik
+            </div>
+            <span class="mr-2 text-xs">
+                *Workload (Khusus dan Rutin) oleh Pegawai yang hanya memiliki pekerjaan khusus pada bulan tertentu {{$posisi->year}}
+            </span>
+        </div>
+
+        <div class="bg-white shadow-md rounded overflow-x-auto">
+            <div
+                class="min-w-max w-full flex justify-around align-items-center space-x-2 py-2 text-sm bg-gray-100 font-bold text-gray-500">
                 {{-- <div>Status</div> --}}
-                <div>Total</div>
-                <div>Max Total</div>
-                <div>PBK</div>
+                <div>Total Workload</div>
+                <div>Max Workload</div>
+                <div>Pegawai Terlibat</div>
             </div>
 
             @foreach ($workloadSetahun as $item)

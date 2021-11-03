@@ -32,11 +32,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/coba', function () 
 {
-    // $tim=App\Models\Tim::find(1);     
-    // $tim->anggotatims()->detach(7);
-    // foreach($tim->getTugasByIdPegawai((7)) as $tugasHapus)
-    // $tugasHapus->delete();
-    
+    dd(App\Models\Unit::with('anggotaunits.tugasanggotatims')->get());
 });
 
 

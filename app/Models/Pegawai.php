@@ -258,7 +258,6 @@ class Pegawai extends Model
     // lainnya
     public function getTugasDalamBulan($bulan,$tahun)
     {
-        
         return $this->tugasanggotatims()
         
         ->YangStartAtauDuePada($tahun,$bulan)

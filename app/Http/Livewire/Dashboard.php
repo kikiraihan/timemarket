@@ -42,10 +42,13 @@ class Dashboard extends Component
         // dd($workloadSetahun);
 
         $userlogin=User::find(Auth::user()->id);
-        return view('livewire.dashboard',compact([
-            'userlogin',
-            'workloadSetahun',
-        ]));
+        return view('livewire.dashboard',[
+            'userlogin'=>$userlogin,
+            'workloadSetahun'=>$workloadSetahun,
+            'untukDashboard'=>$this->getForDashboard(),
+        ]);
     }
+
+
 
 }
