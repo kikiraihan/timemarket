@@ -179,6 +179,7 @@
                 <div>Total Workload</div>
                 <div>Max Workload</div>
                 <div>Pegawai Terlibat</div>
+                <div>Mean</div>
             </div>
 
             @foreach ($workloadSetahun as $item)
@@ -209,6 +210,7 @@
                         people
                     </span>
                 </div>
+                <span>{{round(($item['total']/($item['maxworkload']==0?1:$item['maxworkload']))*100)."%"}}</span>
             </div>
             @endforeach
 

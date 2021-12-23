@@ -323,9 +323,18 @@ trait workloadTrait
 
     public function getForDashboard()
     {
-        return Unit::with('anggotaunits.tugasanggotatims')
-            ->where('nama','!=','KEPALA')
+        $ret= Unit::with('anggotaunits.tugasanggotatims')
+            // ->where('nama','!=','KEPALA')
             ->get();
+
+        $key=array_keys($ret->where('nama','SPPUR')->toArray())[0];
+
+        //urutkan per kepala
+        $sementara=$ret[2];
+        $ret[2]=$ret[$key];
+        $ret[$key]=$sementara;
+
+        return $ret;
         // $a->getTugasDalamBulan(7,2021)->sum('level');
     }
 
