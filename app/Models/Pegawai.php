@@ -382,6 +382,13 @@ class Pegawai extends Model
         });
     }
 
+    public function scopeHanyaYangPunyaTugasKhususTahunIni($query, $tahun)
+    {
+        return $query->whereHas('tugasanggotatims', function($q) use($tahun){
+            $q->YangDiTahunIni($tahun);
+        });
+    }
+
 
 
 

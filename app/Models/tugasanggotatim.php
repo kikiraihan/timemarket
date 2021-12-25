@@ -103,4 +103,23 @@ class tugasanggotatim extends Model
         });
     }
 
+
+    public function scopeYangDiTahunIni($query, $tahun)
+    {
+        return $query
+        ->where(function($query) use($tahun)
+        {
+            $query->where(function($query) use($tahun)
+            {
+                // return 
+                $query->whereYear('startdate', $tahun);
+            })
+            ->orWhere(function($query) use($tahun) 
+            {
+                // return 
+                $query->whereYear('duedate', $tahun);
+            });
+        });
+    }
+
 }

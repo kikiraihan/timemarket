@@ -41,6 +41,11 @@ class Dashboard extends Component
         }
         // dd($workloadSetahun);
 
+        $ini=$this->getUntukStd();
+        // dd($this->posisi->month);
+        dd($ini[0]->tugasanggotatims()->YangStartAtauDuePada($this->posisi->year,4)->get());
+
+
         $userlogin=User::find(Auth::user()->id);
         return view('livewire.dashboard',[
             'userlogin'=>$userlogin,

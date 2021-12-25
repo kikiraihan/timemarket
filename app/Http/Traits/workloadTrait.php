@@ -321,6 +321,16 @@ trait workloadTrait
 
     }
 
+    public function getUntukStd()
+    {
+        $pegawaiBertugas=Pegawai::with('tugasanggotatims')
+            ->HanyaYangPunyaTugasKhususTahunIni(
+                $this->posisi->year
+            )->get();
+
+        return $pegawaiBertugas;
+    }
+
     public function getForDashboard()
     {
         $ret= Unit::with('anggotaunits.tugasanggotatims')
