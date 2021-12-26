@@ -83,7 +83,7 @@
                                         $tot=$tot+$t;
                                     }
                                 }
-                                $tot=$tot+($jumlahHari*4);
+                                $tot=$tot+($jumlahHari*4);//menambahkan dengan tugas rutin
                                 $max=$jumlahHari*12;
                             @endphp
 
@@ -168,7 +168,7 @@
                 Statistik
             </div>
             <span class="mr-2 text-xs">
-                *Workload (Khusus dan Rutin) oleh Pegawai yang hanya memiliki pekerjaan khusus pada bulan tertentu {{$posisi->year}}
+                *Workload (Khusus dan Rutin) oleh Pegawai yang hanya memiliki pekerjaan khusus pada bulan Jan-Des {{$posisi->year}}
             </span>
         </div>
 

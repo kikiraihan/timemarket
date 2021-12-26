@@ -242,6 +242,37 @@ trait workloadTrait
         return $daysForExtraCoding;
     }
 
+    public function pecahHariBulan($tasksebulan,$filterDone=false,$bulan,$tahun)
+    {
+        $posisi=Carbon::create($tahun, $bulan, 1);
+        $totalhari=$posisi->daysInMonth;
+        $daysArray=$this->daysArray($totalhari);
+
+        foreach ($tasksebulan as $key => $task) 
+        {
+
+            $batasawal=0;
+            $batasakhir=0;
+            if($task->startdate->month!=$posisi->month) $batasawal=1; 
+            else $batasawal=$task->startdate->day;
+            if($task->duedate->month!=$posisi->month) $batasakhir=$totalhari; 
+            else $batasakhir=$task->duedate->day;
+
+            for ($i=$batasawal; $i <= $batasakhir; $i++) 
+            { 
+                if($filterDone==FALSE)
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
+                elseif($task->status!="done")
+                {
+                    $daysArray[$i]=$daysArray[$i]+$task->level;
+                }
+            }
+        }
+        
+        return $daysArray;
+    }
 
     public function getWorkloadAllPegawaiInMonth($posisi, $filterDone=TRUE) 
     {
@@ -257,6 +288,7 @@ trait workloadTrait
         ->orderBy('startdate', 'asc')
         ->get()
         ;
+        // dd($tasksebulan);
         foreach ($tasksebulan as $key => $task) 
         {
             $batasawal=0;
@@ -321,16 +353,6 @@ trait workloadTrait
 
     }
 
-    public function getUntukStd()
-    {
-        $pegawaiBertugas=Pegawai::with('tugasanggotatims')
-            ->HanyaYangPunyaTugasKhususTahunIni(
-                $this->posisi->year
-            )->get();
-
-        return $pegawaiBertugas;
-    }
-
     public function getForDashboard()
     {
         $ret= Unit::with('anggotaunits.tugasanggotatims')
@@ -364,36 +386,15 @@ trait workloadTrait
         // $total=$total+($jumlahHari*$pegawaiBertugas*4);//kalau off, maka tidak pake pekerjaan rutin
     }
 
-    public function pecahHariBulan($tasksebulan,$filterDone=false,$bulan,$tahun)
+    //tidak terpakai
+    public function getUntukStd()
     {
-        $posisi=Carbon::create($tahun, $bulan, 1);
-        $totalhari=$posisi->daysInMonth;
-        $daysArray=$this->daysArray($totalhari);
+        $pegawaiBertugas=Pegawai::with('tugasanggotatims')
+            ->HanyaYangPunyaTugasKhususTahunIni(
+                $this->posisi->year
+            )->get();
 
-        foreach ($tasksebulan as $key => $task) 
-        {
-
-            $batasawal=0;
-            $batasakhir=0;
-            if($task->startdate->month!=$posisi->month) $batasawal=1; 
-            else $batasawal=$task->startdate->day;
-            if($task->duedate->month!=$posisi->month) $batasakhir=$totalhari; 
-            else $batasakhir=$task->duedate->day;
-
-            for ($i=$batasawal; $i <= $batasakhir; $i++) 
-            { 
-                if($filterDone==FALSE)
-                {
-                    $daysArray[$i]=$daysArray[$i]+$task->level;
-                }
-                elseif($task->status!="done")
-                {
-                    $daysArray[$i]=$daysArray[$i]+$task->level;
-                }
-            }
-        }
-        
-        return $daysArray;
+        return $pegawaiBertugas;
     }
 
 }

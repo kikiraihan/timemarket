@@ -41,9 +41,10 @@ class Dashboard extends Component
         }
         // dd($workloadSetahun);
 
-        $ini=$this->getUntukStd();
-        // dd($this->posisi->month);
-        dd($ini[0]->tugasanggotatims()->YangStartAtauDuePada($this->posisi->year,4)->get());
+        // $ini=$this->getUntukStd();
+        // $this->getWorkloadAllPegawaiInMonth($this->posisi, FALSE);
+        // // dd($this->posisi->month);
+        // // dd($ini[0]->tugasanggotatims()->YangStartAtauDuePada($this->posisi->year,7)->get());
 
 
         $userlogin=User::find(Auth::user()->id);
