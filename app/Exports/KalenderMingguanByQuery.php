@@ -118,8 +118,8 @@ class KalenderMingguanByQuery implements FromQuery, WithMapping, ShouldAutoSize,
     {
         $tugasDiaSeminggu=$p->getTugasDalamMingguKalenderUtama($this->posisi);
         $this->list[$this->rowSkrg+1]=$this->ambilTugas($tugasDiaSeminggu,$p);
-        // $ini=$this->list[$this->rowSkrg+1]!=[]?'Hari overload : '.json_encode($this->list[$this->rowSkrg+1]):'';
-        $ini='Workload : '.json_encode($this->workload[$this->rowSkrg+1]);//.$ini;
+        $ini=$this->list[$this->rowSkrg+1]!=[]?'Hari overload : '.json_encode($this->list[$this->rowSkrg+1]):'';
+        $ini='Workload : '.json_encode($this->workload[$this->rowSkrg+1]).$ini;
         $return=[[$this->no++,$p->nama,$ini]];
         
         //tracking
@@ -182,7 +182,7 @@ class KalenderMingguanByQuery implements FromQuery, WithMapping, ShouldAutoSize,
 
             //cek merah?
             if ($workload[$tgl->format('Y-m-d')]>9)    
-                $list[]=$tgl->dayName;
+                $list[]=substr($tgl->dayName,0,3);
 
             //workload
             $this->workload[$this->rowSkrg+1][substr($tgl->dayName,0,3)]=$workload[$tgl->format('Y-m-d')];
