@@ -29,6 +29,9 @@
                 </span>
             </div>
             <div class="items-center flex space-x-3">
+                <span>
+                    <x-atom.button-table-with-faicon wire:click="exportExcell" class="px-1.5 py-0.5 bg-green-50 text-green-500" :icon="'fas fa-download'">Export</x-atom.button-table-with-faicon>
+                </span>
                 <span class="text-xs text-gray-500 f-robotomon">
                     Minggu ke {{$seminggu[0]->weekOfMonth}}
                 </span>

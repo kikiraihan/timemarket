@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\KalenderMingguanByQuery;
 use App\Models\Pegawai;
 use Carbon\Carbon;
 use App\Http\Traits\workloadTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Kalenderutama extends Component
 {
@@ -25,11 +27,9 @@ class Kalenderutama extends Component
     public function render()
     {
         $list=$this->getDataAllKalenderSeminggu($this->posisi->format('Y-m-d'));
+        // dd($list);
         return view('livewire.kalenderutama',compact(['list']));
     }
-
-
-
 
     public function incrementWeek()
     {
@@ -41,5 +41,12 @@ class Kalenderutama extends Component
     {
         // if(1 != $this->posisiHarian->day)
         $this->posisi->subWeek();
+    }
+
+
+    public function exportExcell()
+    {
+        $waktu=Carbon::now();
+        return Excel::download(new KalenderMingguanByQuery($this->posisi), 'kalender_'.$waktu->format('Y_M_d').'.xlsx');
     }
 }

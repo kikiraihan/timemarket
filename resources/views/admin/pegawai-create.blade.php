@@ -54,7 +54,7 @@
                     <x-select-standar-kiki wire:model="role">
                         <option value="" hidden selected>Pilih</option>
                         <option class="w-full" value="Pegawai">Pegawai</option>
-                        <option class="w-full" value="Chief">Kepala Tim</option>
+                        <option class="w-full" value="Chief">Chief (Kepala Tim)</option>
                         <option class="w-full" value="KPw">Kepala Perwakilan</option>
                     </x-select-standar-kiki>
                     <x-error-input :kolom="'role'"/>

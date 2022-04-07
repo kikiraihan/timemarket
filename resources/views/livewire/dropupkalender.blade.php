@@ -39,13 +39,13 @@
             
             @if($tampilRutin)
             <div class=" font-bold text-gray-500 capitalize f-robotomon text-sm pt-2">
-                <span class="px-4 ">Pekerjaan Rutin </span> <hr>
-                <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1 ml-4" style="font-size: 11px;">
+                <span class="px-4 ">Pekerjaan Rutin</span> <hr>
+            </div>
+            <div class="text-sm pl-4">
+                <div class="text-xs">*Pada weekdays dihitung juga pekerjaan rutin di masing-masing unit/fungsi.</div>
+                <span class="bg-gray-100 text-center rounded-sm font-bold text-gray-400 px-1" style="font-size: 11px;">
                     4 <sub>Load</sub>
                 </span>
-            </div>
-            <div class="text-sm pl-4 ">
-                Pekerjaan rutin sesuai dengan tupoksi pegawai di masing-masing unit/fungsi.
             </div>
 
             {{-- <ul class="flex flex-col text-sm">
