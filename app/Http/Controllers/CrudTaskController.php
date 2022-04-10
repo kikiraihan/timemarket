@@ -27,6 +27,14 @@ class CrudTaskController extends Controller
         return view('crudtask.create',compact(['id_proker','link_balik']));
     }
 
+    public function createByIdForPegawai($id_proker)
+    {
+        $link_balik='Katimboard.showteam';
+        $link_balik=null;
+        return view('crudtask.createForPegawai',compact(['id_proker','link_balik']));
+    }
+
+
     
     public function store(Request $request)
     {

@@ -48,6 +48,16 @@
         <div class="font-bold text-gray-500 uppercase f-robotomon text-sm px-4">
             List Pekerjaan : {{$pegawainya->nama_semi_singkat}}
         </div>
+        <div class="flex text-gray-600 mt-2">
+            <a href="{{ route('task.create.byid.pegawai', ['id_proker'=>$tim->id]) }}" 
+                class="bg-green-500 text-white rounded shadow-sm flex-inline
+                    items-center space-x-1 mx-4 flex-initial py-1 px-2">
+                <span class="material-icons" style="font-size: 16px">
+                    add
+                </span>
+                <span>Tambah</span>
+            </a>
+        </div>
             @if(!$tim->getTugasByIdPegawai($id_pegawai)->isEmpty())
             
                 <div class="flex flex-col my-3" >

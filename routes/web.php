@@ -79,6 +79,8 @@ Route::get('/task/create', [CrudTaskController::class,'create'])
 ->middleware(['auth','role:Chief'])->name('task.create');
 Route::get('/task/create-byid/{id_proker}', [CrudTaskController::class,'createById'])
 ->middleware(['auth','role:Chief|Pegawai'])->name('task.create.byid');
+Route::get('/task/create-byid/{id_proker}/pegawai', [CrudTaskController::class,'createByIdForPegawai'])
+->middleware(['auth','role:Chief|Pegawai'])->name('task.create.byid.pegawai');
 Route::get('/task/edit/{id}', [CrudTaskController::class,'edit'])
 ->middleware(['auth','role:Chief|Pegawai'])->name('task.edit');
 
