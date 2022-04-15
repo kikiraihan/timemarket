@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Mytask;
 
 use App\Models\tugasanggotatim;
+use GuzzleHttp\Psr7\Request;
 use Livewire\Component;
 
 class Dropupworkload extends Component
@@ -18,6 +19,7 @@ class Dropupworkload extends Component
         'dropUpTugas'=>'cekTugasDetail',
         'setDoneCeklis'=>"setDone",
         'setOnGoingCeklis'=>'setOnGoing',
+        'hapusTugasOlehPegawai'=>'hapusPekerjaan',
     ];
 
     public function mount($isMy,$brAdd=false)
@@ -35,7 +37,7 @@ class Dropupworkload extends Component
 
     public function cekTugasDetail($id)
     {
-        $this->tugasDetail=tugasanggotatim::find($id);
+        $this->tugasDetail=tugasanggotatim::with(['tim','pegawai'])->find($id);
     }
 
     public function setDone()
@@ -69,5 +71,16 @@ class Dropupworkload extends Component
         $this->cekTugasDetail($id);
         
         $this->emit('swalUpdated');
+    }
+
+    public function hapusPekerjaan($id)
+    {
+        tugasanggotatim::find($id)->delete();
+        // $this->emit('swalUpdated');
+        // $this->emit('pekerjaanTerhapusShowReset')
+        return redirect()->route('showteam',[
+            'id'=>$this->tugasDetail->tim->id,
+            'id_pegawai'=>$this->tugasDetail->pegawai->id
+        ]);
     }
 }

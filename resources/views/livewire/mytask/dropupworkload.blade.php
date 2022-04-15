@@ -101,6 +101,18 @@
                     </button>
                 </div>
             @endif
+
+
+            <div class="w-full px-3 block">
+                <button
+                    wire:click="$emit('swalToDeletedWithMessage','hapusTugasOlehPegawai', {{$tugasDetail->id}},'apabila tugas sudah selesai sebaiknya tidak dihapus, tapi ditandai selesai! Anda yakin akan menghapus?')"
+                    class=" p-2 bg-red-500 text-white rounded shadow-sm w-full focus:outline-none focus:ring-2 focus:ring-green-300">
+                    <span class="material-icons text-sm">
+                        delete
+                    </span>
+                    <Span>Hapus pekerjaan ini</Span>
+                </button>
+            </div>
         
 
         @endif

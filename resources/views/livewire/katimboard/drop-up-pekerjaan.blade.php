@@ -18,6 +18,29 @@
 
         @if ($idToDropup)
 
+
+        @if ($status!="done")
+        <button type="button"
+            @click="dropUpOpen = false"
+            wire:click="setDone({{$idToDropup}})"
+            class="flex-initial  text-gray-500 flex  pl-3  space-x-3 py-5">
+            <span class="material-icons-outlined" style="font-size: 18px">
+                check
+            </span>
+            <Span>Tandai selesai pekerjaan ini</Span>
+        </button>
+        @elseif($status=="done")
+        <button type="button"
+            @click="dropUpOpen = false"
+            wire:click="setOnGoing({{$idToDropup}})"
+            class="flex-initial  text-gray-500 flex  pl-3  space-x-3 py-5">
+            <span class="material-icons-outlined" style="font-size: 18px">
+                cancel
+            </span>
+            <Span>Batalkan selesai pekerjaan ini</Span>
+        </button>
+        @endif
+
         <a href="{{ route('task.edit', ['id'=>$idToDropup]) }}" 
             @click="dropUpOpen = false"
             class="flex-initial  text-gray-500 flex  pl-3  space-x-3 py-5">

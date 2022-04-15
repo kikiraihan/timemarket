@@ -8,6 +8,7 @@ use Livewire\Component;
 class DropUpPekerjaan extends Component
 {
     public $idToDropup;
+    public $status;
 
     protected $listeners=[
         'dropUppekerjaansetid'=>'setIdToDropup',
@@ -24,11 +25,28 @@ class DropUpPekerjaan extends Component
     public function setIdToDropup($id)
     {
         $this->idToDropup=$id;
+        $this->status=tugasanggotatim::find($id)->status;
     }
 
     public function hapusPekerjaan($id)
     {
         tugasanggotatim::find($id)->delete();
+        $this->emit('pekerjaanTerhapusShowReset');
+    }
+
+    public function setDone($id)
+    {
+        $tgs=tugasanggotatim::find($id);
+        $tgs->status="Done";
+        $tgs->save();
+        $this->emit('pekerjaanTerhapusShowReset');//cuma ba reset ini
+    }
+
+    public function setOnGoing($id)
+    {
+        $tgs=tugasanggotatim::find($id);
+        $tgs->status="on going";
+        $tgs->save();
         $this->emit('pekerjaanTerhapusShowReset');
     }
 

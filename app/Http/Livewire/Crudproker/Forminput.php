@@ -34,6 +34,7 @@ class Forminput extends Component
         'date' => 'Kolom :attribute, harus berupa tanggal',
         'required'=>'Kolom tidak boleh kosong',
         'unique'=>'Data kolom :attribute sudah ada sebelumnya',
+        'max'=>'Data terlalu panjang, maksimal :max karakter',
     ];
 
     
@@ -132,9 +133,9 @@ class Forminput extends Component
         $this->validate( [
             'jangka'             =>"required|string",
             'iku'                =>"required|string",
-            'nama'               =>"required|string",
-            'judul_project'      =>"required|string",
-            'target_pelaksanaan' =>"required|string",
+            'nama'               =>"required|string|max:10",
+            'judul_project'      =>"required|string|max:25",
+            'target_pelaksanaan' =>"required|string|max:125",
             'deskripsi'          =>"nullable|string",
         ],$this->CustomMessages);
 
@@ -167,9 +168,9 @@ class Forminput extends Component
         $this->validate( [
             'jangka'             =>"required|string",
             'iku'                =>"required|string",
-            'nama'               =>"required|string",
-            'judul_project'      =>"required|string",
-            'target_pelaksanaan' =>"required|string",
+            'nama'               =>"required|string|max:10",
+            'judul_project'      =>"required|string|max:25",
+            'target_pelaksanaan' =>"required|string|max:125",
             'deskripsi'          =>"nullable|string",
         ],$this->CustomMessages);
 

@@ -8,13 +8,13 @@
         @endisset
     </div>
     <div class="inline-flex items-center justify-center space-x-2">
-        @role('Chief')
+        {{-- @role('Chief')
         <a href="{{ route('task.create') }}" class="shadow flex items-center rounded-full text-green-600 h-9 w-9 justify-center">
             <span class="material-icons-outlined p-1">
                 add
             </span>
         </a>
-        @endrole
+        @endrole --}}
 
         <button type="button" class="
         ini-tombol-sidebar

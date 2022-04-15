@@ -59,7 +59,7 @@
     </div>
 
     <a 
-    @if($item->isThisUserKepalaTim($idpegawai) and $parent!='they-team')
+    @if(($item->isThisUserKepalaTim($idpegawai) or $item->isThisUserKoordinatorTim($idpegawai))  and $parent!='they-team')
     href="{{ route('Katimboard.showteam', ['id'=>$item->id]) }}"
     @else
     href="{{ route('showteam', ['id'=>$item->id,'id_pegawai'=>$idpegawai]) }}"

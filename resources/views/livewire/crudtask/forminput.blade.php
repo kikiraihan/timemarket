@@ -12,7 +12,7 @@
     <form wire:submit.prevent="{{$metode}}">
 
         <div class="container mx-auto flex flex-col space-y-4 py-4">
-            <div class="px-4">
+            {{-- <div class="px-4">
                 <label class="f-roboto ml-1 text-gray-500 text-sm">Program Kerja / Tim</label>
                 <select @if($metode=='updateTask') disabled @endif
                     wire:model.lazy="id_proker" id="proker"
@@ -24,7 +24,7 @@
                     @endforeach
                 </select>
                 <x-error-input :kolom="'id_proker'"/>
-            </div>
+            </div> --}}
 
             @if($id_pegawai==null)
             <div class="px-4">

@@ -18,7 +18,7 @@ class CreateTimsTable extends Migration
             $table->string('nama',10); //singkat
             $table->longText('deskripsi')->nullable();
             
-            $table->string('judul_project',199);
+            $table->string('judul_project',25);
             $table->string('target_pelaksanaan'); //1 minggu tiap bulan. //15 oktober 2021
             $table->enum('jangka',['panjang','pendek']);
             $table->enum('iku',['IKU','Non-IKU'])->nullable();
