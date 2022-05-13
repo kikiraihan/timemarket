@@ -18,7 +18,7 @@ class TaskController extends Controller
         //dd($request->url());
         
 
-        return view('mytask/workload',compact(['user','pegawai','ag','unit']));
+        return view('mytask.workload',compact(['user','pegawai','ag','unit']));
     }
     
 
@@ -30,7 +30,7 @@ class TaskController extends Controller
         $unit=$ag->unit;
         $proker=$pegawai->tims;
 
-        return view('mytask/myteam',compact(['user','pegawai','ag','unit','proker']));
+        return view('mytask.myteam',compact(['user','pegawai','ag','unit','proker']));
     }
 
 

@@ -109,7 +109,6 @@
     //   pemb.remove();
     // };
 
-
     $(function () {
         // page is loaded, it is safe to hide loading animation
         $('#loading-image').hide();

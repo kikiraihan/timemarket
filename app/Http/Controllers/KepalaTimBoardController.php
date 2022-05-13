@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class KepalaTimBoardController extends Controller
 {
+
+    //fungsi ini tidak lagi digunakan bersama viewnya, soalnya sudah pakai livewire
     public function myteam()
     {
         $user=Auth::user();

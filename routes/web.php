@@ -6,6 +6,7 @@ use App\Http\Controllers\KalenderUtamaController;
 use App\Http\Controllers\KepalaTimBoardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Fullpage\Katimboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,7 +87,7 @@ Route::get('/task/edit/{id}', [CrudTaskController::class,'edit'])
 
 
 // HALAMAN KEPALA TIM BOARD
-Route::get('/katimboard', [KepalaTimBoardController::class,'myteam'])
+Route::get('/katimboard', Katimboard::class)
 ->middleware(['auth','role:Chief'])->name('Katimboard.myteam');
 Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam'])
 ->middleware(['auth','role:Chief|Pegawai'])->name('Katimboard.showteam');

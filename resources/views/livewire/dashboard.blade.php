@@ -10,11 +10,9 @@
 
 
 <x-slot name="scripthalaman">
-
 </x-slot>
 
 <x-slot name="stylehalaman">
-
 </x-slot>
 
 <div>
