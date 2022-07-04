@@ -12,7 +12,8 @@
         </span>
     </a>
     <span class="font-semibold inline-flex items-center p-3 mr-auto">
-        {{$kata}}
+        {{-- {{$kata}} --}}
+        {{$link_balik}}
     </span>
     <div class=" space-x-3">
     </div>
