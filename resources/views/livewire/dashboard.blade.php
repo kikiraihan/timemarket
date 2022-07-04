@@ -168,7 +168,9 @@
                 Statistik
             </div>
             <span class="mr-2 text-xs">
-                *Workload (Khusus dan Rutin) oleh Pegawai yang hanya memiliki pekerjaan khusus pada bulan Jan-Des {{$posisi->year}}
+                Ringkasan statistik kondisi workload tiap bulan.
+                *Persentase workload (Khusus dan Rutin) diambil dari hanya pegawai yang memang memiliki pekerjaan khusus pada bulan Jan-Des {{$posisi->year}}.
+                Tujuannya untuk cek bagaimana sebaran tugas per bulan, namun dengan ketentuan pembagi totalnya hanya pegawai maksimal workload pada pegawai yang memiliki tugas khusus. Karena jika ditotal ke semua tugas pegawai, data pembagi persentase akan terlalu tinggi.
             </span>
         </div>
 
@@ -177,8 +179,8 @@
                 class="min-w-max w-full flex justify-around align-items-center space-x-2 py-2 text-sm bg-gray-100 font-bold text-gray-500">
                 {{-- <div>Status</div> --}}
                 <div>Total/Max Workload</div>
-                {{-- <div>Max Workload</div> --}}
-                <div>Pegawai Terlibat</div>
+                <div>Persentase</div>
+                <div>Pegawai Memiliki Pekerjaan Khusus</div>
                 {{-- <div>Mean</div> --}}
             </div>
 
@@ -202,8 +204,9 @@
                 </span>
             </div>
             <div class="min-w-max w-full flex justify-around align-items-center space-x-2 my-2">
-                <span>{{$item['total']}}/{{$item['maxworkload']}}</span>
+                <span class="diagonal-fractions">{{$item['total']}}/{{$item['maxworkload']}}</span>
                 {{-- <span>{{$item['maxworkload']}}</span> --}}
+                <span>{{($item['total']/$item['maxworkload'])*100}} %</span>
                 <div class="flex align-items-center space-x-1">
                     <span>{{$item['pegawaiBertugas']}}</span>
                     <span class="material-icons text-base">
