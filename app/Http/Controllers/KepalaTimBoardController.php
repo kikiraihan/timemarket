@@ -48,6 +48,8 @@ class KepalaTimBoardController extends Controller
             //jika bukan chief tapi kepala tim
             $link="mytask.myteam";
         }
+
+        dd([$link,Auth::user()->hasRole('Chief')]);
         
         
         return view('katimboard.showteam',compact(['tim','link']));
