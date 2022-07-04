@@ -169,8 +169,6 @@
             </div>
             <span class="mr-2 text-xs">
                 Ringkasan statistik kondisi workload tiap bulan.
-                *Persentase workload (Khusus dan Rutin) diambil dari hanya pegawai yang memang memiliki pekerjaan khusus pada bulan Jan-Des {{$posisi->year}}.
-                Tujuannya untuk cek bagaimana sebaran tugas per bulan, namun dengan ketentuan pembagi totalnya hanya pegawai maksimal workload pada pegawai yang memiliki tugas khusus. Karena jika ditotal ke semua tugas pegawai, data pembagi persentase akan terlalu tinggi.
             </span>
         </div>
 
@@ -209,7 +207,7 @@
                 @if ($item['maxworkload']==0)
                     <span>0 %</span>
                 @else
-                    <span>{{($item['total']/$item['maxworkload'])*100}} %</span>
+                    <span>{{round(($item['total']/$item['maxworkload'])*100,2)}} %</span>
                 @endif
                 <div class="flex align-items-center space-x-1">
                     <span>{{$item['pegawaiBertugas']}}</span>
@@ -222,6 +220,11 @@
             @endforeach
 
 
+        </div>
+
+        <div class="p-2">
+            <b>Catatan:</b> <br>
+            *Workload (Khusus dan Rutin) diambil dari hanya pegawai yang memang memiliki pekerjaan khusus pada bulan Jan-Des {{$posisi->year}}. Tujuannya untuk cek bagaimana sebaran tugas per bulan, namun dengan ketentuan pembagi totalnya hanya pegawai maksimal workload pada pegawai yang memiliki tugas khusus. Karena jika ditotal ke semua tugas pegawai, data pembagi persentase akan terlalu tinggi.
         </div>
 
     </div>
