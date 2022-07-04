@@ -50,7 +50,7 @@ class KepalaTimBoardController extends Controller
         }
         
         
-        return view('katimboard.showteam',compact(['tim','link']));
+        return view('katimboard.showteama',compact(['tim','link']));
     }
 
 }
