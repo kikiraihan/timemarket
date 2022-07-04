@@ -89,7 +89,7 @@ Route::get('/task/edit/{id}', [CrudTaskController::class,'edit'])
 // HALAMAN KEPALA TIM BOARD
 Route::get('/katimboard', Katimboard::class)
 ->middleware(['auth','role:Chief'])->name('Katimboard.myteam');
-Route::get('/katimboard/show/{id}', [KepalaTimBoardController::class,'showteam'])
+Route::get('/katimboard/show/{id}/team', [KepalaTimBoardController::class,'showteam'])
 ->middleware(['auth','role:Chief|Pegawai'])->name('Katimboard.showteam');
 
 // CRUD PROKER
