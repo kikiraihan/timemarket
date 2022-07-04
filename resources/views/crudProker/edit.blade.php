@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Edit Proker'])
+        @include('layouts.navigation_back',['warna'=>'bg-white','kata'=>'Edit Proker'])
     </x-slot>
 
     <x-slot name="footer">

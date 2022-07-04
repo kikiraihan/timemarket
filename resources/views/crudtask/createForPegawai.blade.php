@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigationback',['warna'=>'bg-white','kata'=>'Buat Tugas Baru [Pegawai]','link_balik'=>$link_balik])
+        @include('layouts.navigation_back',['warna'=>'bg-white','kata'=>'Buat Tugas Baru [Pegawai]','link_balik'=>$link_balik])
     </x-slot>
 
     <x-slot name="footer">
