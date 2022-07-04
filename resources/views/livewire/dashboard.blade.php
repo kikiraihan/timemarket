@@ -206,7 +206,11 @@
             <div class="min-w-max w-full flex justify-around align-items-center space-x-2 my-2">
                 <span class="diagonal-fractions">{{$item['total']}}/{{$item['maxworkload']}}</span>
                 {{-- <span>{{$item['maxworkload']}}</span> --}}
-                <span>{{($item['total']/$item['maxworkload'])*100}} %</span>
+                @if ($item['maxworkload']==0)
+                    <span>0 %</span>
+                @else
+                    <span>{{($item['total']/$item['maxworkload'])*100}} %</span>
+                @endif
                 <div class="flex align-items-center space-x-1">
                     <span>{{$item['pegawaiBertugas']}}</span>
                     <span class="material-icons text-base">
