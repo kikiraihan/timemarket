@@ -7,6 +7,7 @@ use App\Http\Controllers\KepalaTimBoardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Fullpage\Katimboard;
+use App\Http\Livewire\LandingPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +39,7 @@ Route::get('/coba', function ()
 
 
 
-Route::get('/', function () {
-    return redirect('login');
-});
+Route::get('/', LandingPage::class)->name('landing');
 
 Route::get('/beranda', function () {
     return view('beranda');
